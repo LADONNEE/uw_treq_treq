@@ -23,7 +23,7 @@
 
     <p>
         Generally this is you. If you are entering an order on behalf of someone else and
-        they are the one who should contacted with questions, change this to another COE
+        they are the one who should contacted with questions, change this to another COENV
         person.
     </p>
 </section>

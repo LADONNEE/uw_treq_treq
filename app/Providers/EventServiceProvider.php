@@ -1,7 +1,7 @@
 <?php
 namespace App\Providers;
 
-use App\AuthNotify\NotifyEducPerson;
+use App\AuthNotify\NotifyCollegePerson;
 use App\AuthNotify\UserModified;
 use App\Events\OrderUpdated;
 use App\Events\ProjectUpdated;
@@ -33,7 +33,7 @@ class EventServiceProvider extends ServiceProvider
             AuthorizeApprover::class,
         ],
         UserModified::class => [
-            NotifyEducPerson::class,
+            NotifyCollegePerson::class,
         ]
     ];
 }

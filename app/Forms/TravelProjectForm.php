@@ -26,7 +26,7 @@ class TravelProjectForm extends ProjectForm
 
         $this->add('traveler_type', 'radio')
             ->options([
-                'coe' => 'COE Traveler (Faculty, Staff, Student)',
+                'coenv' => 'COENV Traveler (Faculty, Staff, Student)',
                 'uw' => 'UW Traveler (Other Unit)',
                 'non_uw' => 'Non UW Traveler',
             ]);
@@ -75,7 +75,7 @@ class TravelProjectForm extends ProjectForm
     private function travelerType()
     {
         if (!$this->trip->exists || $this->trip->person_id) {
-            return 'coe';
+            return 'coenv';
         }
         return ($this->trip->non_uw) ? 'non_uw' :  'uw';
     }
@@ -87,7 +87,7 @@ class TravelProjectForm extends ProjectForm
         $this->check('traveler_type')->inList();
         $this->check('destination')->notEmpty();
 
-        if ($this->value('traveler_type') === 'coe') {
+        if ($this->value('traveler_type') === 'coenv') {
             $person = Person::find($this->value('person_id'));
             if (!$person instanceof Person) {
                 $this->input('traveler_search')->error('Unknown person, select from suggestions');
@@ -137,7 +137,7 @@ class TravelProjectForm extends ProjectForm
             'honorarium' => null,
         ];
 
-        if ($type === 'coe') {
+        if ($type === 'coenv') {
             $p = Person::find($out['person_id']);
             if ($p instanceof Person) {
                 $out['traveler'] = "{$p->firstname} {$p->lastname}";

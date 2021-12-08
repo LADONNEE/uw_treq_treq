@@ -11,8 +11,8 @@
 
                 <p class="mt-4">
                     This is a fiscal request tracking system for the University of Washington,
-                    College of Education. If you should have access to this system, email
-                    <a href="mailto:edfiscal@uw.edu">edfiscal@uw.edu</a> for help.
+                    College of the Environment. If you should have access to this system, email
+                    <a href="mailto:coenv@uw.edu">coenv@uw.edu</a> for help.
                 </p>
             </div>
         </div>

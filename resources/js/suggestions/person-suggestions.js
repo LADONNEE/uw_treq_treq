@@ -11,7 +11,7 @@ let make = function() {
             return option.id;
         },
         prefetch: {
-            url: '/person/prefetch.json?scope=coe-uwnetid' //, cache: false
+            url: '/person/prefetch.json?scope=coenv-uwnetid' //, cache: false
         },
         remote: {
             url: '/person/suggest?q={{SEARCHTERM}}&scope=uwnetid',

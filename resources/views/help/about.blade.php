@@ -6,7 +6,7 @@
 
     <p>
         TREQ (Travel & Requisitions) is a request tracking system for soliciting review, approval, and
-        action from the UW College of Education's Fiscal Office. It is used by college faculty and staff.
+        action from the UW College of the Environment's Fiscal Office. It is used by college faculty and staff.
     </p>
 
     <p>

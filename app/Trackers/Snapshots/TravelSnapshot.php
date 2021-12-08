@@ -14,7 +14,7 @@ class TravelSnapshot extends Snapshot
             'return' => Snap::date($trip->return_at),
             'non uw traveler' => Snap::yesNo($trip->non_uw),
             'traveler' => Snap::text($trip->traveler),
-            'coe traveler' => Snap::personId($trip->person_id),
+            'coenv traveler' => Snap::personId($trip->person_id),
             'email' => Snap::text($trip->traveler_email),
             'phone' => Snap::text($trip->traveler_phone),
             'personal time' => Snap::yesNo($trip->personal_time),
