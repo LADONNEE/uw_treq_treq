@@ -1,0 +1,42 @@
+.on-call__container {
+  display: inline-block;
+}
+
+.on-call {
+  margin-left: .5rem;
+  padding: 1px .5rem;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: .25rem;
+  color: #565656;
+}
+
+.on-call__dialog {
+  z-index: 1200;
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  color: #333;
+  padding: 8px 16px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-size: .875rem;
+}
+
+.on-call__check {
+  margin: .5rem;
+  font-size: 1rem;
+}
+
+.on-call--off {
+  color: #575757;
+}
+
+.on-call--on {
+  color: #fff;
+  font-weight: 600;
+  background-color: #458500;
+}
+
+.on-call__bug {
+  color: #458500;
+}

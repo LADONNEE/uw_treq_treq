@@ -1,0 +1,9 @@
+# Apache Configuration
+
+Add following to Apache configuration to make TREQ application available from a top level URL directory on the server.
+
+    Alias /treq "/www/treq/public"
+
+    <Directory "/www/treq/public">
+        Require all granted
+    </Directory>

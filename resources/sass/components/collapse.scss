@@ -1,0 +1,30 @@
+.js-collapse__button {
+  cursor: pointer;
+}
+
+.js-collapse__button.closed {
+  margin-bottom: 1rem;
+}
+
+.js-collapse__button:focus {
+  outline: 2px solid #c6d9f0;
+}
+
+.js-collapse__button {
+  background: url(#{$assetsPath}/arrow_down.gif) no-repeat left center;
+  padding-left: 1rem;
+  cursor: pointer;
+}
+
+.js-collapse__button.closed {
+  background-image: url(#{$assetsPath}/arrow_right.gif);
+}
+
+.js-collapse__content .panel-full-width .table-tight th:first-child,
+.js-collapse__content .panel-full-width .table-tight td:first-child {
+  padding-left: 2rem;
+}
+
+.js-collapse__content p {
+  padding: 0 .75rem;
+}

@@ -1,0 +1,82 @@
+# Initial Install
+
+While we have a more automated system for updates (deploy utility) the initial install of the project on
+a server is a manual process.
+
+## Deploy User
+
+Add eddploy to project repo and any submodules the project is using. READ access.
+
+
+## Create Database
+
+DROP DATABASE IF EXISTS treq;
+CREATE DATABASE treq;
+
+-- Generate a password and update the local .env file
+CREATE USER 'treq'@'localhost' IDENTIFIED BY '__create_a_new_ugly_password_for_this_server__';
+GRANT ALL PRIVILEGES ON treq.* to 'treq'@'localhost';
+GRANT SELECT ON shared.* TO 'treq'@'localhost';
+
+FLUSH PRIVILEGES;
+QUIT;
+
+
+## Setup Local Directories
+
+> as root
+
+sudo su -
+mkdir -p /www/treq
+chown -R weblee:weblee /www/treq
+
+mkdir -p /www/local/treq
+touch /www/local/treq/.env
+
+exit
+
+
+## Deploy the Project
+
+> as regular user with sudo privileges
+
+deploy treq run install.sh
+
+
+## Configure .env
+
+sudo vi /www/local/treq/.env
+
+Can copy this from local work environment, then update:
+
+. environment name
+. app base URL
+. environment's database password
+
+
+## Install Dependencies
+
+sudo su - weblee
+cd /www/treq
+composer install
+exit
+
+## Run Migrations
+
+cd /www/treq
+php artisan migrate
+
+
+## Configure Apache
+
+sudo vi /etc/httpd/conf.d/alias.conf
+
+Alias /treq "/www/treq/public"
+
+sudo vi /etc/httpd/conf.d/directories.conf
+
+<Directory "/www/treq/public">
+	Require all granted
+</Directory>
+
+sudo systemctl restart httpd

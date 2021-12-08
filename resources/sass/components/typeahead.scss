@@ -1,0 +1,12 @@
+input[type="text"].item-selected {
+  background-image: url('/images/icon-check-64.png');
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 32px;
+}
+input[type="text"].item-changing {
+  background-image: url('/images/icon-question-red-64.png');
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 32px;
+}

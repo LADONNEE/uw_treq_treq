@@ -1,0 +1,25 @@
+let suggestionsInstances = {};
+
+import makeBudgets from './budget-suggestions';
+import makePerson from './person-suggestions';
+
+let suggestionsFactories = {
+    budgets: makeBudgets,
+    person: makePerson,
+};
+
+let suggestionsCreate = function(name) {
+    if (suggestionsFactories.hasOwnProperty(name)) {
+        return suggestionsFactories[name].make();
+    }
+    throw "No suggestion configured for " + name;
+};
+
+let suggestions = function(name) {
+    if (!suggestionsInstances.hasOwnProperty(name)) {
+        suggestionsInstances[name] = suggestionsCreate(name);
+    }
+    return suggestionsInstances[name];
+};
+
+export { suggestions }

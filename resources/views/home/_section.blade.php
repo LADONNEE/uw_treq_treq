@@ -1,0 +1,4 @@
+@if(!$report->isEmpty)
+
+@endif
+

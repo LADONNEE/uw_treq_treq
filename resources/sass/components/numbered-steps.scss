@@ -1,0 +1,21 @@
+.numbered-steps {
+  font-size: 1.25rem;
+}
+
+.numbered-steps th {
+  width: 52px;
+  height: 52px;
+  border: 0 none;
+  border-bottom: 6px solid #fff;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  vertical-align: center;
+}
+
+.numbered-steps td {
+  padding: 0 0 0 1rem;
+  border: 0 none;
+  border-bottom: 6px solid #fff;
+  vertical-align: center;
+}

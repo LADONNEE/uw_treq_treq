@@ -1,0 +1,38 @@
+.jump-nav {
+  display: flex;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-top-color: $color-indigo-200;
+  border-bottom-color: $color-indigo-200;
+  background-color: $color-indigo-200;
+}
+
+.jump-nav a,
+.jump-nav a:link,
+.jump-nav a:visited {
+  display: block;
+  padding: .5rem 1rem;
+  background-color: transparent;
+  color: $color-blue-800;
+  text-decoration: none;
+}
+
+.jump-nav a:hover,
+.jump-nav a:active {
+  background-color: $color-indigo-400;
+  color: $color-blue-900;
+  text-decoration: none;
+}
+
+.jump-nav .badge {
+  margin-left: 6px;
+  color: white;
+  background-color: $color-indigo-700;
+}
+
+.jump-nav__anchor {
+  position: relative;
+  top: -80px;
+  height: 1px;
+  visibility: hidden;
+}
