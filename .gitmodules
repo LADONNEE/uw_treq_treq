@@ -1,6 +1,6 @@
-[submodule "packages/uwcoews/aclkit"]
-	path = packages/uwcoews/aclkit
+[submodule "packages/uwcoenvws/aclkit"]
+	path = packages/uwcoenvws/aclkit
 	url = git@bitbucket.org:uwcoews/aclkit
-[submodule "packages/uwcoews/formkit"]
-	path = packages/uwcoews/formkit
+[submodule "packages/uwcoenvws/formkit"]
+	path = packages/uwcoenvws/formkit
 	url = git@bitbucket.org:uwcoews/formkit

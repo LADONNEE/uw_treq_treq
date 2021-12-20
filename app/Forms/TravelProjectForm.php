@@ -8,7 +8,7 @@ use App\Models\Order;
 use App\Models\Person;
 use App\Models\Trip;
 use App\Trackers\LoggedTravel;
-use Uwcoews\Formkit\ValueHandlers\CarbonDateValue;
+use Uwcoenvws\Formkit\ValueHandlers\CarbonDateValue;
 
 class TravelProjectForm extends ProjectForm
 {
