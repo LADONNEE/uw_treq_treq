@@ -9,8 +9,8 @@ use Tests\TestCase;
 
 class OneDriveNameTest extends TestCase
 {
-    const URL = 'https://uwnetid-my.sharepoint.com/personal/seribock_uw_edu/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fseribock%5Fuw%5Fedu%2FDocuments%2FTREQ%20User%20Folders';
-    const OG_COENV_FISCAL_URL = 'https://uwnetid.sharepoint.com/:f:/r/sites/og_coe_fiscal/shared%20documents/administrative/processes/treq/jones,%20lydia?csf=1&web=1&e=xdac6a';
+    const URL = 'https://uwnetid-my.sharepoint.com/personal/nbedani_uw_edu/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fnbedani%5Fuw%5Fedu%2FDocuments%2Fuwenv%5Ftreq%2FUser%20Folders';
+    const OG_COENV_FISCAL_URL = 'https://uwnetid-my.sharepoint.com/personal/nbedani_uw_edu/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fnbedani%5Fuw%5Fedu%2FDocuments%2Fuwenv%5Ftreq';
 
     public function test_it_instantiates()
     {
@@ -41,7 +41,7 @@ class OneDriveNameTest extends TestCase
     {
         $it = new OneDriveName();
 
-        $result = $it->name('https://uwnetid-my.sharepoint.com/personal/seribock_uw_edu/_layouts/15/onedrive.aspx?other=%2Fpersonal%2Fseribock%5Fuw%5Fedu');
+        $result = $it->name('https://uwnetid-my.sharepoint.com/personal/nbedani_uw_edu/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fnbedani%5Fuw%5Fedu');
 
         $this->assertSame($it->defaultName(), $result);
     }
@@ -50,7 +50,7 @@ class OneDriveNameTest extends TestCase
     {
         $it = new OneDriveName();
 
-        $result = $it->name('https://uwnetid-my.sharepoint.com/personal/seribock_uw_edu/_layouts/15/onedrive.aspx?id=');
+        $result = $it->name('https://uwnetid-my.sharepoint.com/personal/nbedani_uw_edu/_layouts/15/onedrive.aspx?id=');
 
         $this->assertSame($it->defaultName(), $result);
     }
