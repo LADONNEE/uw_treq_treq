@@ -8,7 +8,7 @@ class OneDriveName
 
     public function name($url)
     {
-        $name = $this->findNameInOgCoeFiscalPath($url);
+        $name = $this->findNameInOgCollegeFiscalPath($url);
         if ($name) {
             return $name;
         }
@@ -23,10 +23,10 @@ class OneDriveName
         return self::DEFAULT_NAME;
     }
 
-    private function findNameInOgCoeFiscalPath($url)
+    private function findNameInOgCollegeFiscalPath($url)
     {
         $matches = [];
-        if (preg_match('/\/og_coe_fiscal\/shared( |%20)documents\/administrative\/processes\/treq\/([^?]+)(\?.*)?$/', $url, $matches)) {
+        if (preg_match('/\/uwenv_treq\/([^?]+)(\?.*)?$/', $url, $matches)) {
             return '/treq/' . urldecode($matches[2]);
         }
 
