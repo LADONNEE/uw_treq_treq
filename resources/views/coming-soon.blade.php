@@ -5,7 +5,7 @@
     <h1 class="text-center my-5">Coming Soon</h1>
 
     <div>
-        <img src="/treq/images/under-construction.gif" alt="Under construction cartoon" style="display: block; margin: 64px auto;">
+        <img src="/images/under-construction.gif" alt="Under construction cartoon" style="display: block; margin: 64px auto;">
     </div>
 
 @stop

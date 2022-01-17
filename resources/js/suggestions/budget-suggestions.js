@@ -3,10 +3,10 @@ let Bloodhound = require("typeahead.js/dist/bloodhound.min.js");
 let make = function() {
     let engine = new Bloodhound({
         prefetch: {
-            url: '/treq/api/budgets.json' //, cache: false
+            url: '/api/budgets.json' //, cache: false
         },
         remote: {
-            url: '/treq/api/budgets?q={{SEARCHTERM}}',
+            url: '/api/budgets?q={{SEARCHTERM}}',
             wildcard: '{{SEARCHTERM}}'
         },
         identify: function(datum) {

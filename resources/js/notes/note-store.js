@@ -3,7 +3,7 @@ import axios from 'axios';
 class NoteStore {
 
     constructor(id, section) {
-        this.apiRoot = '/treq/api/notes/';
+        this.apiRoot = '/api/notes/';
         this.id = id;
         this.section = section || '';
         this.notes = [];

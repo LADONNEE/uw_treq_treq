@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/treq/css/app.css{{ $cacheBusting = '?v=' . config('view.resource_cache') }}" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/app.css{{ $cacheBusting = '?v=' . config('view.resource_cache') }}" media="all" />
     <link rel="stylesheet" type="text/css" href="/coenv-util/css/env-warning.css" type="text/css" media="all" />
-    <script defer src="/treq/js/app.js{{ $cacheBusting }}"></script>
+    <script defer src="/js/app.js{{ $cacheBusting }}"></script>
     <script defer src="https://kit.fontawesome.com/96343af987.js" crossorigin="anonymous"></script>
     <script defer type="text/javascript" src="/coenv-util/js/env-warning.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -92,7 +92,7 @@
 </div>
 
 @if(config('app.env') !== 'production')
-    <div id="env-warning-trigger" data-include="/treq/env-warning.html"></div>
+    <div id="env-warning-trigger" data-include="/env-warning.html"></div>
 @endif
 
 @yield('state')
