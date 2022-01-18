@@ -14,7 +14,8 @@ let make = function() {
             url: '/person/prefetch.json?scope=coenv-uwnetid' //, cache: false
         },
         remote: {
-            url: '/person/suggest?q={{SEARCHTERM}}&scope=uwnetid',
+            //url: '/person/suggest?q={{SEARCHTERM}}&scope=uwnetid',
+            url: '/budgets/api/people?q={{SEARCHTERM}}&scope=uwnetid',
             wildcard: '{{SEARCHTERM}}'
         }
     });
