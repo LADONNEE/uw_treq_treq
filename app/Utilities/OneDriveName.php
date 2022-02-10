@@ -26,7 +26,7 @@ class OneDriveName
     private function findNameInOgCollegeFiscalPath($url)
     {
         $matches = [];
-        if (preg_match('/\/uwenv_treq\/([^?]+)(\?.*)?$/', $url, $matches)) {
+        if (preg_match('/\/og_coenv_fiscal\/shared( |%20)documents\/administrative\/processes\/treq\/([^?]+)(\?.*)?$/', $url, $matches)) {
             return '/treq/' . urldecode($matches[2]);
         }
 
