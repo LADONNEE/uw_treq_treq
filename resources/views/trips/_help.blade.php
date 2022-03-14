@@ -11,8 +11,8 @@
     </p>
 
     <p>
-        For a <strong>COENV Traveler</strong> use the provided person search to pick an
-        existing COENV faculty, staff, or student. For other traveler affiliation, enter
+        For a <strong>UAA Traveler</strong> use the provided person search to pick an
+        existing UAA faculty, staff, or student. For other traveler affiliation, enter
         the traveler's name and contact information.
     </p>
 

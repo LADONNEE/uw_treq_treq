@@ -11,8 +11,8 @@
 
                 <p class="mt-4">
                     This is a fiscal request tracking system for the University of Washington,
-                    College of the Environment. If you should have access to this system, email
-                    <a href="mailto:coenv@uw.edu">coenv@uw.edu</a> for help.
+                    Undergraduate Academic Affairs. If you should have access to this system, email
+                    <a href="mailto:uaa@uw.edu">uaa@uw.edu</a> for help.
                 </p>
             </div>
         </div>

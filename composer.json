@@ -36,8 +36,8 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Uwcoenvws\\Formkit\\": "packages/uwuaaws/formkit/src",
-            "Uwcoenvws\\Aclkit\\": "packages/uwuaaws/aclkit/src"
+            "Uwuaaws\\Formkit\\": "packages/uwuaaws/formkit/src",
+            "Uwuaaws\\Aclkit\\": "packages/uwuaaws/aclkit/src"
         },
         "classmap": [
             "database/seeds",

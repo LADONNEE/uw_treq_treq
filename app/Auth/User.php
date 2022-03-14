@@ -4,7 +4,7 @@ namespace App\Auth;
 use App\Contracts\HasNames;
 use App\Models\Auth;
 use App\Models\Person;
-use Uwcoenvws\Aclkit\Contracts\UserWithRoles;
+use Uwuaaws\Aclkit\Contracts\UserWithRoles;
 
 class User implements HasNames, UserWithRoles
 {

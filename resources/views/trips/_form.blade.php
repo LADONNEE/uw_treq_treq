@@ -1,9 +1,9 @@
 <div id="js-trip-form">
     @inputBlock('traveler_type', 'Traveler Affiliation')
 
-    <div id="js-traveler-coenv">
+    <div id="js-traveler-uaa">
         @input('person_id')
-        @inputBlock('traveler_search', 'Traveler (College of the Environment)')
+        @inputBlock('traveler_search', 'Traveler (Undergraduate Academic Affairs)')
     </div>
 
     <div id="js-traveler-other" class="panel-full-width p-panel bg-indigo-100 mb-3">

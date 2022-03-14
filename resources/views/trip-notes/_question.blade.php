@@ -1,6 +1,6 @@
 <?php
 
-/** @var $question Uwcoenvws\Formkit\Input */
+/** @var $question Uwuaaws\Formkit\Input */
 $questionName = $question->getName();
 $value = $question->getFormValue();
 $questionError = $question->getError();
@@ -10,7 +10,7 @@ $label = $qiv->get('label');
 $yesId = "{$id}_y";
 $noId = "{$id}_n";
 
-/** @var $note Uwcoenvws\Formkit\Input */
+/** @var $note Uwuaaws\Formkit\Input */
 $noteError = $note->getError();
 $niv = $note->getInputView();
 $noteId = $niv->get('id');

@@ -38,7 +38,7 @@ class UserImporter
 
     public function canAuthorize()
     {
-        return (boolean) DB::table('shared.coenv_authorized')
+        return (boolean) DB::table('shared.uaa_authorized')
             ->where('uwnetid', $this->uwnetid)
             ->count();
     }

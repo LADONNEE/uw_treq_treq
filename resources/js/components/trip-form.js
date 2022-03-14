@@ -6,8 +6,8 @@ let treqTripForm = function(context) {
         travelerOther: function() {
             return $('#js-traveler-other');
         },
-        travelerCOENV: function() {
-            return $('#js-traveler-coenv');
+        travelerUAA: function() {
+            return $('#js-traveler-uaa');
         },
         personalTimeChecked: function() {
             return $('#js-trip-form input[name="personal_time"]:checked').length > 0;
@@ -44,11 +44,11 @@ let treqTripForm = function(context) {
 
     let travelerTypeChanged = function() {
         let type = jq.travelerType();
-        if (type === 'coenv') {
+        if (type === 'uaa') {
             jq.travelerOther().hide();
-            jq.travelerCOENV().show();
+            jq.travelerUAA().show();
         } else {
-            jq.travelerCOENV().hide();
+            jq.travelerUAA().hide();
             jq.travelerOther().show();
         }
         if (type === 'non_uw') {

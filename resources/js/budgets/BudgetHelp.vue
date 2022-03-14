@@ -3,7 +3,7 @@
         <dl>
             <dt>Budget Number</dt>
             <dd>
-                Enter the six digit UW budget number. This field will suggest COENV budgets.
+                Enter the six digit UW budget number. This field will suggest UAA budgets.
             </dd>
 
             <dt class="mt-4">Name</dt>
