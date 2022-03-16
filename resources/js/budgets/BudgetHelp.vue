@@ -12,29 +12,27 @@
                 Number field, this is filled in for you.
             </dd>
 
-            <dt class="mt-4">PCA Code</dt>
+            <dt class="mt-4">PCA/TOP Code</dt>
             <dd>
-                (Optional) AKA Project code or TOP code. If you know it fill it in. If you
-                are not sure, leave it blank and your budget's fiscal manager will add the
-                correct coding.
+                (Optional) If your department uses TOP codes, enter it here as Task-Option-Project.
             </dd>
 
             <dt class="mt-4">Split for Single Budget</dt>
             <dd>
-                Leave Split blank (or 100). One budget with Split Type "* Remainder" means
-                everything gets charged to this budget.
+                Choose Split Type *Remainder and leave Split blank.
             </dd>
 
             <dt class="mt-4">Split for Multiple Budgets</dt>
             <dd>
-                Split Type "$ Dollar Amount" will charge a fixed dollar amount to a budget.
-                $ Dollar Amount splits are applied first.<br>
-                <br>
-                Split Type "% Percentage" charges the percentage of the remaining total
-                (after $ Dollar Amounts) to the budget. These are charged second.<br>
-                <br>
-                Any remaining amount is charged to the "* Remainder" budget. Always add
-                exactly one * Remainder budget.
+                <p>Choose to split by either a fixed $ Dollar Amount or by a % Percentage in the Split Type field.</p> 
+                
+                <p>Enter the dollar amount or percentage to be charged to the first budget in the Split field.</p>
+
+                <p>After saving, a second screen will come up to allow you to enter another budget. Enter *Remainder as the Split Type and leave Split blank.</p>
+
+                <p>If needing more than two budgets, keep saving and then entering further budget numbers on new screens. 
+                    Enter appropriate dollar amounts or percentages for budgets in the Split field. 
+                    Make sure the last budget chosen has *Remainder as the Split Type.</p>
             </dd>
         </dl>
     </div>

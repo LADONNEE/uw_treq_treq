@@ -21,20 +21,11 @@
             </div>
             <div class="col-md-auto">
                 <div class="form-group">
-                    <label>PCA Code</label>
+                    <label>PCA/TOP Code (Optional)</label>
                     <input type="text" class="form-control" style="width:12rem;"
                            v-model="pca_code"
                            @keydown="keyHandler($event)"
                            ref="pca_code">
-                </div>
-            </div>
-            <div class="col-md-auto">
-                <div class="form-group">
-                    <label>Split</label>
-                    <input type="text" class="form-control" style="width:8rem;"
-                           v-model="split"
-                           @keydown="keyHandler($event)"
-                           ref="split">
                 </div>
             </div>
             <div class="col-md-auto">
@@ -45,6 +36,15 @@
                         <option value="P">% Percentage</option>
                         <option value="R">* Remainder</option>
                     </select>
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <div class="form-group">
+                    <label>Split</label>
+                    <input type="text" class="form-control" style="width:8rem;"
+                           v-model="split"
+                           @keydown="keyHandler($event)"
+                           ref="split">
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@
 
 <div class="field-row">
     <div class="field">
-        <div class="field__label">Project Owner</div>
+        <div class="field__label">Requestor</div>
         <div class="field__value">{{ eFirstLast($project->person_id) }}</div>
     </div>
 </div>

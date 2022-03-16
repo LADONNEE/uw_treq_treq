@@ -51,8 +51,9 @@
                             <li>Enter number of days of travel</li>
                             <li>Look up rate for your destination on <a href="{{ $usgsaUrl }}" target="_perdiem">US GSA website</a></li>
                             <li>Enter US GSA Per Diem rate for Meals (M&IE Total)</li>
-                            <li>You will be reimbursed the Meals Total amount (per diem &times; days)</li>
-                            <li>No reciepts are needed for meals &amp; incidentals</li>
+                            <li>Meals Total is an estimate based on per diem x days</li>
+                            <li>No receipts are needed for meals &amp; incidentals</li>
+                            <li>You will be reimbursed per diem prorated by travel status</li>
                         </ul>
                     </template>
                 </per-diem>

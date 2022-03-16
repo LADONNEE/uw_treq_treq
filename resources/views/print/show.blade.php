@@ -20,7 +20,7 @@
     @include('orders/_header')
 
     <div class="field">
-        <div class="field__label">Business Purpose</div>
+        <div class="field__label">Description and Business Purpose</div>
         <div class="field__value">{{ $project->purpose }}</div>
     </div>
 

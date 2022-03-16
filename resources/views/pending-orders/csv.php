@@ -10,7 +10,7 @@ header('Content-Disposition: attachment; filename='.$filename);
 
 echoCsvRow([
     'Project ID',
-    'Project Owner',
+    'Requestor/Project Owner',
     'Submitted Date',
     'Submitted By',
     'Title',

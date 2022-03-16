@@ -1,6 +1,5 @@
 <p>
-    Provide a summary of your trip. This trip description will be shared for
-    Pre-Authorization and Reimbursement orders.
+    Provide a summary of your trip and expected expenses. This information will be used to match up to your future Travel Reimbursement request.
 </p>
 
 <section>
@@ -11,27 +10,30 @@
     </p>
 
     <p>
-        For a <strong>UAA Traveler</strong> use the provided person search to pick an
-        existing UAA faculty, staff, or student. For other traveler affiliation, enter
-        the traveler's name and contact information.
+        For a UAA Traveler use the provided person search to pick an existing UAA staff, student or faculty.
     </p>
 
     <p>
-        <strong>Honorarium</strong> is only an option for Non-UW Travelers. When you choose
-        that traveler affiliation, optional Honorarium field shows up.
+        <strong>Honorarium</strong> is only an option for non-UW Travelers. When you choose
+        that traveler affiliation, an optional Honorarium field shows up.
     </p>
 </section>
 
 <section>
-    <h3>Business Purpose</h3>
+    <h3>Description and Business Purpose</h3>
 
     <p>
-        UW defines business purpose as: "Explanation of how the purchase or payment is used
-        for UW business." In addition, all expenditures on grants are required to have an
-        additional statement on the expenditure's benefit to grant.
+        UW defines business purpose as: "Explanation of how the purchase or payment is used for UW business." 
+        In addition, all expenditures on grants and contracts should have a benefit to the grant statement included.
     </p>
 
     <p>
-        How is this trip serving UW / grant business?
+        How is this trip serving UW or benefiting the grant? Description examples are:
     </p>
+
+    <ul class="bullet">
+        <li>Travel to Portland, OR to attend the NCORE conference to gain professional development regarding race and ethnicity issues in higher education and how that informs my work as an academic adviser, 2/13-16/22.</li>
+        <li>Travel to Philadelphia, PA to present a paper on increasing success rates of community college students transferring to 4 year institutions, building off of research done for the Pathways to Success grant, 4/16-19/22.</li>
+    </ul>
+
 </section>

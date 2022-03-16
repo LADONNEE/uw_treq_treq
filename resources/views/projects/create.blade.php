@@ -14,10 +14,23 @@
                 {!! $form->close() !!}
             </div>
             <div class="page-with-help__help">
-                <h2>Help: Create a Project</h2>
+                <h2>Help: Create a Request to Purchase Project </h2>
 
-                @include('projects._help')
+                @if($order->type === 'purchase')
+                    @include('projects._help-purchase')
+                @elseif($order->type === 'pre-auth')
+                    @include('projects._help')
+                @elseif($order->type === 'reimbursement')
+                    @include('projects._help')
+                @elseif($order->type === 'invoice')
+                    @include('projects._help')
+                @else
+                    @include('projects._help')
+                @endif
+
             </div>
         </div>
     </div>
 @stop
+
+

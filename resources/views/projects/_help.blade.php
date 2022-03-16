@@ -1,5 +1,5 @@
 <p>
-    Project fields describe the work being done for the college and/or university.
+    Create a Request to Purchase Project 
 </p>
 
 <section>

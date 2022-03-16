@@ -28,7 +28,7 @@ $trip = $project->trip ?? new \App\Models\Trip();
     </div>
 
     <div class="field">
-        <div class="field__label">Project Owner</div>
+        <div class="field__label">Requestor</div>
         <div class="field__value">{{ eFirstLast($project->person_id) }}</div>
     </div>
 
@@ -45,7 +45,7 @@ $trip = $project->trip ?? new \App\Models\Trip();
     </div>
 
     <div class="field">
-        <div class="field__label">Business Purpose</div>
+        <div class="field__label">Description and Business Purpose</div>
         <div class="field__value">{{ $project->purpose }}</div>
     </div>
 </section>

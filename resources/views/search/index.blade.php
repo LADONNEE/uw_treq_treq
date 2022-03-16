@@ -172,7 +172,7 @@
         <ul class="bullet">
             <li>Budget number (XX-XXXX)</li>
             <li>Budget name</li>
-            <li>PCA Code</li>
+            <li>PCA/TOP Code</li>
         </ul>
 
     </article>

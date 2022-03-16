@@ -5,7 +5,7 @@ namespace App\Reports;
 use App\Models\Order;
 
 /**
- * Orders where given person is the Order Submitter or the Project owner
+ * Orders where given person is the Requestor: either Order Submitter or the Project owner
  */
 class MyOrdersReport
 {

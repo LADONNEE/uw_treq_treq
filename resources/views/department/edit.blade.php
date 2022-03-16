@@ -9,7 +9,7 @@
             <p class="text-lg mt-0">Review &amp; Submit</p>
 
             <p>
-                Review your request to insure it is complete and accurate, then submit it to
+                Review your request to ensure it is complete and accurate, then submit it to
                 start the review and approval workflow.
             </p>
         </div>

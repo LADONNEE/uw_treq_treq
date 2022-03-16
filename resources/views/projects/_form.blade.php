@@ -4,12 +4,12 @@
     ])
     @input('person_id', ['id' => 'js-person-id'])
     @inputBlock('owner_search', [
-        'label' => 'Project Owner',
+        'label' => 'Requestor',
         'class' => 'person-typeahead',
         'data-for' => 'js-person-id',
     ])
     @inputBlock('purpose', [
-        'label' => 'Business Purpose',
+        'label' => 'Description and Business Purpose',
         'rows' => 5
     ])
     @inputBlock('is_food', 'Food')

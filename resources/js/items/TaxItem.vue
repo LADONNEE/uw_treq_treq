@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="item-edit__help text-muted text-med mb-3">
-            Change Sub Total or Tax Rate to calculate Amount or just set the Amount directly.
+            Tax Rate can be modified or Amount (Subtotal + Tax) can be directly entered if needed.
         </div>
         <div class="item-edit__buttons">
             <button class="btn btn-primary" @click.prevent="save">Save</button>

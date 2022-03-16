@@ -27,7 +27,7 @@
 
                 <div class="col-md-6">
                     @inputBlock('project_title', 'Project Title')
-                    @inputBlock('project_owner', 'Project Owner / Submitted By')
+                    @inputBlock('project_owner', 'Requestor')
                     @inputBlock('traveler')
                 </div>
 
@@ -56,7 +56,7 @@
                         ])
                     </div>
 
-                    @inputBlock('pca_code', 'PCA Code')
+                    @inputBlock('pca_code', 'PCA/TOP Code')
                     @inputBlock('items')
                     @inputBlock('reference_number', [
                         'label' => 'Reference Number',

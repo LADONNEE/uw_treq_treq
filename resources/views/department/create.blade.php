@@ -9,7 +9,7 @@
             <p class="text-lg mt-0">Review &amp; Submit</p>
 
             <p>
-                Review your request to insure it is complete and accurate, then submit it to
+                Review your request to ensure it is complete and accurate, then submit it to
                 start the review and approval workflow.
             </p>
         </div>
@@ -42,8 +42,7 @@
                 <div class="alert alert-info my-3">
                     <div class="font-weight-bold mb-2">Send to Department Approver</div>
                     <div>
-                        Specify who will provide the initial department approval. This will be a PI, Director,
-                        Area Chair, or Dean who has authority over project and the relevant budgets.
+                        Specify who will provide the initial department approval. This will be the Director or Associate Dean (if requestor is the Director).
                     </div>
                 </div>
 

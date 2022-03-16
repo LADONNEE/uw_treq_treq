@@ -5,7 +5,7 @@
             <tr>
                 <th style="width:20%;">Budget Number</th>
                 <th>Name</th>
-                <th>PCA Code</th>
+                <th>PCA/TOP Code</th>
                 <th style="width:20%;" class="text-right pr-3">Split</th>
             </tr>
             </thead>

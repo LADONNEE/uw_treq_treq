@@ -33,7 +33,7 @@ class ProjectForm extends Form
         $this->add('rsp_option', 'radio')->options([
             '0' => 'No research subject payments',
             '1' => 'Gift card research subject payments',
-            '2' => 'Revolving fund check research subject payments'
+            //'2' => 'Revolving fund check research subject payments'
         ]);
     }
 

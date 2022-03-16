@@ -11,7 +11,7 @@ $project = $project ?? $order->project;
 @endif
 
 <div class="field">
-    <div class="field__label">Business Purpose</div>
+    <div class="field__label">Description and Business Purpose</div>
     <div class="field__value mw-500">{{ $project->purpose }}</div>
 </div>
 
@@ -47,7 +47,7 @@ $project = $project ?? $order->project;
             <tr>
                 <th>Budget</th>
                 <th>Name</th>
-                <th>PCA Code</th>
+                <th>PCA/TOP Code</th>
                 <th class="text-right">Split</th>
             </tr>
             </thead>

@@ -3,7 +3,7 @@
 
     <div id="js-traveler-uaa">
         @input('person_id')
-        @inputBlock('traveler_search', 'Traveler (Undergraduate Academic Affairs)')
+        @inputBlock('traveler_search', 'Traveler (UAA)')
     </div>
 
     <div id="js-traveler-other" class="panel-full-width p-panel bg-indigo-100 mb-3">
@@ -36,7 +36,7 @@
     </div>
 
     @inputBlock('purpose', [
-        'label' => 'Business Purpose',
+        'label' => 'Description and Business Purpose',
         'rows' => 5
     ])
 
