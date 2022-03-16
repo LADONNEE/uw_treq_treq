@@ -8,19 +8,20 @@
             <span>@icon($type->icon)</span> {{ $type->name }}
         </a>
         <div class="order-menu__help">
-            <p>Use before travel to calculate and reserve estimated costs.</p>
+            <p>Use before travel to receive Dean's level authorization, calculate projected expenses and assign to a budget.</p>
 
-            <div class="order-menu__examples">Examples</div>
+            <div class="order-menu__examples">Details</div>
             <ul>
-                <li>When the main details of a trip are understood ahead of time</li>
-                <li>Verify what is allowed and how much may be spent</li>
-                <li>Determine available funding or notify if funding capped</li>
+                <li>For use by all UAA permanent, temporary or student staff and on behalf of non-UW travelers</li>
+                <li>Describe purpose of travel</li>
+                <li>Estimate costs and assign to a budget</li>
+                <li>Specify if personal time will be taken</li>
             </ul>
         </div>
     </div>
 
-    <?php $type = $types[1]; // ('pre-auth', 'Other Pre-Authorization', 'ballot-check') ?>
-    <div>
+    <?php //$type = $types[1]; // ('pre-auth', 'Other Pre-Authorization', 'ballot-check') ?>
+    <?php /* <div>
         <a class="order-menu__button" href="{{ route('project-create', $type->slug) }}">
             <span>@icon($type->icon)</span> {{ $type->name }}
         </a>
@@ -38,8 +39,10 @@
             </ul>
         </div>
     </div>
+    */
+    ?>
 
-    <?php $type = $types[2]; // ('purchase', 'Make a Purchase', 'box-alt') ?>
+    <?php $type = $types[3]; // ('purchase', 'Make a Purchase', 'box-alt') ?>
     <div>
         <a class="order-menu__button" href="{{ route('project-create', $type->slug) }}">
             <span>@icon($type->icon)</span> {{ $type->name }}
@@ -50,62 +53,61 @@
             <div class="order-menu__examples">Examples</div>
             <ul>
                 <li>Food</li>
-                <li>On Campus charges to other departments</li>
+                <li>Programmatic expenses</li>
                 <li>Orders over $10,000</li>
-                <li>RSP (P2I or Revolving Fund Check)</li>
                 <li>Honorarium</li>
             </ul>
         </div>
     </div>
 
-    <?php $type = $types[3]; // (self::TRAVEL_REIMBURSEMENT, 'Travel Reimbursement', 'plane-arrival') ?>
+    <?php $type = $types[1]; // (self::TRAVEL_REIMBURSEMENT, 'Travel Reimbursement', 'plane-arrival') ?>
     <div>
         <a class="order-menu__button" href="{{ route('project-create', $type->slug) }}">
             <span>@icon($type->icon)</span> {{ $type->name }}
         </a>
         <div class="order-menu__help">
-            <p>Use after trip has occurred including submitting mileage.</p>
+            <p>Use after trip has occurred or to submit mileage reimbursements.</p>
 
             <div class="order-menu__examples">Examples</div>
             <ul>
                 <li>Mileage reimbursement</li>
                 <li>After travel for a pre-authorized trip</li>
                 <li>Travel missing pre-authorization (reimbursed as allowed)</li>
-                <li>Travel by PI</li>
+                <li>Travel by staff, student and non-UW traveler</li>
             </ul>
         </div>
     </div>
 
-    <?php $type = $types[4]; // ('reimbursement', 'Other Reimbursement', 'receipt') ?>
+    <?php $type = $types[2]; // ('reimbursement', 'Other Reimbursement', 'receipt') ?>
     <div>
         <a class="order-menu__button" href="{{ route('project-create', $type->slug) }}">
             <span>@icon($type->icon)</span> {{ $type->name }}
         </a>
         <div class="order-menu__help">
-            <p>Use for purchases already made with your own funds.</p>
+            <p>Use for purchases already made with your own funds unrelated to travel.</p>
 
             <div class="order-menu__examples">Examples</div>
             <ul>
-                <li>Books or Supplies</li>
+                <li>Supplies</li>
                 <li>Membership</li>
                 <li>Subscriptions</li>
+                <li>Food</li>
             </ul>
         </div>
     </div>
 
-    <?php $type = $types[5]; // ('invoice', 'Pay an Invoice', 'file-invoice') ?>
+    <?php $type = $types[4]; // ('invoice', 'Pay an Invoice', 'file-invoice') ?>
     <div>
         <a class="order-menu__button" href="{{ route('project-create', $type->slug) }}">
             <span>@icon($type->icon)</span> {{ $type->name }}
         </a>
         <div class="order-menu__help">
-            <p>Submit an invoice that does not have a prior pre-approval.</p>
+            <p>Submit an invoice for goods/services already received.</p>
 
             <div class="order-menu__examples">Examples</div>
             <ul>
-                <li>Substitute teacher payment</li>
                 <li>Consultant Payment</li>
-                <li>Transcription/translation invoices</li>
+                <li>Membership dues</li>
             </ul>
         </div>
     </div>
