@@ -9,7 +9,17 @@
 
                 {!! $form->open(route('project-store', $order->type)) !!}
 
-                @include('projects._form')
+
+                @if($order->type === 'purchase')
+                    @include('projects._form-purchase')
+                @elseif($order->type === 'reimbursement')
+                    @include('projects._form-reimbursement')
+                @elseif($order->type === 'invoice')
+                    @include('projects._form-invoice')
+                @else
+                    @include('projects._form')
+                @endif
+
 
                 {!! $form->close() !!}
             </div>

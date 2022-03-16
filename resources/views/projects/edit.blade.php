@@ -10,14 +10,31 @@
 
                 {!! $form->open(route('project-update', $order->id)) !!}
 
-                @include('projects._form')
+                @if($order->type === 'purchase')
+                    @include('projects._form-purchase')
+                @elseif($order->type === 'reimbursement')
+                    @include('projects._form-reimbursement')
+                @elseif($order->type === 'invoice')
+                    @include('projects._form-invoice')
+                @else
+                    @include('projects._form')
+                @endif
 
                 {!! $form->close() !!}
             </div>
             <div class="page-with-help__help">
                 <h2>Help: Edit the Project</h2>
 
-                @include('projects._help')
+                @if($order->type === 'purchase')
+                    @include('projects._help-purchase')
+                @elseif($order->type === 'reimbursement')
+                    @include('projects._help-reimbursement')
+                @elseif($order->type === 'invoice')
+                    @include('projects._help-invoice')
+                @else
+                    @include('projects._help')
+                @endif
+
             </div>
         </div>
     </div>
