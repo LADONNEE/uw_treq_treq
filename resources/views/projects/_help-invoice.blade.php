@@ -3,10 +3,10 @@
 </p>
 
 <section>
-    <h3>Project Title</h3>
+    <h3>Invoice Project Title</h3>
 
     <p>
-        Standardize title this way: Project: [Budget] / [Vendor] / [1-2 word item description].
+        Standardize title this way: Invoice: [Budget] / [Vendor] / [1-2 word item description].
     </p>
 
 </section>
