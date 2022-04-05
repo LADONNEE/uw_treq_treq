@@ -41,6 +41,7 @@ class TravelProjectForm extends ProjectForm
         $this->add('traveler_email');
         $this->add('traveler_phone');
         $this->add('destination');
+        $this->add('state');
         $this->add('depart_at', 'text', new CarbonDateValue());
         $this->add('return_at', 'text', new CarbonDateValue());
         $this->add('depart_at_time', 'text');
@@ -50,6 +51,12 @@ class TravelProjectForm extends ProjectForm
         $this->add('personal_time_dates');
         $this->add('has_honorarium', 'boolean');
         $this->add('honorarium');
+        $this->add('nuwt_address_line1');
+        $this->add('nuwt_address_line2');
+        $this->add('nuwt_city');
+        $this->add('nuwt_state_province');
+        $this->add('nuwt_zipcode');
+        $this->add('nuwt_country');
     }
 
     public function initValues()
@@ -65,6 +72,12 @@ class TravelProjectForm extends ProjectForm
             'return_at' => $this->trip->return_at,
             'depart_at_time' => $this->trip->depart_at_time,
             'return_at_time' => $this->trip->return_at_time,
+            'nuwt_address_line1' => $this->trip->nuwt_address_line1,
+            'nuwt_address_line2' => $this->trip->nuwt_address_line2,
+            'nuwt_city' => $this->trip->nuwt_city,
+            'nuwt_state_province' => $this->trip->nuwt_state_province,
+            'nuwt_zipcode' => $this->trip->nuwt_zipcode,
+            'nuwt_country' => $this->trip->nuwt_country,
         ]);
 
         if (!$this->trip->exists) {
@@ -90,6 +103,7 @@ class TravelProjectForm extends ProjectForm
 
         $this->check('traveler_type')->inList();
         $this->check('destination')->notEmpty();
+        $this->check('state')->notEmpty();
 
         if ($this->value('traveler_type') === 'uaa') {
             $person = Person::find($this->value('person_id'));
@@ -129,6 +143,7 @@ class TravelProjectForm extends ProjectForm
 
         $out = [
             'destination' => $this->value('destination'),
+            'state' => $this->value('state'),
             'depart_at' => $this->value('depart_at'),
             'return_at' => $this->value('return_at'),
             'depart_at_time' => $this->value('depart_at_time'),
@@ -141,6 +156,12 @@ class TravelProjectForm extends ProjectForm
             'personal_time' => $this->value('personal_time'),
             'personal_time_dates' => null,
             'honorarium' => null,
+            'nuwt_address_line1' => $this->value('nuwt_address_line1'),
+            'nuwt_address_line2' => $this->value('nuwt_address_line2'),
+            'nuwt_city' => $this->value('nuwt_city'),
+            'nuwt_state_province' => $this->value('nuwt_state_province'),
+            'nuwt_zipcode' => $this->value('nuwt_zipcode'),
+            'nuwt_country' => $this->value('nuwt_country'),
         ];
 
         if ($type === 'uaa') {

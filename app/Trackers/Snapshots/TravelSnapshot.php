@@ -22,6 +22,12 @@ class TravelSnapshot extends Snapshot
             'personal time' => Snap::yesNo($trip->personal_time),
             'pt dates' => Snap::text($trip->personal_time_dates),
             'honorarium' => Snap::text($trip->honorarium),
+            'nuwt_address_line1' => Snap::text($trip->nuwt_address_line1),
+            'nuwt_address_line2' => Snap::text($trip->nuwt_address_line2),
+            'nuwt_city' => Snap::text($trip->nuwt_city),
+            'nuwt_state_province' => Snap::text($trip->nuwt_state_province),
+            'nuwt_zipcode' => Snap::text($trip->nuwt_zipcode),
+            'nuwt_country' => Snap::text($trip->nuwt_country),
         ];
     }
 

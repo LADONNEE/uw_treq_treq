@@ -79,7 +79,7 @@
                     </td>
                     <td>
                         <div><a href="{{ route('project', $trip->project_id) }}" class="js-link-row">{{ $trip->project->title }}</a></div>
-                        <div class="text-sm text-muted">{{ $trip->destination }}</div>
+                        <div class="text-sm text-muted">{{ $trip->destination }} State: {{ $trip->state }}</div>
                     </td>
                     <td>
                         {{ $trip->traveler }}

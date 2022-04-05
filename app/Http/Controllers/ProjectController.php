@@ -5,6 +5,7 @@ use App\Forms\ProjectForm;
 use App\Forms\TravelProjectForm;
 use App\Models\Order;
 use App\Models\Project;
+use App\Models\State;
 use App\Reports\PersonOpenTripsReport;
 use App\Workflows\OrderTypes;
 
@@ -19,20 +20,21 @@ class ProjectController extends Controller
 
     public function create($type)
     {
+        $states = State::orderBy('id')->get();
         $projects = $this->getUsersOpenTrips($type, request('new'));
         if ($projects && count($projects) > 0) {
-            return view('trips.open-trips', compact('projects'));
+            return view('trips.open-trips', compact('projects', 'states'));
         }
 
         $order = new Order(['type' => $type]);
 
         if ($order->isTravel()) {
             $form = new TravelProjectForm($order);
-            return view('trips.create', compact('order', 'form'));
+            return view('trips.create', compact('order', 'form', 'states'));
         }
 
         $form = new ProjectForm($order);
-        return view('projects.create', compact('order', 'form'));
+        return view('projects.create', compact('order', 'form', 'states'));
     }
 
     public function store($type)

@@ -9,7 +9,14 @@
     </div>
     <div class="field">
         <div class="field__label">Destination</div>
-        <div class="field__value">{{ $project->trip->destination }}</div>
+        <div class="field__value">{{ $project->trip->destination }} 
+       <select class="form-control">
+           @foreach($states as $state)
+               <option value="{{$state->name}}">{{$state->name}}</option>
+           @endforeach
+       </select>
+    </div>
+    
     </div>
     <div class="field">
         <div class="field__label">Dates</div>
@@ -24,6 +31,13 @@
 <div class="project-flags">
     @if($project->trip->non_uw)
         <span>@icon('user-tag') Non-UW Traveler</span>
+        <div class="field__value">
+            Mailing address:<br />
+            {{ $project->trip->nuwt_address_line1 }} <br />
+            {{ $project->trip->nuwt_address_line2 }} <br />
+            {{ $project->trip->nuwt_city }}, {{ $project->trip->nuwt_state_province }}, {{ $project->trip->nuwt_zipcode }} <br />
+            {{ $project->trip->nuwt_country }}
+       </div>
     @endif
     @if($project->trip->non_uw)
         <span>@icon('island-tropical') Using Personal Time</span>

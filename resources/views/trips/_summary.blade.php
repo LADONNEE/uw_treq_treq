@@ -21,6 +21,7 @@ $trip = $project->trip ?? new \App\Models\Trip();
     <div class="field">
         <div class="field__label">Destination</div>
         <div class="field__value">{{ $trip->destination ?? '(missing)' }}</div>
+        <div class="field__value">{{ $trip->state ?? '(missing)' }}</div>
     </div>
     <div class="field">
         <div class="field__label">Dates</div>
@@ -39,6 +40,13 @@ $trip = $project->trip ?? new \App\Models\Trip();
     <div class="project-flags">
         @if($trip->non_uw)
             <div>@icon('user-tag') Non-UW Traveler</div>
+            <div class="field__value">
+               Mailing address:<br />
+               {{ $trip->nuwt_address_line1 }} <br />
+               {{ $trip->nuwt_address_line2 }} <br />
+               {{ $trip->nuwt_city }}, {{ $trip->nuwt_state_province }}, {{ $trip->nuwt_zipcode }} <br />
+               {{ $trip->nuwt_country }}           
+        </div>
         @endif
         @if($trip->non_uw)
             <div>@icon('island-tropical') Using Personal Time</div>
