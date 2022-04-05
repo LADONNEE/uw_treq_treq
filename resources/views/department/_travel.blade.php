@@ -15,6 +15,10 @@
         <div class="field__label">Dates</div>
         <div class="field__value">{{ eDate($project->trip->depart_at) }} &ndash; {{ eDate($project->trip->return_at) }}</div>
     </div>
+    <div class="field">
+        <div class="field__label">Times</div>
+        <div class="field__value">{{ eTime($project->trip->depart_at_time) }} &ndash; {{ eTime($project->trip->return_at_time) }}</div>
+    </div>
 </div>
 
 <div class="project-flags">

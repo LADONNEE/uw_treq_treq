@@ -35,6 +35,11 @@
         @inputBlock('return_at', 'Return Date')
     </div>
 
+    <div class="form-row-stretch">
+        @inputBlock('depart_at_time', 'Departure Time')
+        @inputBlock('return_at_time', 'Return Time')
+   </div>
+
     @inputBlock('purpose', [
         'label' => 'Description and Business Purpose',
         'rows' => 5

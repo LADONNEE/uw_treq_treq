@@ -31,6 +31,8 @@ class Trip extends Model
         'destination',
         'depart_at',
         'return_at',
+        'depart_at_time',
+        'return_at_time',
         'traveler',
         'person_id',
         'traveler_email',

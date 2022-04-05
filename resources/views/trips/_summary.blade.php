@@ -26,6 +26,10 @@ $trip = $project->trip ?? new \App\Models\Trip();
         <div class="field__label">Dates</div>
         <div class="field__value">{{ eDate($trip->depart_at) }} &ndash; {{ eDate($trip->return_at) }}</div>
     </div>
+    <div class="field">
+        <div class="field__label">Times</div>
+        <div class="field__value">{{ eTime($trip->depart_at_time) }} &ndash; {{ eTime($trip->return_at_time) }}</div>
+   </div>
 
     <div class="field">
         <div class="field__label">Requestor</div>

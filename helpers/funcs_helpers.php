@@ -18,6 +18,33 @@ function eDate($value, $format = 'n/j/Y')
     return $value;
 }
 
+/**
+* Format times
+* @param $value
+* @param string $format
+* @return bool|string
+*/
+function eTime($value, $format = 'g:i A')
+{
+   if (empty($value)) {
+       return '';
+   }
+   if ($value instanceof \Carbon\Carbon) {
+       if (carbonEmpty($value)) {
+           return '';
+       }
+       return $value->format($format);
+   }
+   /*if (is_numeric($value)) {
+       return date($format, (int)$value);
+   }*/
+   $ts = strtotime($value);
+   if ($ts) {
+       return date($format, $ts);
+   }
+   return $value;
+}
+
 function eFirstLast($p)
 {
     $person = app('App\Utilities\PersonLookup')->toPerson($p);

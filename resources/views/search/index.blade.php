@@ -75,6 +75,7 @@
                     <td><a href="{{ route('project', $trip->project_id) }}" class="js-link-row">@projectNumber($trip->project)</a></td>
                     <td>
                         <div>{{ eDate($trip->depart_at) }} &mdash; {{ eDate($trip->return_at) }}</div>
+                        <div>{{ eTime($trip->depart_at_time) }} &mdash; {{ eTime($trip->return_at_time) }}</div>
                     </td>
                     <td>
                         <div><a href="{{ route('project', $trip->project_id) }}" class="js-link-row">{{ $trip->project->title }}</a></div>

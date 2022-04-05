@@ -43,6 +43,8 @@ class TravelProjectForm extends ProjectForm
         $this->add('destination');
         $this->add('depart_at', 'text', new CarbonDateValue());
         $this->add('return_at', 'text', new CarbonDateValue());
+        $this->add('depart_at_time', 'text');
+        $this->add('return_at_time', 'text');
         $this->add('personal_time', 'boolean')
             ->set('booleanText', 'Will use time-off during trip');
         $this->add('personal_time_dates');
@@ -61,6 +63,8 @@ class TravelProjectForm extends ProjectForm
             'has_honorarium' => (bool) $this->trip->honorarium,
             'depart_at' => $this->trip->depart_at,
             'return_at' => $this->trip->return_at,
+            'depart_at_time' => $this->trip->depart_at_time,
+            'return_at_time' => $this->trip->return_at_time,
         ]);
 
         if (!$this->trip->exists) {
@@ -127,6 +131,8 @@ class TravelProjectForm extends ProjectForm
             'destination' => $this->value('destination'),
             'depart_at' => $this->value('depart_at'),
             'return_at' => $this->value('return_at'),
+            'depart_at_time' => $this->value('depart_at_time'),
+            'return_at_time' => $this->value('return_at_time'),
             'traveler' => $this->value('traveler'),
             'person_id' => $this->value('person_id'),
             'traveler_email' => $this->value('traveler_email'),
