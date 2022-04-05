@@ -31,7 +31,7 @@ class TripNotesForm extends Form
                 ->options(['Y' => 'Yes', 'N' => 'No']);
             if ($tn->options) {
                 $this->add("{$tn->item}_note", 'radio')
-                    ->label('Choose Reason')
+                    ->label('You must upload documentation supporting the specific exemption you are choosing in your OneDrive folder:')
                     ->options(array_to_options($tn->options));
             } else {
                 $this->add("{$tn->item}_note", 'textarea')
