@@ -27,7 +27,7 @@ class TripNotesCollection
         ],
         'meals_provided' => [
             'question' => 'Were any meals provided?',
-            'label' => 'Meals Provided',
+            'label' => 'Please list Meals and dates',
         ],
         'travel_changed' => [
             'question' => 'Did your travel plans change during trip (flight delays, came home early, etc.)?',

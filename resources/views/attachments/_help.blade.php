@@ -27,17 +27,3 @@
     If you don't have a TREQ OneDrive folder yet, contact your financial manager to get set up.
 </p>
 
-<h3 class="mt-4">Project Folder Name</h3>
-
-<p>
-    Your budget manager will give you instructions for how to organize your TREQ
-    attachments in OneDrive. Generally they want you to create a folder per TREQ
-    project, using the Project Number as the folder name. TREQ Project Numbers
-    look like "TREQ001234".
-</p>
-
-<p>
-    These folder names are just suggestions. It is up to you to create the folder in
-    OneDrive. If your project has its own organization, understood by your fiscal budget
-    manager, you should continue to use that.
-</p>
