@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Cr02AddMailAdressForNonUwTravelerToTripsTable extends Migration
+class Cr03AddMailAdressForNonUwTravelerToTripsTable extends Migration
 {
     /**
      * Run the migrations.
