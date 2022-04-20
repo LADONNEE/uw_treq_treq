@@ -26,7 +26,7 @@ class TripNotesCollection
             'label' => 'Other Traveler',
         ],
         'meals_provided' => [
-            'question' => 'Were any meals provided?',
+            'question' => 'Were any meals provided? (List dates and meals provided.)',
             'label' => 'Please list Meals and dates',
         ],
         'travel_changed' => [

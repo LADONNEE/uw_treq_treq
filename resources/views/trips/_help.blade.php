@@ -10,11 +10,12 @@
     </p>
 
     <p>
-        For a UAA Traveler use the provided person search to pick an existing UAA staff, student or faculty.
+        For a UAA Traveler use the provided person search to pick an existing UAA staff, student or faculty. 
+        For other traveler affiliation, enter the traveler's name and contact information.
     </p>
 
     <p>
-        <strong>Honorarium</strong> is only an option for non-UW Travelers. When you choose
+        <strong>Honorarium</strong> is only an option for <u>Non-UW Travelers</u>. When you choose
         that traveler affiliation, an optional Honorarium field shows up.
     </p>
 </section>
