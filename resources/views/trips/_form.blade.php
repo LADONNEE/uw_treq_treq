@@ -63,13 +63,42 @@
     </div>
 
     <div class="form-row-stretch">
-        @inputBlock('depart_at', 'Departure Date')
-        @inputBlock('return_at', 'Return Date')
+    @inputBlock('depart_at', [
+    'id' => 'depart_at',
+        'label' => 'Departure Date',
+        'placeholder' => 'MM/DD/YYYY',
+        'minlength' => 10,
+        'maxlength' => 10
+    ])
+     
+    @inputBlock('return_at', [
+            'id' => 'return_at',
+            'label' => 'Return Date',
+            'placeholder' => 'MM/DD/YYYY',
+            'minlength' => 10,
+            'maxlength' => 10
+    ])
     </div>
 
     <div class="form-row-stretch">
-        @inputBlock('depart_at_time', 'Departure Time')
-        @inputBlock('return_at_time', 'Return Time')
+    @inputBlock('depart_at_time', [
+        'id' => 'depart_at_time',
+        'label' => 'Departure Time',
+        'placeholder' => 'hh:mm AM',
+        'pattern' => '(1[012]|0?[1-9]):[0-5][0-9] (am|pm|AM|PM)',
+        'minlength' => 8,
+        'maxlength' => 8
+    ])
+     
+    @inputBlock('return_at_time', [
+        'id' => 'return_at_time',
+        'label' => 'Return Time',
+        'placeholder' => 'hh:mm PM',
+        'pattern' => '(1[012]|0?[1-9]):[0-5][0-9] (am|pm|AM|PM)',
+        'minlength' => 8,
+            'maxlength' => 8
+    ])
+     
    </div>
 
     @inputBlock('purpose', [
@@ -93,7 +122,7 @@
 
 @section('scripts')
 
-<script>
+<script type="text/javascript">
     function showdisclaimer(){
     var selectBox = document.getElementById('state');
     var userInput = selectBox.options[selectBox.selectedIndex].value;
@@ -103,16 +132,6 @@
     document.getElementById('disclaimer').style.visibility = 'hidden';
     }
     return false;}
-</script>
 
-
-    <script type="text/javascript">
-        $( document ).ready(function() {
-            var selectedstate = $('#state').val();
-            
-            $('#state').change(function () {
-                selectedstate = $('#state').val();
-            });
-        });
     </script>
 @stop

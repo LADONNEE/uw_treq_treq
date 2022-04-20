@@ -44,8 +44,8 @@ class TravelProjectForm extends ProjectForm
         $this->add('state');
         $this->add('depart_at', 'text', new CarbonDateValue());
         $this->add('return_at', 'text', new CarbonDateValue());
-        $this->add('depart_at_time', 'text');
-        $this->add('return_at_time', 'text');
+        $this->add('depart_at_time', 'text', new CarbonDateValue('g:i A'));
+        $this->add('return_at_time', new CarbonDateValue('g:i A'));
         $this->add('personal_time', 'boolean')
             ->set('booleanText', 'Will use time-off during trip');
         $this->add('personal_time_dates');
