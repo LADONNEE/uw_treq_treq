@@ -21,7 +21,15 @@
             @inputBlock('nuwt_address_line2', 'Address line 2')
             <div class="form-row-stretch">
             @inputBlock('nuwt_city', 'City')
-            @inputBlock('nuwt_state_province', 'State/Province')
+            @inputBlock('nuwt_state_province', [
+                
+                    'label' => 'State/Province (2 characters code)',
+                    'placeholder' => 'XX',
+                    'minlength' => 2,
+                    'maxlength' => 2,
+                    'pattern' => '.{,2}'
+                ])
+
             </div>
 
             <div class="form-row-stretch">
@@ -62,6 +70,7 @@
        </div> 
     </div>
 
+    
     <div class="form-row-stretch">
     @inputBlock('depart_at', [
     'id' => 'depart_at',
@@ -70,7 +79,7 @@
         'minlength' => 10,
         'maxlength' => 10
     ])
-     
+    
     @inputBlock('return_at', [
             'id' => 'return_at',
             'label' => 'Return Date',
@@ -79,27 +88,30 @@
             'maxlength' => 10
     ])
     </div>
+    
 
-    <div class="form-row-stretch">
-    @inputBlock('depart_at_time', [
-        'id' => 'depart_at_time',
-        'label' => 'Departure Time',
-        'placeholder' => 'hh:mm AM',
-        'pattern' => '(1[012]|0?[1-9]):[0-5][0-9] (am|pm|AM|PM)',
-        'minlength' => 8,
-        'maxlength' => 8
-    ])
-     
-    @inputBlock('return_at_time', [
-        'id' => 'return_at_time',
-        'label' => 'Return Time',
-        'placeholder' => 'hh:mm PM',
-        'pattern' => '(1[012]|0?[1-9]):[0-5][0-9] (am|pm|AM|PM)',
-        'minlength' => 8,
+    @if($order->type == 'travel-pre-auth')
+        <div class="form-row-stretch">
+        @inputBlock('depart_at_time', [
+            'id' => 'depart_at_time',
+            'label' => 'Departure Time',
+            'placeholder' => 'hh:mm AM',
+            'pattern' => '(1[012]|0?[1-9]):[0-5][0-9] (am|pm|AM|PM)',
+            'minlength' => 8,
             'maxlength' => 8
-    ])
-     
-   </div>
+        ])
+        
+        @inputBlock('return_at_time', [
+            'id' => 'return_at_time',
+            'label' => 'Return Time',
+            'placeholder' => 'hh:mm PM',
+            'pattern' => '(1[012]|0?[1-9]):[0-5][0-9] (am|pm|AM|PM)',
+            'minlength' => 8,
+                'maxlength' => 8
+        ])
+
+        </div>
+   @endif
 
     @inputBlock('purpose', [
         'label' => 'Description and Business Purpose',

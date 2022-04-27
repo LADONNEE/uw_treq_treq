@@ -28,7 +28,7 @@ class ProjectForm extends Form
         $this->add('owner_search');
         $this->add('is_food', 'radio')->options([
             '0' => 'No food',
-            '1' => 'Food was or will be purchased as part of this project'
+            '1' => 'Food was purchased as part of this project'
         ]);
         $this->add('rsp_option', 'radio')->options([
             '0' => 'No research subject payments',

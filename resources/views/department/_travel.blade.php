@@ -9,12 +9,8 @@
     </div>
     <div class="field">
         <div class="field__label">Destination</div>
-        <div class="field__value">{{ $project->trip->destination }} 
-       <select class="form-control">
-           @foreach($states as $state)
-               <option value="{{$state->name}}">{{$state->name}}</option>
-           @endforeach
-       </select>
+        <div class="field__value">{{ $project->trip->destination }} <br />
+        {{ $project->trip->state }} 
     </div>
     
     </div>

@@ -33,7 +33,7 @@
                     <input class="form-check-input js-approval-from--radio" data-target="js-approval-from--self-form"
                            type="radio" name="approval_from" id="approval_from_self" value="self">
                     <label class="form-check-label" for="approval_from_self">
-                        Approve this Myself
+                        Approve this Myself (if you are the Director or Associate Dean)
                     </label>
                 </div>
             </fieldset>
@@ -59,9 +59,8 @@
                 <div class="alert alert-info my-3">
                     <div class="font-weight-bold mb-2">Approve this Myself</div>
                     <div>
-                        Give department approval and send to fiscal. Use this when you are the PI/Director of
-                        the relevant budgets or when you have spending authority for a specific request (example:
-                        faculty professional development budgets).
+                        Give department approval and send to fiscal. Use this when you are the Director or Associate Dean of
+                        the relevant budgets.
                     </div>
                 </div>
             </div>
