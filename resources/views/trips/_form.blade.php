@@ -49,16 +49,20 @@
     </div>
 
     <div class="form-row-stretch">
-       @inputBlock('destination', 'Destination')
-       <div>
-            <label class="form-group__label">State</label>
-            <select class="form-control" id="state" name="state" onchange="return showdisclaimer();">
-            <option value="">- Please select -</option>
-            @foreach($states as $state)
-                <option value="{{$state->name}}">{{$state->name}}</option>
-            @endforeach
-        </select>
-    </div>
+        @inputBlock('destination', [
+                'label' => 'Destination',
+                'required' => true
+                ])
+            
+            <div>
+                <label class="form-group__label">Select International or State <span title="Required" class="required">*</span></label>
+                <select class="form-control" id="state" name="state" onchange="return showdisclaimer();" required>
+                                    <option value="">- Please select -</option>
+                                    @foreach($states as $state)
+                                        <option value="{{$state->name}}" {{ $state->name == $selectedstate ? 'selected' : ''  }} >{{$state->name}}</option>
+                                    @endforeach
+                </select>
+            </div>
     </div>
 
     <div id="disclaimer" class="form-row-stretch" style="visibility:hidden">
@@ -77,7 +81,8 @@
         'label' => 'Departure Date',
         'placeholder' => 'MM/DD/YYYY',
         'minlength' => 10,
-        'maxlength' => 10
+        'maxlength' => 10,
+        'required' => true
     ])
     
     @inputBlock('return_at', [
@@ -85,7 +90,8 @@
             'label' => 'Return Date',
             'placeholder' => 'MM/DD/YYYY',
             'minlength' => 10,
-            'maxlength' => 10
+            'maxlength' => 10,
+            'required' => true
     ])
     </div>
     
@@ -97,8 +103,10 @@
             'label' => 'Departure Time',
             'placeholder' => 'hh:mm AM',
             'pattern' => '(1[012]|0?[1-9]):[0-5][0-9] (am|pm|AM|PM)',
+            'title' => 'Please use this format hh:mm AM or hh:mm PM',
             'minlength' => 8,
-            'maxlength' => 8
+            'maxlength' => 8,
+            'required' => true
         ])
         
         @inputBlock('return_at_time', [
@@ -106,8 +114,10 @@
             'label' => 'Return Time',
             'placeholder' => 'hh:mm PM',
             'pattern' => '(1[012]|0?[1-9]):[0-5][0-9] (am|pm|AM|PM)',
+            'title' => 'Please use this format hh:mm AM or hh:mm PM',
             'minlength' => 8,
-                'maxlength' => 8
+            'maxlength' => 8,
+            'required' => true
         ])
 
         </div>
@@ -115,7 +125,8 @@
 
     @inputBlock('purpose', [
         'label' => 'Description and Business Purpose',
-        'rows' => 5
+        'rows' => 5,
+        'required' => true
     ])
 
     @inputBlock('personal_time', 'Personal Time')

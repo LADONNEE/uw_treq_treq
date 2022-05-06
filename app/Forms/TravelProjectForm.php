@@ -9,6 +9,7 @@ use App\Models\Person;
 use App\Models\Trip;
 use App\Trackers\LoggedTravel;
 use Uwuaaws\Formkit\ValueHandlers\CarbonDateValue;
+use Carbon\Carbon;
 
 class TravelProjectForm extends ProjectForm
 {
@@ -68,10 +69,13 @@ class TravelProjectForm extends ProjectForm
             'traveler_type' => $this->travelerType(),
             'traveler_search' => ($this->trip->person_id) ? $this->trip->traveler : '',
             'has_honorarium' => (bool) $this->trip->honorarium,
+            'selectedstate' => $this->trip->state,
             'depart_at' => $this->trip->depart_at,
             'return_at' => $this->trip->return_at,
             'depart_at_time' => $this->trip->depart_at_time,
             'return_at_time' => $this->trip->return_at_time,
+            'depart_at_time' => $this->trip->depart_at_time ? Carbon::parse($this->trip->depart_at_time)->format('g:i A') : '',
+            'return_at_time' => $this->trip->depart_at_time ? Carbon::parse($this->trip->return_at_time)->format('g:i A') : '',
             'nuwt_address_line1' => $this->trip->nuwt_address_line1,
             'nuwt_address_line2' => $this->trip->nuwt_address_line2,
             'nuwt_city' => $this->trip->nuwt_city,
@@ -103,7 +107,7 @@ class TravelProjectForm extends ProjectForm
 
         $this->check('traveler_type')->inList();
         $this->check('destination')->notEmpty();
-        $this->check('state')->notEmpty();
+        //$this->check('state')->notEmpty();
 
         if ($this->value('traveler_type') === 'uaa') {
             $person = Person::find($this->value('person_id'));

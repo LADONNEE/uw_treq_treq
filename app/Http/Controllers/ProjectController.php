@@ -13,14 +13,17 @@ class ProjectController extends Controller
 {
     public function show(Project $project, $adding = false)
     {
+        $states = State::orderBy('id')->get();
         $adding = (bool) $adding;
         $types = (new OrderTypes())->types;
-        return view('projects.show', compact('project', 'types', 'adding'));
+        return view('projects.show', compact('project', 'types', 'adding', 'states'));
     }
 
     public function create($type)
     {
         $states = State::orderBy('id')->get();
+        $selectedstate = '';
+
         $projects = $this->getUsersOpenTrips($type, request('new'));
         if ($projects && count($projects) > 0) {
             return view('trips.open-trips', compact('projects', 'states'));
@@ -30,7 +33,7 @@ class ProjectController extends Controller
 
         if ($order->isTravel()) {
             $form = new TravelProjectForm($order);
-            return view('trips.create', compact('order', 'form', 'states'));
+            return view('trips.create', compact('order', 'form', 'states', 'selectedstate'));
         }
 
         $form = new ProjectForm($order);
@@ -52,9 +55,10 @@ class ProjectController extends Controller
     public function edit(Order $order)
     {
         $this->canIEdit($order, 'project');
+        $states = State::orderBy('id')->get();
 
         $form = new ProjectForm($order);
-        return view('projects.edit', compact('order', 'form'));
+        return view('projects.edit', compact('order', 'form', 'states'));
     }
 
     public function update(Order $order)
