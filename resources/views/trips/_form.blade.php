@@ -90,7 +90,7 @@
     </div>
     
 
-    @if($order->type == 'travel-pre-auth')
+    @if($order->type != 'travel-pre-auth')
         <div class="form-row-stretch">
         @inputBlock('depart_at_time', [
             'id' => 'depart_at_time',
