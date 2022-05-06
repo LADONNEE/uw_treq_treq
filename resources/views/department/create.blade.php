@@ -1,6 +1,9 @@
 @extends('layout.default')
 @section('title', 'Department Approval')
 @section('content')
+<?php
+$project = $project ?? $order->project;
+?>
     <div class="panel panel-ribbon mw-600">
 
         <h2>Department Approval</h2>
@@ -29,20 +32,29 @@
                         Send to Department Approver
                     </label>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input js-approval-from--radio" data-target="js-approval-from--self-form"
-                           type="radio" name="approval_from" id="approval_from_self" value="self">
-                    <label class="form-check-label" for="approval_from_self">
-                        Approve this Myself (if you are the Director or Associate Dean)
-                    </label>
-                </div>
+                
+                @if(!$project->is_travel)
+                    <div class="form-check">
+                        <input class="form-check-input js-approval-from--radio" data-target="js-approval-from--self-form"
+                            type="radio" name="approval_from" id="approval_from_self" value="self">
+                        <label class="form-check-label" for="approval_from_self">
+                            Approve this Myself (if you are the Director or Associate Dean)
+                        </label>
+                    </div>
+                @endif
+
             </fieldset>
 
             <div class="js-approval-from--section" id="js-approval-from--other-form">
                 <div class="alert alert-info my-3">
                     <div class="font-weight-bold mb-2">Send to Department Approver</div>
                     <div>
-                        Specify who will provide the initial department approval. This will be the Director or Associate Dean (if requestor is the Director).
+                    @if($project->is_travel)
+                        Specify who will provide the initial department approval. This will be the Director, Associate Dean or Associate Dean depending on your position.
+                    @else
+                        Specify who will provide the initial department approval. This is typically the Director.
+                    @endif
+
                     </div>
                 </div>
 
@@ -59,8 +71,7 @@
                 <div class="alert alert-info my-3">
                     <div class="font-weight-bold mb-2">Approve this Myself</div>
                     <div>
-                        Give department approval and send to fiscal. Use this when you are the Director or Associate Dean of
-                        the relevant budgets.
+                        If you are the Director or Associate Dean overseing the relevant budgets, you do not need approval. Click the submit button.
                     </div>
                 </div>
             </div>

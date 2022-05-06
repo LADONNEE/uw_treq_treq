@@ -12,29 +12,19 @@
                 Number field, this is filled in for you.
             </dd>
 
-            <dt class="mt-4">PCA Code</dt>
+            <dt class="mt-4">PCA/TOP Code</dt>
             <dd>
-                (Optional) AKA Project code or TOP code. If you know it fill it in. If you
-                are not sure, leave it blank and your budget's fiscal manager will add the
-                correct coding.
+                If your department uses TOP codes, enter it here as Task-Option-Project.
             </dd>
 
             <dt class="mt-4">Split for Single Budget</dt>
             <dd>
-                Leave Split blank (or 100). One budget with Split Type "* Remainder" means
-                everything gets charged to this budget.
+                Choose Split Type &ldquo;Remainder&rdquo; and leave Split blank.
             </dd>
 
             <dt class="mt-4">Split for Multiple Budgets</dt>
             <dd>
-                Split Type "$ Dollar Amount" will charge a fixed dollar amount to a budget.
-                $ Dollar Amount splits are applied first.<br>
-                <br>
-                Split Type "% Percentage" charges the percentage of the remaining total
-                (after $ Dollar Amounts) to the budget. These are charged second.<br>
-                <br>
-                Any remaining amount is charged to the "* Remainder" budget. Always add
-                exactly one * Remainder budget.
+                Choose to split by either a fixed $ Dollar Amount or by a %Percentage in the Split Type field.
             </dd>
         </dl>
     </div>
