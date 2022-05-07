@@ -16,7 +16,7 @@ return [
 
     // From (default from for all email, can be changed runtime)
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'uaa@uw.edu'),
+        'address' => env('MAIL_FROM_ADDRESS', 'uaatreq@uw.edu'),
         'name' => env('MAIL_FROM_NAME', 'TREQ'),
     ],
 

@@ -50,7 +50,7 @@ $project = $project ?? $order->project;
                     <div class="font-weight-bold mb-2">Send to Department Approver</div>
                     <div>
                     @if($project->is_travel)
-                        Specify who will provide the initial department approval. This will be the Director, Associate Dean or Associate Dean depending on your position.
+                        Specify who will provide the initial department approval. This will be the Director, Associate Dean or Dean depending on your position.
                     @else
                         Specify who will provide the initial department approval. This is typically the Director.
                     @endif
@@ -71,7 +71,7 @@ $project = $project ?? $order->project;
                 <div class="alert alert-info my-3">
                     <div class="font-weight-bold mb-2">Approve this Myself</div>
                     <div>
-                        If you are the Director or Associate Dean overseing the relevant budgets, you do not need approval. Click the submit button.
+                        If you are the Director or Associate Dean overseeing the relevant budgets, you do not need approval. Click the submit button.
                     </div>
                 </div>
             </div>

@@ -121,7 +121,13 @@
         ])
 
         </div>
-   @endif
+   
+    @else
+
+        <input type="hidden" id="depart_at_time" name="depart_at_time" value="12:00 AM">
+        <input type="hidden" id="return_at_time" name="return_at_time" value="12:00 AM">
+
+    @endif
 
     @inputBlock('purpose', [
         'label' => 'Description and Business Purpose',

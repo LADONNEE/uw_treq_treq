@@ -71,7 +71,7 @@
     </div> <!-- /.layout__wrapper -->
     <div class="layout__footer footer js-scroll-lock-padding">
         <div>
-            <a href="mailto:uaa@uw.edu?subject=UAA%20Website%20Question">@icon('envelope') Contact</a> &bull;
+            <a href="mailto:uaatreq@uw.edu?subject=UAA%20Website%20Question">@icon('envelope') Contact</a> &bull;
             <a href="https://uaa.uw.edu/intranet/technology-resources/">Help</a> &bull;
             <a href="http://www.washington.edu/online/privacy">Privacy</a> &bull;
             <a href="http://www.washington.edu/online/terms">Terms</a>
