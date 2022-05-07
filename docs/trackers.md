@@ -100,6 +100,7 @@ Tracker currently includes theses SnapField types:
 
 * `SnapField` - regular text field
 * `SnapDate` - Carbon date field where only the date part (not time) is significant
+* `SnapTime` - Carbon date field where only the time part (not date) is significant
 * `SnapPerson` - field that contains a person_id foreign key
 * `SnapTruncate` - long text field, example: a note, only a portion of it is included in 
    log message (default: words in the first 30 characters)

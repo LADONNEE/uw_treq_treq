@@ -12,6 +12,11 @@ class Snap
         return new SnapDate($value);
     }
 
+    public static function time($value)
+    {
+        return new SnapTime($value);
+    }
+
     public static function text($value)
     {
         return new SnapField($value);
