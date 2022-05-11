@@ -33,7 +33,7 @@ $project = $project ?? $order->project;
                     </label>
                 </div>
                 
-                @if(!$project->is_travel)
+                @if(!$project->is_travel && ($order->type != 'reimbursement') )
                     <div class="form-check">
                         <input class="form-check-input js-approval-from--radio" data-target="js-approval-from--self-form"
                             type="radio" name="approval_from" id="approval_from_self" value="self">
@@ -49,7 +49,7 @@ $project = $project ?? $order->project;
                 <div class="alert alert-info my-3">
                     <div class="font-weight-bold mb-2">Send to Department Approver</div>
                     <div>
-                    @if($project->is_travel)
+                    @if($project->is_travel  || ($order->type == 'reimbursement'))
                         Specify who will provide the initial department approval. This will be the Director, Associate Dean or Dean depending on your position.
                     @else
                         Specify who will provide the initial department approval. This is typically the Director.
