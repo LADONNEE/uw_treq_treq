@@ -6,8 +6,8 @@ let treqTripForm = function(context) {
         travelerOther: function() {
             return $('#js-traveler-other');
         },
-        travelerUAA: function() {
-            return $('#js-traveler-uaa');
+        travelerUWORG: function() {
+            return $('#js-traveler-uworg');
         },
         personalTimeChecked: function() {
             return $('#js-trip-form input[name="personal_time"]:checked').length > 0;
@@ -44,11 +44,11 @@ let treqTripForm = function(context) {
 
     let travelerTypeChanged = function() {
         let type = jq.travelerType();
-        if (type === 'uaa') {
+        if (type === 'uworg') {
             jq.travelerOther().hide();
-            jq.travelerUAA().show();
+            jq.travelerUWORG().show();
         } else {
-            jq.travelerUAA().hide();
+            jq.travelerUWORG().hide();
             jq.travelerOther().show();
         }
         if (type === 'non_uw') {

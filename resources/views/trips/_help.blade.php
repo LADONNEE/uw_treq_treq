@@ -10,7 +10,7 @@
     </p>
 
     <p>
-        For a UAA Traveler use the provided person search to pick an existing UAA staff, student or faculty. 
+        For a UWORG Traveler use the provided person search to pick an existing UWORG staff, student or faculty. 
         For other traveler affiliation, enter the traveler's name and contact information.
     </p>
 

@@ -10,7 +10,7 @@ use Tests\TestCase;
 class OneDriveNameTest extends TestCase
 {
     const URL = 'https://uwnetid-my.sharepoint.com/personal/nbedani_uw_edu/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fnbedani%5Fuw%5Fedu%2FDocuments%2Fuwenv%5Ftreq%2FUser%20Folders';
-    const OG_UAA_FISCAL_URL = 'https://uwnetid-my.sharepoint.com/personal/nbedani_uw_edu/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fnbedani%5Fuw%5Fedu%2FDocuments%2Fuwenv%5Ftreq/treq/jones,%20lydia?csf=1&web=1&e=xdac6a';
+    const OG_UWORG_FISCAL_URL = 'https://uwnetid-my.sharepoint.com/personal/nbedani_uw_edu/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fnbedani%5Fuw%5Fedu%2FDocuments%2Fuwenv%5Ftreq/treq/jones,%20lydia?csf=1&web=1&e=xdac6a';
 
     public function test_it_instantiates()
     {
@@ -32,7 +32,7 @@ class OneDriveNameTest extends TestCase
     {
         $it = new OneDriveName();
 
-        $result = $it->name(self::OG_UAA_FISCAL_URL);
+        $result = $it->name(self::OG_UWORG_FISCAL_URL);
 
         $this->assertSame('/jones, lydia', $result);
     }

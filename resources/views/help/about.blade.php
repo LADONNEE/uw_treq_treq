@@ -6,7 +6,7 @@
 
     <p>
         TREQ (Travel & Requisitions) is a request tracking system for soliciting review, approval, and
-        action from the UAA's fiscal staff. It is used by all UAA staff.
+        action from the UWORG's fiscal staff. It is used by all UWORG staff.
     </p>
 
     <p>
@@ -49,15 +49,15 @@
 
     <ul class="bullet">
         <li>
-            <u>Travel Pre-authorization</u> - Every UAA employee (including students) needs pre-authorization to travel, 
+            <u>Travel Pre-authorization</u> - Every UWORG employee (including students) needs pre-authorization to travel, 
             unless the expenses will be for mileage reimbursement only. Also use if requesting approval for travel on behalf of non-UW travelers. 
             </li>
         <li>
-            <u>Travel Reimbursement</u> - Every UAA employee (including students) will use to submit a request for travel reimbursement, 
+            <u>Travel Reimbursement</u> - Every UWORG employee (including students) will use to submit a request for travel reimbursement, 
             including for mileage reimbursement. You may also request reimbursement on behalf of a non-UW traveler. 
         </li>
         <li>
-            <u>Reimbursement</u> - Every UAA employee (including students) who is seeking reimbursement for purchases made on behalf of the UW. 
+            <u>Reimbursement</u> - Every UWORG employee (including students) who is seeking reimbursement for purchases made on behalf of the UW. 
         </li>
         <li>
             <u>Make a Purchase</u> - Any employee needing assistance in purchasing goods/services from an external vendor either via Ariba or fiscal staff procard. 

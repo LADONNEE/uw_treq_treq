@@ -12,7 +12,7 @@
 
             <div class="order-menu__examples">Details</div>
             <ul>
-                <li>For use by all UAA permanent, temporary or student staff and on behalf of non-UW travelers</li>
+                <li>For use by all UWORG permanent, temporary or student staff and on behalf of non-UW travelers</li>
                 <li>Describe purpose of travel</li>
                 <li>Estimate costs and assign to a budget</li>
                 <li>Specify if personal time will be taken</li>

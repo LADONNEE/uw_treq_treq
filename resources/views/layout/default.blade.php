@@ -5,17 +5,17 @@
     <meta http-equiv="Cache-Control" content="no-cache" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title') - TREQ - UAA - UW</title>
+    <title>@yield('title') - TREQ - UWORG - UW</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico"/>
     @yield('style')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/app.css{{ $cacheBusting = '?v=' . config('view.resource_cache') }}" media="all" />
-    <link rel="stylesheet" type="text/css" href="/uaa-util/css/env-warning.css" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/uworg-util/css/env-warning.css" type="text/css" media="all" />
     <script defer src="/js/app.js{{ $cacheBusting }}"></script>
     <script defer src="https://kit.fontawesome.com/96343af987.js" crossorigin="anonymous"></script>
-    <script defer type="text/javascript" src="/uaa-util/js/env-warning.js"></script>
+    <script defer type="text/javascript" src="/uworg-util/js/env-warning.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -71,13 +71,13 @@
     </div> <!-- /.layout__wrapper -->
     <div class="layout__footer footer js-scroll-lock-padding">
         <div>
-            <a href="mailto:uaatreq@uw.edu?subject=UAA%20Website%20Question">@icon('envelope') Contact</a> &bull;
-            <a href="https://uaa.uw.edu/intranet/technology-resources/">Help</a> &bull;
+            <a href="mailto:uaatreq@uw.edu?subject=UWORG%20Website%20Question">@icon('envelope') Contact</a> &bull;
+            <a href="https://uworg.uw.edu/intranet/technology-resources/">Help</a> &bull;
             <a href="http://www.washington.edu/online/privacy">Privacy</a> &bull;
             <a href="http://www.washington.edu/online/terms">Terms</a>
         </div>
         <div class="copyright">
-            <a href="http://uaa.uw.edu/">&#169;{{ date('Y') }} UW Undergraduate Academic Affairs</a>,
+            <a href="http://uworg.uw.edu/">&#169;{{ date('Y') }} UW Undergraduate Academic Affairs</a>,
             <a href="http://www.seattle.gov/">Seattle, Washington</a>
         </div>
     </div>
