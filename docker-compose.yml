@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+    
+    # Application
+    app:
+        build:
+            context: .
+            dockerfile: .docker/treq-php8-apache.dockerfile
+        container_name: treqdocker-app
+        ports:
+            - "80:80"
+        working_dir: /var/www/html
+        volumes:
+            - ./:/var/www/html
+        networks:
+            - treq-network
+        depends_on:
+            - "database"    
+    # Database
+    mysql:
+        image: mariadb:latest
+        container_name: treq-laravel-db
+        restart: unless-stopped
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        volumes:
+            - ./database/dbdata:/var/lib/mysql
+        networks:
+            - treq-network
+        
+    
+
+networks:
+    treq-network:
+        driver: bridge
