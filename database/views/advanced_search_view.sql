@@ -24,7 +24,7 @@ SELECT
 FROM orders o
 INNER JOIN projects p
   ON o.project_id = p.id
-INNER JOIN shared.uw_persons order_submitter
+INNER JOIN finance_dev_shared.uw_persons order_submitter
   ON o.submitted_by = order_submitter.person_id
 LEFT OUTER JOIN trips t
   ON p.id = t.project_id
@@ -34,7 +34,7 @@ LEFT OUTER JOIN items i
   ON o.id = i.order_id
 LEFT OUTER JOIN budgets b
   ON o.id = b.order_id
-LEFT OUTER JOIN shared.uw_persons project_owner
+LEFT OUTER JOIN finance_dev_shared.uw_persons project_owner
   ON p.person_id = project_owner.person_id
 WHERE o.submitted_at IS NOT NULL
   AND o.stage <> 'Canceled'
