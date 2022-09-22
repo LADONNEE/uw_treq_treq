@@ -12,6 +12,8 @@ class AdvancedSearchView extends Migration
      */
     public function up()
     {
+
+
         DB::statement(
             "CREATE OR REPLACE VIEW advanced_search_view AS
             SELECT
@@ -42,7 +44,7 @@ class AdvancedSearchView extends Migration
               ON o.id = i.order_id
             LEFT OUTER JOIN budgets b
               ON o.id = b.order_id
-            INNER JOIN shared.uw_persons order_submitter
+            INNER JOIN finance_dev_shared.uw_persons order_submitter
               ON o.submitted_by = order_submitter.person_id
             WHERE o.submitted_at IS NOT NULL
               AND o.stage <> 'Canceled'"
