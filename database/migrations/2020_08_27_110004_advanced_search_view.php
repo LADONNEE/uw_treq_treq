@@ -12,8 +12,6 @@ class AdvancedSearchView extends Migration
      */
     public function up()
     {
-
-
         DB::statement(
             "CREATE OR REPLACE VIEW advanced_search_view AS
             SELECT
