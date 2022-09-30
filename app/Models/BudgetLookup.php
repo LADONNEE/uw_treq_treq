@@ -1,5 +1,6 @@
 <?php
 namespace App\Models;
+use Config;
 
 /**
  * @property integer   $budget_id
@@ -13,7 +14,13 @@ namespace App\Models;
  */
 class BudgetLookup extends ReadOnlyModel
 {
-    protected $table = 'shared.budgets';
+    
+    protected $table;
+
+    public function __construct() {
+            $this->table = Config::get('app.database_shared') . '.budgets'; 
+    } 
+
     protected $primaryKey = 'budget_id';
 
 }

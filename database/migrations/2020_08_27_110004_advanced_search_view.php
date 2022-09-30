@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
+use Config;
 
 class AdvancedSearchView extends Migration
 {
@@ -10,6 +11,13 @@ class AdvancedSearchView extends Migration
      *
      * @return void
      */
+
+    private $table_shared;
+
+    public function __construct() {
+            $this->table_shared = Config::get('app.database_shared'); 
+    } 
+
     public function up()
     {
         DB::statement(
@@ -42,7 +50,7 @@ class AdvancedSearchView extends Migration
               ON o.id = i.order_id
             LEFT OUTER JOIN budgets b
               ON o.id = b.order_id
-            INNER JOIN finance_dev_shared.uw_persons order_submitter
+            INNER JOIN $table_shared.uw_persons order_submitter
               ON o.submitted_by = order_submitter.person_id
             WHERE o.submitted_at IS NOT NULL
               AND o.stage <> 'Canceled'"

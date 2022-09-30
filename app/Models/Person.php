@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Contracts\HasNames;
+use Config;
 
 /**
  * @property integer  $person_id
@@ -14,7 +15,14 @@ use App\Contracts\HasNames;
  */
 class Person extends ReadOnlyModel implements HasNames
 {
-    protected $table = 'shared.uw_persons';
+    protected $table;
+
+    public function __construct() {
+            $this->table = Config::get('app.database_shared') . '.uw_persons'; 
+    } 
+
+
+
     protected $fillable = [
         'uwnetid',
         'studentno',

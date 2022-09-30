@@ -5,13 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\Person;
 use App\Models\Task;
 use Illuminate\Support\Facades\DB;
+use Config;
 
 class UserTasksController extends Controller
 {
+
+    private $table;
+
+    public function __construct() {
+            $this->table = Config::get('app.database_shared'); 
+    } 
+
     public function index()
     {
         $usersWithTasks = DB::table('tasks_by_user_view AS tv')
-            ->join('shared.uw_persons AS p', 'tv.person_id', '=', 'p.person_id')
+            ->join($this->table, '.uw_persons AS p', 'tv.person_id', '=', 'p.person_id')
             ->select([
                 'tv.person_id',
                 'tv.num_pending',

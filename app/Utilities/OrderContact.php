@@ -3,16 +3,19 @@
 namespace App\Utilities;
 
 use Illuminate\Support\Facades\DB;
+use Config;
 
 class OrderContact
 {
     public $fiscal_person_id;
     public $business_person_id;
+    private $table;
 
     public function __construct($fiscal_person_id, $business_person_id)
     {
         $this->fiscal_person_id = $fiscal_person_id;
         $this->business_person_id = $business_person_id;
+        $this->table = Config::get('app.database_shared'); 
     }
 
     /**
@@ -25,7 +28,7 @@ class OrderContact
         $biennium = setting('current-biennium');
         $results = DB::table('budgets AS b')
             ->select(['bc.fiscal_person_id', 'bc.business_person_id'])
-            ->join('shared.budgets AS bc', function($join) use($biennium) {
+            ->join($this->table, '.budgets AS bc', function($join) use($biennium) {
                 $join->on('b.budgetno', '=', 'bc.budgetno')
                     ->where('bc.biennium', $biennium);
             })
