@@ -71,13 +71,13 @@
     </div> <!-- /.layout__wrapper -->
     <div class="layout__footer footer js-scroll-lock-padding">
         <div>
-            <a href="mailto:uaatreq@uw.edu?subject=UWORG%20Website%20Question">@icon('envelope') Contact</a> &bull;
+            <a href="mailto:uworgtreq@uw.edu?subject=UWORG%20Website%20Question">@icon('envelope') Contact</a> &bull;
             <a href="https://uworg.uw.edu/intranet/technology-resources/">Help</a> &bull;
             <a href="http://www.washington.edu/online/privacy">Privacy</a> &bull;
             <a href="http://www.washington.edu/online/terms">Terms</a>
         </div>
         <div class="copyright">
-            <a href="http://uworg.uw.edu/">&#169;{{ date('Y') }} UW Undergraduate Academic Affairs</a>,
+            <a href="http://uworg.uw.edu/">&#169;{{ date('Y') }} UW Information School</a>,
             <a href="http://www.seattle.gov/">Seattle, Washington</a>
         </div>
     </div>

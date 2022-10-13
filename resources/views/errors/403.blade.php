@@ -11,8 +11,8 @@
 
                 <p class="mt-4">
                     This is a fiscal request tracking system for the University of Washington,
-                    Undergraduate Academic Affairs. If you should have access to this system, email
-                    <a href="mailto:uaatreq@uw.edu">uaatreq@uw.edu</a> for help.
+                    Information School. If you should have access to this system, email
+                    <a href="mailto:uworgtreq@uw.edu">uworgtreq@uw.edu</a> for help.
                 </p>
             </div>
         </div>
