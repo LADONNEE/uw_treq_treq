@@ -23,7 +23,7 @@ class UwLoginMiddleware
         $user = $this->app['user'];
         if ($user instanceof UserAnonymous) {
             // return redirect()->away('/Shibboleth.sso/Login?target=' . $request->fullUrl());
-            return redirect()->away('/treq/saml/login/' . urlencode($request->path()));
+            return redirect()->away('/budgets/saml/login/' . urlencode($request->fullUrl()));
         }
         if (!hasRole('treq:user') && $request->path() != 'logout') {
             abort(403, 'Not authorized');
