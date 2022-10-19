@@ -19,7 +19,7 @@ class UserTasksController extends Controller
     public function index()
     {
         $usersWithTasks = DB::table('tasks_by_user_view AS tv')
-            ->join($this->table, '.uw_persons AS p', 'tv.person_id', '=', 'p.person_id')
+            ->join($this->table . '.uw_persons AS p', 'tv.person_id', '=', 'p.person_id')
             ->select([
                 'tv.person_id',
                 'tv.num_pending',

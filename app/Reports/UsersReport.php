@@ -17,7 +17,7 @@ class UsersReport
     public function getReport()
     {
         $results = DB::table('auth AS a')
-            ->join($this->table, '.uw_persons AS p', 'a.uwnetid', '=', 'p.uwnetid')
+            ->join($this->table . '.uw_persons AS p', 'a.uwnetid', '=', 'p.uwnetid')
             ->leftJoin('user_folders AS f', 'p.person_id', '=', 'f.person_id')
             ->select([
                 'a.uwnetid',
