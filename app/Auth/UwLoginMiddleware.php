@@ -25,8 +25,8 @@ class UwLoginMiddleware
             return redirect()->away('/treq/saml/login/' . urlencode($request->path()));
             // return redirect()->away('/Shibboleth.sso/Login?target=' . $request->fullUrl());
         }
-        if (!hasRole('treq:user') && $request->path() != 'logout') {
-            abort(403, 'Not authorized');
+        if (!hasRole('treq:user') && $request->path() != 'logout' && $request->path() != 'whoami') {
+            abort(403, 'Not authorized for TREQ');
         }
         return $next($request);
     }
