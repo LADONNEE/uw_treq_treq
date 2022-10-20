@@ -230,6 +230,8 @@ return [
 
     ],
 
-    'database_shared' => env('DB_DATABASE_SHARED')
+    'database_shared' => env('DB_DATABASE_SHARED'),
+
+    'database_budgets' => env('DB_DATABASE_BUDGETS'),
 
 ];
