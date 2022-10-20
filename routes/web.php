@@ -6,7 +6,7 @@ if (!$route instanceof Illuminate\Routing\Router) {
 }
 
 // Workaround for route:cache breaks the '/' route app is in an Apache Aliased directory 
-$route->get('treq', 'HomeController@index')->name('treq');
+//$route->get('treq', 'HomeController@index')->name('treq');
 
 Route::group(array('prefix' => 'treq'), function($route) { 
     $route->get('/', 'HomeController@index')->name('home');
