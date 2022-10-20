@@ -11,10 +11,10 @@ let make = function() {
             return option.id;
         },
         prefetch: {
-            url: '/person/prefetch.json?scope=uworg-uwnetid' //, cache: false
+            url: '/treq/person/prefetch.json?scope=uworg-uwnetid' //, cache: false
         },
         remote: {
-            url: '/peoplesearch/suggest?q={{SEARCHTERM}}&scope=uwnetid',
+            url: '/searchpersons/suggest?q={{SEARCHTERM}}&scope=uwnetid',
             wildcard: '{{SEARCHTERM}}'
         }
     });
