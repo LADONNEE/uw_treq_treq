@@ -22,11 +22,11 @@
     @else
 
         <div class="one-drive-link one-drive-link--missing">
-            <a>
+            <a href="mailto:jdunc7@uw.edu?subject=TREQ: request for OneDrive folder creation&body=Hi, I need a TREQ OneDrive folder please. Thanks">
                 <span class="one-drive-link__icon">@icon('folder')</span>
                 <span class="one-drive-link__text">Missing OneDrive Folder</span>
                 <span class="one-drive-link__label">
-                    Ask fiscal contact to set up a OneDrive folder
+                    Click here to send an email to ask fiscal contact to set up a OneDrive folder
                 </span>
             </a>
         </div>
