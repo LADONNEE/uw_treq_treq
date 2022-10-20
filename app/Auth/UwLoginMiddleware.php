@@ -30,7 +30,7 @@ class UwLoginMiddleware
             return redirect()->away(url('/treq/saml/login/' . urlencode($request->path())) );
             // return redirect()->away('/Shibboleth.sso/Login?target=' . $request->fullUrl());
         }
-        if (!hasRole('treq:user') && $request->path() != 'logout' && $request->path() != 'whoami') {
+        if (!hasRole('treq:user') && $request->path() != 'treq/logout' && $request->path() != 'treq/whoami') {
             Log::debug('No suitable Role for user');
             abort(403, 'Not authorized for TREQ');
         }
