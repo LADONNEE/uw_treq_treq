@@ -20,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
+
+        URL::forceScheme('https');
+
         Blade::directive('orEmpty', function($expression) {
             return "<?php echo eOrEmpty($expression); ?>";
         });

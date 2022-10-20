@@ -3,6 +3,7 @@ namespace App\Auth;
 
 use Closure;
 use Illuminate\Contracts\Container\Container;
+use Illuminate\Support\Facades\Log;
 
 class UwLoginMiddleware
 {
@@ -21,11 +22,16 @@ class UwLoginMiddleware
     public function handle($request, Closure $next)
     {
         $user = $this->app['user'];
+
+        Log::debug('Info about User');
+
         if ($user instanceof UserAnonymous) {
-            return redirect()->away('/treq/saml/login/' . urlencode($request->path()));
+            Log::debug('Redirecting user to SAML');
+            return redirect()->away(url('/treq/saml/login/' . urlencode($request->path())) );
             // return redirect()->away('/Shibboleth.sso/Login?target=' . $request->fullUrl());
         }
         if (!hasRole('treq:user') && $request->path() != 'logout' && $request->path() != 'whoami') {
+            Log::debug('No suitable Role for user');
             abort(403, 'Not authorized for TREQ');
         }
         return $next($request);

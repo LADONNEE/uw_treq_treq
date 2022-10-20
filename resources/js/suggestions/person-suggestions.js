@@ -14,7 +14,7 @@ let make = function() {
             url: '/person/prefetch.json?scope=uworg-uwnetid' //, cache: false
         },
         remote: {
-            url: '/searchpersons/suggest?q={{SEARCHTERM}}&scope=uwnetid',
+            url: '/peoplesearch/suggest?q={{SEARCHTERM}}&scope=uwnetid',
             wildcard: '{{SEARCHTERM}}'
         }
     });
