@@ -7,7 +7,7 @@
         <h1 class="mb-3">Panel Demo</h1>
 
         <div class="panel mb-3">
-            <img src="/images/under-construction.gif" alt="Under construction cartoon" style="display: block; margin: 64px auto;">
+            <img src="/treq/images/under-construction.gif" alt="Under construction cartoon" style="display: block; margin: 64px auto;">
         </div>
 
         <div class="panel mb-3 p-0 pt-panel">
