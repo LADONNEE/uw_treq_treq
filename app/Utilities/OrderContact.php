@@ -28,7 +28,7 @@ class OrderContact
         $biennium = setting('current-biennium');
         $results = DB::table('budgets AS b')
             ->select(['bc.fiscal_person_id', 'bc.business_person_id'])
-            ->join( env('DB_DATABASE_SHARED', 'shared') . '.budgets AS bc', function($join) use($biennium) {
+            ->join( Config::get('app.database_shared') . '.budgets AS bc', function($join) use($biennium) {
                 $join->on('b.budgetno', '=', 'bc.budgetno')
                     ->where('bc.biennium', $biennium);
             })
