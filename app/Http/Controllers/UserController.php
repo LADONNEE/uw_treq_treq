@@ -11,6 +11,7 @@ use App\Reports\UserOrdersReport;
 use App\Reports\UsersReport;
 use App\Trackers\LoggedAuth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
