@@ -17,13 +17,28 @@ class UserController extends Controller
     public function add()
     {
         $personId = request('person_id');
+        Log::debug('Person_id');
+        Log::debug($personId);
 
         if ($personId) {
+
+            Log::debug('in');
+            Log::debug($personId);
+
             $person = Person::where('person_id', $personId)->first();
+
+            Log::debug('Person');
+            Log::debug($person);
+
             if ($person instanceof Person && $person->uwnetid) {
+                Log::debug('in 2');
+                Log::debug($person->uwnetid);
+
                 return redirect()->action('UserController@edit', $person->uwnetid);
             }
         }
+        Log::debug('OUT');
+        
         abort(404);
     }
 
