@@ -8,7 +8,7 @@
     <div id="nav-unassigned" class="jump-nav__anchor"></div>
     <h2>Unassigned Orders</h2>
 
-    <p>Orders that have received Department Approval, but are not assigned to a fiscal contact.</p>
+    <p>Orders that have received authorizer Approval, but are not assigned to a fiscal contact.</p>
 
     @include('home._table-status', ['orders' => $reports->unassigned->orders])
 

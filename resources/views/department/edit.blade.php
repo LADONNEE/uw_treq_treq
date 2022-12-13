@@ -20,7 +20,7 @@
             <h2 class="mb-4">Send Order to Fiscal</h2>
 
             <div class="alert alert-info my-3">
-                This project includes a Pre-Authorization which has Department Approval, that step is complete.
+                This project includes a Pre-Authorization which has Authorizer Approval, that step is complete.
                 After reviewing and verifying your order, send to fiscal for handling.
             </div>
 

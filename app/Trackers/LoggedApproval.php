@@ -12,7 +12,7 @@ class LoggedApproval extends LoggedUpdate
     public function label()
     {
         if ($this->model->stage === 'department') {
-            return 'department approval';
+            return 'authorizer approval';
         }
         if ($this->model->stage === 'hr') {
             return 'HR approval';

@@ -106,7 +106,7 @@ class AddOrderToProject extends Controller
             'name' => 'Department Pre-Auth',
             'sequence' => $dept->sequence,
             'is_approval' => $dept->is_approval,
-            'description' => 'Department Approval was provided on pre-authorization for this project',
+            'description' => 'Authorizer Approval was provided on pre-authorization for this project',
             'created_by' => $dept->created_by,
             'assigned_to' => $dept->assigned_to,
             'notified_at' => now(),

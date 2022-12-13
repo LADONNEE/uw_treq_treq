@@ -1,12 +1,12 @@
 @extends('layout.default')
-@section('title', 'Department Approval')
+@section('title', 'Authorizer Approval')
 @section('content')
 <?php
 $project = $project ?? $order->project;
 ?>
     <div class="panel panel-ribbon mw-600">
 
-        <h2>Department Approval</h2>
+        <h2>Authorizer Approval</h2>
 
         <div class="alert alert-info my-4">
             <p class="text-lg mt-0">Review &amp; Submit</p>
@@ -20,7 +20,7 @@ $project = $project ?? $order->project;
         @include('department._preview')
 
         <section class="mt-5">
-            <h2 class="mb-4">Department Approval</h2>
+            <h2 class="mb-4">Authorizer Approval</h2>
 
             {!! $form->open(route('department-store', $order->id)) !!}
 
@@ -29,7 +29,7 @@ $project = $project ?? $order->project;
                     <input class="form-check-input js-approval-from--radio" data-target="js-approval-from--other-form"
                            type="radio" name="approval_from" id="approval_from_other" value="other" checked>
                     <label class="form-check-label" for="approval_from_other">
-                        Send to Department Approver
+                        Send to Authorizer
                     </label>
                 </div>
                 
@@ -47,19 +47,19 @@ $project = $project ?? $order->project;
 
             <div class="js-approval-from--section" id="js-approval-from--other-form">
                 <div class="alert alert-info my-3">
-                    <div class="font-weight-bold mb-2">Send to Department Approver</div>
+                    <div class="font-weight-bold mb-2">Send to Authorizer</div>
                     <div>
                     @if($project->is_travel  || ($order->type == 'reimbursement'))
-                        Specify who will provide the initial department approval. This will be the Director, Associate Dean or Dean depending on your position.
+                        Specify who will provide the initial authorizer approval. This will be the Director, Associate Dean or Dean depending on your position.
                     @else
-                        Specify who will provide the initial department approval. This is typically the Director.
+                        Specify who will provide the initial authorizer approval. This is typically the Director.
                     @endif
 
                     </div>
                 </div>
 
                 @input('person_id')
-                @inputBlock('approver', 'Department Approver')
+                @inputBlock('approver', 'Authorizer')
                 @inputBlock('description', [
                     'label' => 'Approver Note',
                     'rows' => 3,
