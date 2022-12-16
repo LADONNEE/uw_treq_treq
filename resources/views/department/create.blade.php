@@ -50,9 +50,9 @@ $project = $project ?? $order->project;
                     <div class="font-weight-bold mb-2">Send to Authorizer</div>
                     <div>
                     @if($project->is_travel  || ($order->type == 'reimbursement'))
-                        Specify who will provide the initial authorizer approval. This will be the Director, Associate Dean or Dean depending on your position.
+                        Specify who will provide the initial authorizer approval.
                     @else
-                        Specify who will provide the initial authorizer approval. This is typically the Director.
+                        Specify who will provide the initial authorizer approval.
                     @endif
 
                     </div>
