@@ -17,7 +17,7 @@ let OrderRefresh = (function($){
 
     };
     let applyState = function(response) {
-        $('.js-order-refresh--stage').html(response.data.stage);
+        $('.js-order-refresh--stage').html(response.data.stage == 'Department Approval' ? 'Spend Authorizer Approval' : response.data.stage);
 
         // Update On Call if stage other than Department Approval
         //if(response.data.stage != 'Department Approval') {

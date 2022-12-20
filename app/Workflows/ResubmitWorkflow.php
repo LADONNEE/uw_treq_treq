@@ -69,7 +69,7 @@ class ResubmitWorkflow
         ]);
         $task->save();
 
-        TaskLog::write($task, user()->person_id, "order resubmitted for authorizer approval");
+        TaskLog::write($task, user()->person_id, "order resubmitted for spend authorizer approval");
     }
 
     private function makeReviewResubmitTask()

@@ -13,7 +13,7 @@
                     Submitted {{ eDate($order->submitted_at) }}
                     by {{ eFirstLast($order->submitter) }}
                 @else
-                    @bar {{ $order->stage }}
+                    @bar {{ ($order->stage == 'Department Approval')? 'Spend Authorizer Approval' : $order->stage }}
                 @endif
             </div>
         @endif

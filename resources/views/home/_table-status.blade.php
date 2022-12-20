@@ -34,22 +34,22 @@
                     @if($order->tracking)
 
                         <td>
-                            <div>{{ $order->tracking->last_action }}</div>
+                            <div>{{ ($order->tracking->last_action == 'Department Approval')? 'Spend Authorizer Approval' : $order->tracking->last_action }}</div>
                             <div class="text-sm text-muted">{{ $order->tracking->last_actor }} {{ eDate($order->tracking->last_at) }}</div>
                         </td>
                         <td>
-                            <div>{{ $order->tracking->next_action }}</div>
+                            <div>{{ ($order->tracking->next_action == 'Department Approval')? 'Spend Authorizer Approval' : $order->tracking->next_action }}</div>
                             <div class="text-sm text-muted">{{ $order->tracking->next_actors }}</div>
                         </td>
 
                     @else
 
                         <td>
-                            <div>{{ $order->stage }}</div>
+                            <div>{{ ($order->stage == 'Department Approval')? 'Spend Authorizer Approval' : $order->stage }}</div>
                             <div class="text-sm text-muted">{{ eFirstLast($order->submitted_by) }} {{ eDate($order->created_at) }}</div>
                         </td>
                         <td>
-                            <div>{{ $order->stage }}</div>
+                            <div>{{ ($order->stage == 'Department Approval')? 'Spend Authorizer Approval' : $order->stage }}</div>
                         </td>
 
                     @endif

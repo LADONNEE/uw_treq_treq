@@ -124,7 +124,7 @@
                         <div><a href="{{ route('order', $order->id) }}" class="js-link-row">{{ $order->project->title }}</a></div>
                         <div class="text-sm text-muted">{{ $order->typeName() }}</div>
                     </td>
-                    <td>{{ $order->stage }}</td>
+                    <td>{{ ($order->stage == 'Department Approval')? 'Spend Authorizer Approval' : $order->stage }}</td>
                     <td>{{ $budget->budgetno }} <span style="color: #999;">{{ $budget->pca_code }}</span></td>
                     <td>{{ $budget->splitDescription() }}</td>
                 </tr>

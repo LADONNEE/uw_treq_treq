@@ -38,7 +38,7 @@
                             <div>Started new order</div>
                             <div class="text-sm text-muted">{{ $order->created_at->diffForHumans() }}</div>
                         </td>
-                        <td>{{ $order->stage }}</td>
+                        <td>{{ ($order->stage == 'Department Approval')? 'Spend Authorizer Approval' : $order->stage }}</td>
                     </tr>
 
                 @endforeach

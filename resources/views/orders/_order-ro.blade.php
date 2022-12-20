@@ -6,7 +6,7 @@
     @endif
     <div class="col-12">
         <div class="order-status">
-            <span class="badge badge-secondary">{{ $order->stage }}</span>
+            <span class="badge badge-secondary">{{ ($order->stage == 'Department Approval')? 'Spend Authorizer Approval' : $order->stage }}</span>
         </div>
 
         <h2>{{ $order->typeName() }}</h2>

@@ -11,7 +11,7 @@
             <span class="badge badge-secondary js-order-refresh--stage"
                   id="js-order-refresh"
                   data-href="{{ route('order-refresh-api', $order->id) }}">
-                {{ $order->stage }}
+                {{ ($order->stage == 'Department Approval')? 'Spend Authorizer Approval' : $order->stage }}
             </span>
         </div>
 

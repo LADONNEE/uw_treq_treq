@@ -5,7 +5,7 @@
     </div>
     <div class="js-collapse__content">
 
-        <p>Orders that have received authorizer Approval, but are not assigned to a fiscal contact.</p>
+        <p>Orders that have received spend authorizer Approval, but are not assigned to a fiscal contact.</p>
 
         @include('home._table-status')
 

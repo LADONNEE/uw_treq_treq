@@ -6,7 +6,7 @@
         <h1>Assign Fiscal</h1>
 
         <div class="alert alert-info my-3">
-            Specify who will provide the initial authorizer approval. This will be an Associate Dean, Area
+            Specify who will provide the spend authorizer approval. This will be an Associate Dean, Area
             Chair, PI, or program director who has authority over project and the relevant budgets.
         </div>
 

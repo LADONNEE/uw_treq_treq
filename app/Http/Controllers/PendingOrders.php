@@ -15,7 +15,7 @@ class PendingOrders extends Controller
                 $orders = $this->allOrders();
                 break;
             case 'department':
-                $title = 'Pending Authorizer Approval';
+                $title = 'Pending Spend Authorizer Approval';
                 $orders = $this->departmentOrders();
                 break;
             case 'budget':

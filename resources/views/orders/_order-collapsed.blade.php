@@ -1,7 +1,7 @@
 <div class="panel mb-3 js-order-load--target">
     <div class="order-collapsed">
         <div class="order-status">
-            <span class="badge badge-secondary">{{ $order->stage }}</span>
+            <span class="badge badge-secondary">{{ ($order->stage == 'Department Approval')? 'Spend Authorizer Approval' : $order->stage }}</span>
         </div>
         <div class="order-collapsed__type">{{ $order->typeName() }}</div>
         <div class="order-collapsed__submitted">{{ eDate($order->submitted_at) }} by {{ eFirstLast($order->submitted_by) }}</div>
