@@ -14,7 +14,9 @@ class OrderRefreshApi extends Controller
         return response()->json([
             'stage' => $order->stage,
             'assigned' => ($order->assigned_to) ? 'Contact: ' . eFirstLast($order->assignee) : null,
-            'projectButtons' => view('projects._project-buttons', compact('order', 'project'))->render()
+            'projectButtons' => view('projects._project-buttons', compact('order', 'project'))->render(),
+            'oncall' => $order->on_call,
+            'urlApiOnCall' => route('on-call-api', $order->id)
         ]);
     }
 }

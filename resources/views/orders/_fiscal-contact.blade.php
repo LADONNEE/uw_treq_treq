@@ -13,7 +13,7 @@ if (isset($order) && $order->assigned_to) {
         {!! $htmlContact !!}
     </a>
 
-    <on-call url="{{ route('on-call-api', $order->id) }}"></on-call>
+    <on-call url="{{ route('on-call-api', $order->id) }}" class="js-order-refresh--oncall" ></on-call>
 
 @else
 

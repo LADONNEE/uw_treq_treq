@@ -22,6 +22,11 @@ class TaskWorkflow
         foreach ($steps as $step) {
             $step->activate();
             if (!$step->isComplete()) {
+                
+                //Update On Call 
+                if($order->stage == 'Department Approval' && $step->getStage() != 'Department Approval' ){
+                    $order->on_call = true;
+                }
                 $order->stage = $step->getStage();
                 $order->save();
                 return;

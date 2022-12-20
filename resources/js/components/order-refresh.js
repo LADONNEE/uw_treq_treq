@@ -1,4 +1,5 @@
 import axios from "axios";
+import OnCall from "../on-call/OnCall.vue";
 
 let OrderRefresh = (function($){
     let href = null;
@@ -17,6 +18,28 @@ let OrderRefresh = (function($){
     };
     let applyState = function(response) {
         $('.js-order-refresh--stage').html(response.data.stage);
+
+        // Update On Call if stage other than Department Approval
+        //if(response.data.stage != 'Department Approval') {
+           //$('.js-order-refresh--oncall').load(location.href + " .js-order-refresh--oncall"); //.html('<span>Stage Department ready for On Call</span>');
+        //}
+        // $('.js-order-refresh--oncall').val("");
+        
+        // if(response.data.oncall) {
+        //    $('.js-order-refresh--oncall').html(response.data.stage);
+        // }
+        
+        var onCallVue = new Vue({
+            ...OnCall,
+            parent: this,
+            propsData: { 
+            /* pass props here*/
+                url: response.data.urlApiOnCall
+            }
+          }).$mount();
+        
+        $('.js-order-refresh--oncall').html(onCallVue.$el);
+
         if (response.data.assigned) {
             $('.js-order-refresh--assigned').html(response.data.assigned);
         } else {
