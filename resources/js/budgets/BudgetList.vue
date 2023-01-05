@@ -73,7 +73,7 @@
             return {
                 showEditing: false,
                 editing: null,
-                focus: 'budgetno'
+                focus: 'pca_code'
             };
         },
         computed: {
@@ -101,7 +101,7 @@
         },
         methods: {
             addBudget() {
-                this.focus = 'budgetno';
+                this.focus = 'pca_code';
                 this.editing = this.store.new();
                 this.showEditing = true;
             },

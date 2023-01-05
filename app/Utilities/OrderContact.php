@@ -26,6 +26,16 @@ class OrderContact
     public static function byOrder($order_id)
     {
         $biennium = setting('current-biennium');
+
+        $resultsProjectCodes = DB::table('budgets AS b')
+            ->select(['pc.authorizer_person_id', 'pc.fiscal_person_id'])
+            ->join( Config::get('app.database_shared') . '.project_codes AS pc', 'b.project_code_id', '=', 'pc.id')
+            ->where('b.order_id', $order_id)
+            ->orderBy('b.split_type', 'desc') // R => Remainder, P => Percentage, A => Dollar Amount
+            ->orderBy('b.split', 'desc')
+            ->orderBy('b.created_at', 'desc')
+            ->get();
+
         $results = DB::table('budgets AS b')
             ->select(['bc.fiscal_person_id', 'bc.business_person_id'])
             ->join( Config::get('app.database_shared') . '.budgets AS bc', function($join) use($biennium) {
@@ -39,6 +49,12 @@ class OrderContact
             ->get();
 
         $out = [];
+
+        
+        foreach ($resultsProjectCodes as $row) {
+            $out[] = new self($row->fiscal_person_id, $row->authorizer_person_id);
+        }
+
         foreach ($results as $row) {
             $out[] = new self($row->fiscal_person_id, $row->business_person_id);
         }

@@ -3,7 +3,21 @@
         <div class="row">
             <div class="col-md-auto">
                 <div class="form-group">
-                    <label>Budget Number</label>
+                    <label>PCA/Workday Description</label>
+                    <!-- <input type="text" class="form-control" style="width:12rem;"
+                           v-model="pca_code"
+                           @keydown="keyHandler($event)"
+                           ref="pca_code"> -->
+                    <project-code-suggest :focused="focus === 'pca_code'"
+                                    v-model="pca_code"
+                                    ref="pca_code"
+                                    @selected="(option) => projectCodeSelected(option)"
+                    ></project-code-suggest>
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <div class="form-group">
+                    <label>Budget Number (optional)</label>
                     <budget-suggest :focused="focus === 'budgetno'"
                                     v-model="budgetno"
                                     @selected="(option) => budgetSelected(option)"
@@ -12,20 +26,11 @@
             </div>
             <div class="col-md-auto">
                 <div class="form-group">
-                    <label>Name</label>
+                    <label>Budget Name (optional)</label>
                     <input type="text" class="form-control" style="width:20rem;" placeholder="Name of Budget"
                            v-model="name"
                            @keydown="keyHandler($event)"
                            ref="name">
-                </div>
-            </div>
-            <div class="col-md-auto">
-                <div class="form-group">
-                    <label>PCA/TOP Code (Optional)</label>
-                    <input type="text" class="form-control" style="width:12rem;"
-                           v-model="pca_code"
-                           @keydown="keyHandler($event)"
-                           ref="pca_code">
                 </div>
             </div>
             <div class="col-md-auto">
@@ -69,6 +74,7 @@
 <script>
     import BudgetHelp from './BudgetHelp';
     import BudgetSuggest from '../budgets/BudgetSuggest';
+    import ProjectCodeSuggest from '../budgets/ProjectCodeSuggest';
     import SpotlightBox from '../components/SpotlightBox';
     export default {
         props: ['budget', 'focus'],
@@ -77,6 +83,7 @@
                 budgetno: '',
                 name: '',
                 pca_code: '',
+                project_code_id: null,
                 split_type: '',
                 split: '',
                 isDeletable: false,
@@ -88,6 +95,7 @@
             this.budgetno = this.budget.budgetno;
             this.name = this.budget.name;
             this.pca_code = this.budget.pca_code;
+            this.project_code_id = this.budget.project_code_id;
             this.split_type= this.budget.split_type;
             this.split = this.budget.split;
             this.isDeletable = !! this.budget.id;
@@ -106,6 +114,17 @@
                 }
                 this.budgetno = option.budgetno;
                 this.name = option.name;
+                this.$refs.split.focus();
+                this.$refs.split.select();
+                this.validate();
+            },
+            projectCodeSelected(option) {
+                if (!option) {
+                    return;
+                }
+                this.pca_code = option.workday_description; //pca_code
+                this.project_code_id = option.id;
+                //this.name = option.name;
                 this.$refs.split.focus();
                 this.$refs.split.select();
                 this.validate();
@@ -136,6 +155,7 @@
                     budgetno: this.budgetno,
                     name: this.name,
                     pca_code: this.pca_code,
+                    project_code_id: this.project_code_id,
                     split_type: this.split_type,
                     split: this.split,
                     key: this.budget.key
@@ -152,9 +172,13 @@
             validate() {
                 this.isInvalid = false;
                 this.validMessage = '';
-                if (!this.budgetno || !this.budgetno.match(/^[0-9][0-9]\-?[0-9]{4}$/)) {
+                // if (!this.budgetno || !this.budgetno.match(/^[0-9][0-9]\-?[0-9]{4}$/)) {
+                //     this.isInvalid = true;
+                //     this.validMessage = 'Budget number (00-0000) is required.';
+                // }
+                if (!this.pca_code) {
                     this.isInvalid = true;
-                    this.validMessage = 'Budget number (00-0000) is required.';
+                    this.validMessage = 'PCA/Workday code or description is required.';
                 }
             }
         },
@@ -175,6 +199,7 @@
         components: {
             BudgetHelp,
             BudgetSuggest,
+            ProjectCodeSuggest,
             SpotlightBox
         }
     }

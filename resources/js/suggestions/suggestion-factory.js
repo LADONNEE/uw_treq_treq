@@ -2,10 +2,12 @@ let suggestionsInstances = {};
 
 import makeBudgets from './budget-suggestions';
 import makePerson from './person-suggestions';
+import makeProjectCodes from './project-code-suggestions';
 
 let suggestionsFactories = {
     budgets: makeBudgets,
     person: makePerson,
+    project_codes: makeProjectCodes,
 };
 
 let suggestionsCreate = function(name) {

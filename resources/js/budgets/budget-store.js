@@ -22,6 +22,7 @@ class BudgetStore {
             id: null,
             budgetno: '',
             pca_code: '',
+            project_code_id: null,
             name: '',
             split_type: 'R',
             split: '',
@@ -43,6 +44,7 @@ class BudgetStore {
             budgetno: budget.budgetno || '00-0000',
             name: budget.name || 'New Item',
             pca_code: budget.pca_code || '',
+            project_code_id: budget.project_code_id || null,
             split_type: budget.split_type || 'R',
             split: scrubFloat(budget.split || ''),
             action: 'save',
@@ -59,6 +61,7 @@ class BudgetStore {
             if (this.budgets[i].key === key) {
                 this.budgets[i].budgetno = budget.budgetno || '';
                 this.budgets[i].pca_code = budget.pca_code || '';
+                this.budgets[i].project_code_id = budget.project_code_id || '';
                 this.budgets[i].name = budget.name || 'New Item';
                 this.budgets[i].split_type = budget.split_type || 'R';
                 this.budgets[i].split = scrubFloat(budget.split || '');
