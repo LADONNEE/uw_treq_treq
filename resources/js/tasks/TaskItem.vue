@@ -1,11 +1,11 @@
 <template>
     <collapsing-container
         :expanded="expanded"
-        :collapsed-text="(task.name == 'Department Approval') ? 'Spend Authorizer Approval' : task.name"
+        :collapsed-text="task.name.replace('Department Approval', 'Spend Authorizer Approval')"
         :response-type="task.responseType"
         @expand="() => this.expanded = true"
     >
-        <div class="task__name pointer" @click="expanded = false">{{ (task.name == 'Department Approval') ? 'Spend Authorizer Approval' : task.name }}</div>
+        <div class="task__name pointer" @click="expanded = false">{{ task.name.replace('Department Approval', 'Spend Authorizer Approval') }}</div>
         <section class="request">
             <div class="text-sm-bold">{{ task.createdAt }}</div>
             <div>{{ task.taskSummary }}</div>

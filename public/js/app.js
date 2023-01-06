@@ -53434,10 +53434,10 @@ var render = function() {
     {
       attrs: {
         expanded: _vm.expanded,
-        "collapsed-text":
-          _vm.task.name == "Department Approval"
-            ? "Spend Authorizer Approval"
-            : _vm.task.name,
+        "collapsed-text": _vm.task.name.replace(
+          "Department Approval",
+          "Spend Authorizer Approval"
+        ),
         "response-type": _vm.task.responseType
       },
       on: {
@@ -53460,9 +53460,10 @@ var render = function() {
         [
           _vm._v(
             _vm._s(
-              _vm.task.name == "Department Approval"
-                ? "Spend Authorizer Approval"
-                : _vm.task.name
+              _vm.task.name.replace(
+                "Department Approval",
+                "Spend Authorizer Approval"
+              )
             )
           )
         ]

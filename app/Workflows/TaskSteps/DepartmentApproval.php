@@ -18,10 +18,17 @@ class DepartmentApproval extends TaskStep
 
     public function isComplete(): bool
     {
-        return (bool) Task::where('order_id', $this->order->id)
+        $countTasksApproved = Task::where('order_id', $this->order->id)
             ->where('type', Task::TYPE_DEPARTMENT)
             ->where('response', Task::RESPONSE_APPROVED)
             ->count();
+
+        $countTasks = Task::where('order_id', $this->order->id)
+            ->where('type', Task::TYPE_DEPARTMENT)
+            ->count();
+
+        return ($countTasksApproved > 0 && $countTasksApproved == $countTasks);
+        
     }
 
     private function hasDepartmentApprovalRequest()
