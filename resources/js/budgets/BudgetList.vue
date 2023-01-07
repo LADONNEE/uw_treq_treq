@@ -34,7 +34,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="4" class="contains-button">
+                <td colspan="5" class="contains-button">
                     <button class="btn btn-text" @click.prevent="addBudget">&plus; Budget</button>
                 </td>
             </tr>
