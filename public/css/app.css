@@ -1772,7 +1772,7 @@ td.numeric {
 .budget-block {
   display: grid;
   grid-template-columns: 2fr 3fr 1fr;
-  grid-template-areas: "budget pca split" "name name name";
+  grid-template-areas: "budget name name" "pca pca split" "opt opt opt";
   padding: 1rem;
   border-top: 1px solid #ddd;
 }
@@ -1800,6 +1800,11 @@ td.numeric {
 .budget-block__split {
   grid-area: split;
   text-align: right;
+}
+
+.budget-block__opt {
+  grid-area: opt;
+  color: #575757;
 }
 
 .budget-list .deleting {

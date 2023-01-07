@@ -80,6 +80,7 @@ class AddOrderToProject extends Controller
                     'budgetno' => $budget->budgetno,
                     'pca_code' => $budget->pca_code,
                     'project_code_id' => $budget->project_code_id,
+                    'opt_code' => $budget->opt_code,
                     'name' => $budget->name,
                     'split_type' => $budget->split_type,
                     'split' => $budget->split,

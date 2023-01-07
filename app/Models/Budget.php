@@ -9,6 +9,7 @@ use Carbon\Carbon;
  * @property string $budgetno
  * @property string $pca_code
  * @property integer $project_code_id
+ * @property string $opt_code
  * @property string $name
  * @property string $split_type
  * @property float $split
@@ -32,6 +33,7 @@ class Budget extends Model
         'budgetno',
         'pca_code',
         'project_code_id',
+        'opt_code',
         'name',
         'split_type',
         'split',

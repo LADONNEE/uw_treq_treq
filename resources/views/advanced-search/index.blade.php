@@ -56,7 +56,7 @@
                         ])
                     </div>
 
-                    @inputBlock('pca_code', 'PCA/TOP Code')
+                    @inputBlock('pca_code', 'PCA/Workday Code')
                     @inputBlock('items')
                     @inputBlock('reference_number', [
                         'label' => 'Reference Number',

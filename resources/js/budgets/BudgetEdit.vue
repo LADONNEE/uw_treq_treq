@@ -17,6 +17,16 @@
             </div>
             <div class="col-md-auto">
                 <div class="form-group">
+                    <label>OPT</label>
+                        <input type="text" class="form-control" style="width:5rem;"
+                            maxlength="5"
+                           v-model="opt_code"
+                           @keydown="keyHandler($event)"
+                           ref="opt_code">
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <div class="form-group">
                     <label>Budget Number (optional)</label>
                     <budget-suggest :focused="focus === 'budgetno'"
                                     v-model="budgetno"
@@ -27,7 +37,7 @@
             <div class="col-md-auto">
                 <div class="form-group">
                     <label>Budget Name (optional)</label>
-                    <input type="text" class="form-control" style="width:20rem;" placeholder="Name of Budget"
+                    <input type="text" class="form-control" style="width:14rem;" placeholder="Name of Budget"
                            v-model="name"
                            @keydown="keyHandler($event)"
                            ref="name">
@@ -83,6 +93,7 @@
                 budgetno: '',
                 name: '',
                 pca_code: '',
+                opt_code: '',
                 project_code_id: null,
                 split_type: '',
                 split: '',
@@ -95,6 +106,7 @@
             this.budgetno = this.budget.budgetno;
             this.name = this.budget.name;
             this.pca_code = this.budget.pca_code;
+            this.opt_code = this.budget.opt_code;
             this.project_code_id = this.budget.project_code_id;
             this.split_type= this.budget.split_type;
             this.split = this.budget.split;
@@ -122,11 +134,11 @@
                 if (!option) {
                     return;
                 }
-                this.pca_code = option.workday_description; //pca_code
+                this.pca_code = 'Pca code: ['.concat((option.code === '' ? 'no code' : option.code),'] ', option.description,' ___ WORKDAY: [',option.workday_code,'] ', option.workday_description) ; //pca_code
                 this.project_code_id = option.id;
                 //this.name = option.name;
-                this.$refs.split.focus();
-                this.$refs.split.select();
+                this.$refs.opt_code.focus();
+                this.$refs.opt_code.select();
                 this.validate();
             },
             keyHandler(event) {
@@ -155,6 +167,7 @@
                     budgetno: this.budgetno,
                     name: this.name,
                     pca_code: this.pca_code,
+                    opt_code: this.opt_code,
                     project_code_id: this.project_code_id,
                     split_type: this.split_type,
                     split: this.split,
@@ -179,6 +192,10 @@
                 if (!this.pca_code) {
                     this.isInvalid = true;
                     this.validMessage = 'PCA/Workday code or description is required.';
+                }
+                if (this.opt_code.length > 5) {
+                    this.isInvalid = true;
+                    this.validMessage = 'OPT code should be 5 characters or less';
                 }
             }
         },

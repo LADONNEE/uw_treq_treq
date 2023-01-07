@@ -2,8 +2,9 @@
   display: grid;
   grid-template-columns: 2fr 3fr 1fr;
   grid-template-areas:
-    "budget pca split"
-    "name name name";
+    "budget name name"
+    "pca pca split"
+    "opt opt opt";
   padding: 1rem;
   border-top: 1px solid #ddd;
 }
@@ -31,4 +32,9 @@
 .budget-block__split {
   grid-area: split;
   text-align: right;
+}
+
+.budget-block__opt {
+  grid-area: opt;
+  color: #575757;
 }

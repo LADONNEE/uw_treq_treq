@@ -5038,6 +5038,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -5049,6 +5059,7 @@ __webpack_require__.r(__webpack_exports__);
       budgetno: '',
       name: '',
       pca_code: '',
+      opt_code: '',
       project_code_id: null,
       split_type: '',
       split: '',
@@ -5061,6 +5072,7 @@ __webpack_require__.r(__webpack_exports__);
     this.budgetno = this.budget.budgetno;
     this.name = this.budget.name;
     this.pca_code = this.budget.pca_code;
+    this.opt_code = this.budget.opt_code;
     this.project_code_id = this.budget.project_code_id;
     this.split_type = this.budget.split_type;
     this.split = this.budget.split;
@@ -5091,12 +5103,12 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      this.pca_code = option.workday_description; //pca_code
+      this.pca_code = 'Pca code: ['.concat(option.code === '' ? 'no code' : option.code, '] ', option.description, ' ___ WORKDAY: [', option.workday_code, '] ', option.workday_description); //pca_code
 
       this.project_code_id = option.id; //this.name = option.name;
 
-      this.$refs.split.focus();
-      this.$refs.split.select();
+      this.$refs.opt_code.focus();
+      this.$refs.opt_code.select();
       this.validate();
     },
     keyHandler: function keyHandler(event) {
@@ -5128,6 +5140,7 @@ __webpack_require__.r(__webpack_exports__);
         budgetno: this.budgetno,
         name: this.name,
         pca_code: this.pca_code,
+        opt_code: this.opt_code,
         project_code_id: this.project_code_id,
         split_type: this.split_type,
         split: this.split,
@@ -5152,6 +5165,11 @@ __webpack_require__.r(__webpack_exports__);
       if (!this.pca_code) {
         this.isInvalid = true;
         this.validMessage = 'PCA/Workday code or description is required.';
+      }
+
+      if (this.opt_code.length > 5) {
+        this.isInvalid = true;
+        this.validMessage = 'OPT code should be 5 characters or less';
       }
     }
   },
@@ -5194,6 +5212,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BudgetEdit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BudgetEdit */ "./resources/js/budgets/BudgetEdit.vue");
 /* harmony import */ var _utilities_dollar_format__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utilities/dollar-format */ "./resources/js/utilities/dollar-format.js");
 /* harmony import */ var _utilities_percent_format__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utilities/percent-format */ "./resources/js/utilities/percent-format.js");
+//
+//
+//
+//
 //
 //
 //
@@ -8183,6 +8205,7 @@ var BudgetStore = /*#__PURE__*/function () {
         budgetno: '',
         pca_code: '',
         project_code_id: null,
+        opt_code: '',
         name: '',
         split_type: 'R',
         split: '',
@@ -8207,6 +8230,7 @@ var BudgetStore = /*#__PURE__*/function () {
         name: budget.name || 'New Item',
         pca_code: budget.pca_code || '',
         project_code_id: budget.project_code_id || null,
+        opt_code: budget.opt_code || '',
         split_type: budget.split_type || 'R',
         split: (0,_utilities_scrub_float__WEBPACK_IMPORTED_MODULE_0__.default)(budget.split || ''),
         action: 'save',
@@ -8227,6 +8251,7 @@ var BudgetStore = /*#__PURE__*/function () {
           this.budgets[i].budgetno = budget.budgetno || '';
           this.budgets[i].pca_code = budget.pca_code || '';
           this.budgets[i].project_code_id = budget.project_code_id || '';
+          this.budgets[i].opt_code = budget.opt_code || '';
           this.budgets[i].name = budget.name || 'New Item';
           this.budgets[i].split_type = budget.split_type || 'R';
           this.budgets[i].split = (0,_utilities_scrub_float__WEBPACK_IMPORTED_MODULE_0__.default)(budget.split || '');
@@ -49980,6 +50005,39 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-auto" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [_vm._v("OPT")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.opt_code,
+                expression: "opt_code"
+              }
+            ],
+            ref: "opt_code",
+            staticClass: "form-control",
+            staticStyle: { width: "5rem" },
+            attrs: { type: "text", maxlength: "5" },
+            domProps: { value: _vm.opt_code },
+            on: {
+              keydown: function($event) {
+                return _vm.keyHandler($event)
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.opt_code = $event.target.value
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-auto" }, [
         _c(
           "div",
           { staticClass: "form-group" },
@@ -50021,7 +50079,7 @@ var render = function() {
             ],
             ref: "name",
             staticClass: "form-control",
-            staticStyle: { width: "20rem" },
+            staticStyle: { width: "14rem" },
             attrs: { type: "text", placeholder: "Name of Budget" },
             domProps: { value: _vm.name },
             on: {
@@ -50353,6 +50411,25 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "td",
+                        { staticClass: "editable" },
+                        [
+                          _c(
+                            "button-block",
+                            {
+                              on: {
+                                click: function($event) {
+                                  return _vm.editMe(budget, "opt_code")
+                                }
+                              }
+                            },
+                            [_vm._v(_vm._s(budget.opt_code))]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
                         { staticClass: "editable text-right pr-3" },
                         [
                           _c(
@@ -50464,7 +50541,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Name")]),
         _vm._v(" "),
-        _c("th", [_vm._v("PCA/TOP Code")]),
+        _c("th", [_vm._v("PCA/Workday Code")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("OPT Code")]),
         _vm._v(" "),
         _c(
           "th",

@@ -47,7 +47,8 @@ $project = $project ?? $order->project;
             <tr>
                 <th>Budget</th>
                 <th>Name</th>
-                <th>PCA/TOP Code</th>
+                <th>PCA/Workday Code</th>
+                <th>OPT Code</th>
                 <th class="text-right">Split</th>
             </tr>
             </thead>
@@ -59,6 +60,7 @@ $project = $project ?? $order->project;
                     <td>{{ $budget->budgetno }}</td>
                     <td>{{ $budget->name }}</td>
                     <td>{{ $budget->pca_code }}</td>
+                    <td>{{ $budget->opt_code }}</td>
                     <td class="text-right">{{ $budget->splitDescription() }}</td>
                 </tr>
 

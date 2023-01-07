@@ -10,6 +10,7 @@
             <div class="budget-block__budgetno">{{ $budget->budgetno }}</div>
             <div class="budget-block__name">{{ $budget->name }}</div>
             <div class="budget-block__pca">{{ $budget->pca_code }}</div>
+            <div class="budget-block__opt">OPT: {{ $budget->opt_code ?? 'no opt' }}</div>
             <div class="budget-block__split">{{ $budget->splitDescription() }}</div>
         </div>
 

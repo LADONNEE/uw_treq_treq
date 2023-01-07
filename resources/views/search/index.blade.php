@@ -125,7 +125,7 @@
                         <div class="text-sm text-muted">{{ $order->typeName() }}</div>
                     </td>
                     <td>{{ ($order->stage == 'Department Approval')? 'Spend Authorizer Approval' : $order->stage }}</td>
-                    <td>{{ $budget->budgetno }} <span style="color: #999;">{{ $budget->pca_code }}</span></td>
+                    <td>{{ $budget->budgetno }} <span style="color: #999;">{{ $budget->pca_code }}</span> opt: {{ $budget->opt_code }}</td>
                     <td>{{ $budget->splitDescription() }}</td>
                 </tr>
 

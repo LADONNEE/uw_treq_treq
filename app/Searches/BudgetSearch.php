@@ -43,7 +43,6 @@ class BudgetSearch
                     $query->orWhere($this->budgets_table . '.budgetno', 'like', '%-' . $word);
                 } else {
                     $query->orWhere($this->budgets_table . '.name', 'like', "%{$word}%");
-                    $query->orWhere($this->budgets_table . '.pca_code', 'like', "%{$word}%");
                 }
             });
         }
