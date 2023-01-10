@@ -27,7 +27,7 @@
             </div>
             <div class="col-md-auto">
                 <div class="form-group">
-                    <label>Budget Number (optional)</label>
+                    <label>Budget Number</label>
                     <budget-suggest :focused="focus === 'budgetno'"
                                     v-model="budgetno"
                                     @selected="(option) => budgetSelected(option)"
@@ -36,7 +36,7 @@
             </div>
             <div class="col-md-auto">
                 <div class="form-group">
-                    <label>Budget Name (optional)</label>
+                    <label>Budget Name</label>
                     <input type="text" class="form-control" style="width:14rem;" placeholder="Name of Budget"
                            v-model="name"
                            @keydown="keyHandler($event)"

@@ -50042,7 +50042,7 @@ var render = function() {
           "div",
           { staticClass: "form-group" },
           [
-            _c("label", [_vm._v("Budget Number (optional)")]),
+            _c("label", [_vm._v("Budget Number")]),
             _vm._v(" "),
             _c("budget-suggest", {
               attrs: { focused: _vm.focus === "budgetno" },
@@ -50066,7 +50066,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "col-md-auto" }, [
         _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v("Budget Name (optional)")]),
+          _c("label", [_vm._v("Budget Name")]),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -50462,7 +50462,7 @@ var render = function() {
                 _c("tr", [
                   _c(
                     "td",
-                    { staticClass: "contains-button", attrs: { colspan: "4" } },
+                    { staticClass: "contains-button", attrs: { colspan: "5" } },
                     [
                       _c(
                         "button",
@@ -50541,7 +50541,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Name")]),
         _vm._v(" "),
-        _c("th", [_vm._v("PCA/Workday Code")]),
+        _c("th", [_vm._v("PCA/Workday code/Fund type")]),
         _vm._v(" "),
         _c("th", [_vm._v("OPT Code")]),
         _vm._v(" "),

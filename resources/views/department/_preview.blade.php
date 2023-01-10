@@ -47,7 +47,7 @@ $project = $project ?? $order->project;
             <tr>
                 <th>Budget</th>
                 <th>Name</th>
-                <th>PCA/Workday Code</th>
+                <th>PCA/Workday code/Fund type</th>
                 <th>OPT Code</th>
                 <th class="text-right">Split</th>
             </tr>
