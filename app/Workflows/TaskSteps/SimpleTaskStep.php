@@ -19,6 +19,11 @@ class SimpleTaskStep extends TaskStep
     public function activate(): void
     {
         if (!$this->repo->firstTaskByType($this->order->id, $this->taskType)) {
+
+            // Put order on Call for Ariba and Place Order steps
+            $this->order->on_call = true;
+            $this->order->save();
+
             $this->createTask();
         }
     }

@@ -3,9 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
 
-class AlterPcaCodeLengthInBudgetsTable extends Migration
+class AlterFieldTypeActionsInTrackingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +13,7 @@ class AlterPcaCodeLengthInBudgetsTable extends Migration
      */
     public function up()
     {
-            //
-            DB::statement('ALTER TABLE `budgets` MODIFY `pca_code` TEXT;');
+        DB::statement('ALTER TABLE `tracking` MODIFY `last_action` TEXT, MODIFY `next_action` TEXT;');
         
     }
 
@@ -26,9 +24,8 @@ class AlterPcaCodeLengthInBudgetsTable extends Migration
      */
     public function down()
     {
-        Schema::table('budgets', function (Blueprint $table) {
+        Schema::table('tracking', function (Blueprint $table) {
             //
-            //$table->string('pca_code',50)->nullable()->change();
         });
     }
 }
