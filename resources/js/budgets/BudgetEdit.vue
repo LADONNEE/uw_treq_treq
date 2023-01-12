@@ -143,7 +143,7 @@
             },
             keyHandler(event) {
                 if (event.key === 'Enter' || event.keyCode === 13) {
-                    this.saveBudget();
+                    //this.saveBudget();
                 }
                 if (event.key === 'Escape' || event.keyCode === 27) {
                     this.cancel();

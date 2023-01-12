@@ -28,6 +28,7 @@ class BudgetsApi
         foreach ($this->order->budgets as $budget) {
             $out[] = [
                 'id' => $budget->id,
+                'order_id' => $this->order->id,
                 'budgetno' => $budget->budgetno,
                 'pca_code' => $budget->pca_code,
                 'project_code_id' => $budget->project_code_id,

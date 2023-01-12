@@ -61,6 +61,12 @@ class BudgetStore {
         }
         for (let i = 0; i < this.budgets.length; ++i) {
             if (this.budgets[i].key === key) {
+                
+                if(this.budgets[i].pca_code != budget.pca_code) {
+                    //Update Task for correct PCA Code Authorizer
+                    this.updateRelatedTask(this.budgets[i].order_id, this.budgets[i].pca_code, budget);
+                }
+
                 this.budgets[i].budgetno = budget.budgetno || '';
                 this.budgets[i].pca_code = budget.pca_code || '';
                 this.budgets[i].project_code_id = budget.project_code_id || '';
@@ -72,6 +78,24 @@ class BudgetStore {
                 break;
             }
         }
+    }
+
+
+    updateRelatedTask(budgetOrderId, oldBudgetPcaCode, newBudget) {
+        
+        let that = this;
+        axios({
+            method: 'post',
+            url: "/treq/api/tasks/" + budgetOrderId, //this.url,
+            data: { 'action': 'budget-update', 'old_budget_pcacode': oldBudgetPcaCode , 'updated_budget': newBudget }
+        })
+        .catch(function(error) {
+                that.apiError(error);
+            });
+
+        // .then(function(response) {
+        //     that.refresh();
+        // })
     }
 
     delete(key) {
@@ -112,6 +136,9 @@ class BudgetStore {
         console.log(error.response);
         console.log(error);
     }
+
+
+
 }
 
 export default BudgetStore;

@@ -5112,8 +5112,7 @@ __webpack_require__.r(__webpack_exports__);
       this.validate();
     },
     keyHandler: function keyHandler(event) {
-      if (event.key === 'Enter' || event.keyCode === 13) {
-        this.saveBudget();
+      if (event.key === 'Enter' || event.keyCode === 13) {//this.saveBudget();
       }
 
       if (event.key === 'Escape' || event.keyCode === 27) {
@@ -8248,6 +8247,11 @@ var BudgetStore = /*#__PURE__*/function () {
 
       for (var i = 0; i < this.budgets.length; ++i) {
         if (this.budgets[i].key === key) {
+          if (this.budgets[i].pca_code != budget.pca_code) {
+            //Update Task for correct PCA Code Authorizer
+            this.updateRelatedTask(this.budgets[i].order_id, this.budgets[i].pca_code, budget);
+          }
+
           this.budgets[i].budgetno = budget.budgetno || '';
           this.budgets[i].pca_code = budget.pca_code || '';
           this.budgets[i].project_code_id = budget.project_code_id || '';
@@ -8259,6 +8263,25 @@ var BudgetStore = /*#__PURE__*/function () {
           break;
         }
       }
+    }
+  }, {
+    key: "updateRelatedTask",
+    value: function updateRelatedTask(budgetOrderId, oldBudgetPcaCode, newBudget) {
+      var that = this;
+      axios__WEBPACK_IMPORTED_MODULE_1___default()({
+        method: 'post',
+        url: "/treq/api/tasks/" + budgetOrderId,
+        //this.url,
+        data: {
+          'action': 'budget-update',
+          'old_budget_pcacode': oldBudgetPcaCode,
+          'updated_budget': newBudget
+        }
+      })["catch"](function (error) {
+        that.apiError(error);
+      }); // .then(function(response) {
+      //     that.refresh();
+      // })
     }
   }, {
     key: "delete",
