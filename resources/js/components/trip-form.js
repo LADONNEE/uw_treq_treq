@@ -15,6 +15,9 @@ let treqTripForm = function(context) {
         personalTimeDates: function() {
             return $('#js-personal-time-dates');
         },
+        personalTimeDatesInput: function() {
+            return $('input[name="personal_time_dates"]');
+        },
         honorarium: function() {
             return $('#js-honorarium');
         },
@@ -36,8 +39,10 @@ let treqTripForm = function(context) {
 
     let personalTimeChanged = function() {
         if (jq.personalTimeChecked()) {
+            jq.personalTimeDatesInput().prop('required',true);
             jq.personalTimeDates().show();
         } else {
+            jq.personalTimeDatesInput().prop('required',false);
             jq.personalTimeDates().hide();
         }
     };

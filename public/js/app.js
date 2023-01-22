@@ -9358,6 +9358,9 @@ var treqTripForm = function treqTripForm(context) {
     personalTimeDates: function personalTimeDates() {
       return $('#js-personal-time-dates');
     },
+    personalTimeDatesInput: function personalTimeDatesInput() {
+      return $('input[name="personal_time_dates"]');
+    },
     honorarium: function honorarium() {
       return $('#js-honorarium');
     },
@@ -9379,8 +9382,10 @@ var treqTripForm = function treqTripForm(context) {
 
   var personalTimeChanged = function personalTimeChanged() {
     if (jq.personalTimeChecked()) {
+      jq.personalTimeDatesInput().prop('required', true);
       jq.personalTimeDates().show();
     } else {
+      jq.personalTimeDatesInput().prop('required', false);
       jq.personalTimeDates().hide();
     }
   };

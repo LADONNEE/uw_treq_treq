@@ -62,6 +62,7 @@
                                         <option value="{{$state->name}}" {{ $state->name == $selectedstate ? 'selected' : ''  }} >{{$state->name}}</option>
                                     @endforeach
                 </select>
+
             </div>
     </div>
 
@@ -160,7 +161,8 @@
         }else{
     document.getElementById('disclaimer').style.visibility = 'hidden';
     }
-    return false;}
+    return true;}
+
 
     </script>
 @stop
