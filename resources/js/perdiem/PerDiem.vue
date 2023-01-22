@@ -41,12 +41,17 @@
                     <input type="text" id="per-diem-meals_pd" name="meals_pd" class="form-control" v-model="mealsPd">
                 </input-prefix>
 
-                <label class="per-diem__label mt-3">Meals Total</label>
+                <label class="per-diem__label mt-3">Meals Estimated Total</label>
                 <div class="per-diem__calculated">{{ mealsTotal }}</div>
-                <input type="hidden" name="meals" v-model="mealsTotal">
                 <div v-if="mealsTotal" class="per-diem__help">
                     ${{ mealsPd }} &times; {{ days }} days
                 </div>
+
+                <label for="per-diem-meals" class="per-diem__label mt-3">Meals Actual Total</label>
+                <input-prefix prefix="$">
+                    <input type="text" id="per-diem-meals" name="meals" class="form-control" v-model="meals">
+                </input-prefix>
+
             </div>
         </div>
     </div>
@@ -65,7 +70,8 @@
                 nights: null,
                 mealsPd: null,
                 lodgingPd: null,
-                lodging: null
+                lodging: null,
+                meals:null
             };
         },
         watch: {
@@ -76,6 +82,7 @@
                     this.mealsPd = this.store.mealsPd;
                     this.lodgingPd = this.store.lodgingPd;
                     this.lodging = this.store.lodging;
+                    this.meals = this.store.meals ?? this.mealsInit;
                 }
             }
         },
@@ -88,6 +95,12 @@
                     return dollarFormat(this.days * this.mealsPd);
                 }
                 return '';
+            },
+            mealsInit() {
+                if (this.days && this.mealsPd) {
+                    return (this.days * this.mealsPd);
+                }
+                return 0;
             },
             lodgingLimit() {
                 if (this.nights && this.lodgingPd) {

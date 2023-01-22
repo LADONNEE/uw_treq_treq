@@ -5103,7 +5103,7 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      this.pca_code = 'Pca code: ['.concat(option.code === '' ? 'no code' : option.code, '] ', option.description, ' ___ WORKDAY: [', option.workday_code, '] ', option.workday_description); //pca_code
+      this.pca_code = 'PCA code: ['.concat(option.code === '' ? 'no code' : option.code, '] ', option.description, ' ___ WORKDAY: [', option.workday_code, '] ', option.workday_description); //pca_code
 
       this.project_code_id = option.id; //this.name = option.name;
 
@@ -7042,6 +7042,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -7054,17 +7059,21 @@ __webpack_require__.r(__webpack_exports__);
       nights: null,
       mealsPd: null,
       lodgingPd: null,
-      lodging: null
+      lodging: null,
+      meals: null
     };
   },
   watch: {
     loaded: function loaded(val) {
       if (val) {
+        var _this$store$meals;
+
         this.days = this.store.days;
         this.nights = this.store.nights;
         this.mealsPd = this.store.mealsPd;
         this.lodgingPd = this.store.lodgingPd;
         this.lodging = this.store.lodging;
+        this.meals = (_this$store$meals = this.store.meals) !== null && _this$store$meals !== void 0 ? _this$store$meals : this.mealsInit;
       }
     }
   },
@@ -7078,6 +7087,13 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return '';
+    },
+    mealsInit: function mealsInit() {
+      if (this.days && this.mealsPd) {
+        return this.days * this.mealsPd;
+      }
+
+      return 0;
     },
     lodgingLimit: function lodgingLimit() {
       if (this.nights && this.lodgingPd) {
@@ -9988,6 +10004,7 @@ var PerdiemStore = /*#__PURE__*/function () {
     this.mealsPd = null;
     this.lodgingPd = null;
     this.lodging = null;
+    this.meals = null;
     this.loaded = false;
     this.refresh();
   }
@@ -10013,6 +10030,7 @@ var PerdiemStore = /*#__PURE__*/function () {
       this.mealsPd = response.data.meals_pd;
       this.lodgingPd = response.data.lodging_pd;
       this.lodging = response.data.lodging;
+      this.meals = response.data.meals;
       this.loaded = true;
     }
   }, {
@@ -52788,33 +52806,12 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("label", { staticClass: "per-diem__label mt-3" }, [
-              _vm._v("Meals Total")
+              _vm._v("Meals Estimated Total")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "per-diem__calculated" }, [
               _vm._v(_vm._s(_vm.mealsTotal))
             ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.mealsTotal,
-                  expression: "mealsTotal"
-                }
-              ],
-              attrs: { type: "hidden", name: "meals" },
-              domProps: { value: _vm.mealsTotal },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.mealsTotal = $event.target.value
-                }
-              }
-            }),
             _vm._v(" "),
             _vm.mealsTotal
               ? _c("div", { staticClass: "per-diem__help" }, [
@@ -52826,7 +52823,40 @@ var render = function() {
                       " days\n            "
                   )
                 ])
-              : _vm._e()
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "per-diem__label mt-3",
+                attrs: { for: "per-diem-meals" }
+              },
+              [_vm._v("Meals Actual Total")]
+            ),
+            _vm._v(" "),
+            _c("input-prefix", { attrs: { prefix: "$" } }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.meals,
+                    expression: "meals"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", id: "per-diem-meals", name: "meals" },
+                domProps: { value: _vm.meals },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.meals = $event.target.value
+                  }
+                }
+              })
+            ])
           ],
           1
         )

@@ -134,7 +134,7 @@
                 if (!option) {
                     return;
                 }
-                this.pca_code = 'Pca code: ['.concat((option.code === '' ? 'no code' : option.code),'] ', option.description,' ___ WORKDAY: [',option.workday_code,'] ', option.workday_description) ; //pca_code
+                this.pca_code = 'PCA code: ['.concat((option.code === '' ? 'no code' : option.code),'] ', option.description,' ___ WORKDAY: [',option.workday_code,'] ', option.workday_description) ; //pca_code
                 this.project_code_id = option.id;
                 //this.name = option.name;
                 this.$refs.opt_code.focus();

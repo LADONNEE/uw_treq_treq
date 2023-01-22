@@ -7,7 +7,7 @@
     <td class="text-right">${{ $pdv->lodging }}</td>
 </tr>
 <tr>
-    <td>Meals ({!! $pdv->mealsDetail !!})</td>
+    <td>Meals (Per Diem total: {!! $pdv->mealsDetail !!})</td>
     <td>&nbsp;</td>
     <td class="text-right">${{ $pdv->meals }}</td>
 </tr>

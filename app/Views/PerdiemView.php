@@ -40,7 +40,8 @@ class PerdiemView
     {
         $numDays = (int) $perdiem->days;
         $meals_pd = (int) $perdiem->meals_pd;
+        $meals_estimated_total = $numDays * $meals_pd ?? 0;
         $days = ($numDays === 1) ? '1 night' : "{$numDays} days";
-        return "{$days} &times; \${$meals_pd}";
+        return "\${$meals_estimated_total} = {$days} &times; \${$meals_pd}";
     }
 }

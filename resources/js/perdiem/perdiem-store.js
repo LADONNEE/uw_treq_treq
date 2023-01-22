@@ -8,6 +8,7 @@ class PerdiemStore {
         this.mealsPd = null;
         this.lodgingPd = null;
         this.lodging = null;
+        this.meals = null;
         this.loaded = false;
         this.refresh();
     }
@@ -32,6 +33,7 @@ class PerdiemStore {
         this.mealsPd = response.data.meals_pd;
         this.lodgingPd = response.data.lodging_pd;
         this.lodging = response.data.lodging;
+        this.meals = response.data.meals;
         this.loaded = true;
     }
 
