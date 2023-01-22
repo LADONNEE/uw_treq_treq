@@ -158,7 +158,9 @@
     var userInput = selectBox.options[selectBox.selectedIndex].value;
     if (userInput == "International"){
     document.getElementById('disclaimer').style.visibility = 'visible';
+    document.getElementById('overseas_disclaimer').required = true;
         }else{
+    document.getElementById('overseas_disclaimer').required = false;            
     document.getElementById('disclaimer').style.visibility = 'hidden';
     }
     return true;}
