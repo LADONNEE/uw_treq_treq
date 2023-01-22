@@ -29,13 +29,14 @@ class TripNotesForm extends Form
             $this->add($tn->item, 'radio')
                 ->label($tn->question)
                 ->options(['Y' => 'Yes', 'N' => 'No']);
+            $tn->answer = $tn->answer ?? 'N';
             if ($tn->options) {
                 $this->add("{$tn->item}_note", 'radio')
                     ->label('Note: You must upload documentation supporting the specific exemption you are choosing in your OneDrive folder:')
                     ->options(array_to_options($tn->options));
             } else {
                 $this->add("{$tn->item}_note", 'textarea')
-                    ->label('Please describe');
+                    ->label($tn->precision);
             }
         }
     }

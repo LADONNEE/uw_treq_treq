@@ -12,6 +12,7 @@ class TripNotesResponse
     public $answer;
     public $note;
     public $options;
+    public $precision;
 
     public $wasModified;
     public $logMessage;
@@ -19,13 +20,14 @@ class TripNotesResponse
     private $order_id;
     private $tripNoteModel;
 
-    public function __construct($order_id, $item, $label, $question, $options = null)
+    public function __construct($order_id, $item, $label, $question, $options = null, $precision = null)
     {
         $this->order_id = $order_id;
         $this->item = $item;
         $this->label = $label;
         $this->question = $question;
         $this->options = $options;
+        $this->precision = $precision;
     }
 
     public function answerClass()
