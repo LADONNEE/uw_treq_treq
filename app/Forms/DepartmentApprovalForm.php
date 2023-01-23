@@ -71,10 +71,10 @@ class DepartmentApprovalForm extends Form
     private function requestDepartmentApproval()
     {
         $this->task->fill([
-            // 'type' => Task::TYPE_DEPARTMENT,
+            //'type' => Task::TYPE_DEPARTMENT,
             // 'name' => 'Department Approval',
             // 'sequence' => 1,
-            // 'is_approval' => true,
+            //'is_approval' => true,
             'description' => $this->value('description'),
             'assigned_to' => $this->value('person_id'),
             'created_by' => user()->person_id

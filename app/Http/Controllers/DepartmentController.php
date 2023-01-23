@@ -24,11 +24,14 @@ class DepartmentController extends Controller
         }
 
         //Generate multiple Department Approval Tasks
-        $project_codes = $this->getOrderProjectCodes($order->id);
+        if(!$this->orderHasDeptApprovalTasks($order->id)){
+            $project_codes = $this->getOrderProjectCodes($order->id);
         
-        foreach($project_codes as $project_code){
-            $this->makeTask($order->id, $project_code, $this->getProjectCodeAuthorizers($project_code->id)->authorizer_person_id);
+            foreach($project_codes as $project_code){
+                $this->makeTask($order->id, $project_code, $this->getProjectCodeAuthorizers($project_code->id)->authorizer_person_id);
+            }
         }
+        
         
 
         $form = new DepartmentApprovalForm($order);
@@ -65,6 +68,13 @@ class DepartmentController extends Controller
         return Task::where('order_id', $order_id)
             ->where('type', Task::TYPE_DEPARTMENT)
             ->where('response', 'Approved')
+            ->first();
+    }
+
+    private function orderHasDeptApprovalTasks($order_id)
+    {
+        return Task::where('order_id', $order_id)
+            ->where('type', Task::TYPE_DEPARTMENT)
             ->first();
     }
 

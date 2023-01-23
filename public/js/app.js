@@ -8835,14 +8835,20 @@ var OrderRefresh = function ($) {
     //    $('.js-order-refresh--oncall').html(response.data.stage);
     // }
 
-    var onCallVue = new Vue(_objectSpread(_objectSpread({}, _on_call_OnCall_vue__WEBPACK_IMPORTED_MODULE_1__.default), {}, {
-      parent: this,
-      propsData: {
-        /* pass props here*/
-        url: response.data.urlApiOnCall
-      }
-    })).$mount();
-    $('.js-order-refresh--oncall').html(onCallVue.$el);
+    console.log(response.data.stage);
+
+    if (response.data.stage != 'Complete') {
+      var onCallVue = new Vue(_objectSpread(_objectSpread({}, _on_call_OnCall_vue__WEBPACK_IMPORTED_MODULE_1__.default), {}, {
+        parent: this,
+        propsData: {
+          /* pass props here*/
+          url: response.data.urlApiOnCall
+        }
+      })).$mount();
+      $('.js-order-refresh--oncall').html(onCallVue.$el);
+    } else {
+      $('.js-order-refresh--oncall').html('');
+    }
 
     if (response.data.assigned) {
       $('.js-order-refresh--assigned').html(response.data.assigned);
