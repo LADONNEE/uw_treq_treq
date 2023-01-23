@@ -44,6 +44,8 @@ class LoggedTravel extends LoggedUpdate
         $this->trip->fill($this->tripPatch);
 
         $this->project->purpose = $this->purpose;
+        $this->project->relevance = $this->tripPatch['relevance'] ?? '';
+        $this->project->arrangement = $this->tripPatch['arrangement'] ?? '';
         $this->project->person_id = $this->project->person_id ?? $this->actor_id;
         $this->project->titleFromTrip($this->trip);
         $this->project->is_travel = true;

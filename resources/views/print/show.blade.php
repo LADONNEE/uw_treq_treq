@@ -24,6 +24,16 @@
         <div class="field__value">{{ $project->purpose }}</div>
     </div>
 
+    <div class="field">
+        <div class="field__label">Description and Business Relevance</div>
+        <div class="field__value">{{ $project->relevance }}</div>
+    </div>
+
+    <div class="field">
+        <div class="field__label">Description and Business Arrangement</div>
+        <div class="field__value">{{ $project->arrangement }}</div>
+    </div>
+
     @include('print._order')
 
     @foreach($project->orders as $o)

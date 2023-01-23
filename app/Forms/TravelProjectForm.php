@@ -154,6 +154,8 @@ class TravelProjectForm extends ProjectForm
             'return_at_time' => $this->value('return_at_time'),
             'traveler' => $this->value('traveler'),
             'person_id' => $this->value('person_id'),
+            'relevance' => $this->value('relevance'),
+            'arrangement' => $this->value('arrangement'),
             'traveler_email' => $this->value('traveler_email'),
             'traveler_phone' => $this->value('traveler_phone'),
             'non_uw' => ($type === 'non_uw'),

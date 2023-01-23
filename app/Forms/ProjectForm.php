@@ -24,6 +24,8 @@ class ProjectForm extends Form
     {
         $this->add('title');
         $this->add('purpose', 'textarea');
+        $this->add('relevance', 'textarea');
+        $this->add('arrangement', 'textarea');
         $this->add('person_id', 'hidden');
         $this->add('owner_search');
         $this->add('is_food', 'radio')->options([
@@ -69,6 +71,8 @@ class ProjectForm extends Form
     public function validate()
     {
         $this->check('purpose')->notEmpty();
+        $this->check('relevance')->notEmpty();
+        $this->check('arrangement')->notEmpty();
     }
 
     public function commit()

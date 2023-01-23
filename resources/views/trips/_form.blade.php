@@ -132,7 +132,21 @@
 
     @inputBlock('purpose', [
         'label' => 'Description and Business Purpose',
-        'rows' => 5,
+        'rows' => 2,
+        'required' => true
+    ])
+
+    @inputBlock('relevance', [
+        'label' => 'Relevance to iSchool research, teaching, service goals. Contribution to performance of your role, promotion, tenure.',
+        'placeholder' => 'eg. Working on a book project on the works of Mildred D. Taylor that will contribute positively to the reputation of iSchool. This is an African American author who has been writing for children for nearly 50 years; it will be an important contribution to the literature',
+        'rows' => 2,
+        'required' => true
+    ])
+
+    @inputBlock('arrangement', [
+        'label' => 'Arrangement for academic load while away from campus',
+        'placeholder' => 'eg. I taught one residential class online and continued to teach my online class',
+        'rows' => 2,
         'required' => true
     ])
 

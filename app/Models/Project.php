@@ -9,6 +9,8 @@ use Carbon\Carbon;
  * @property string $title
  * @property integer $person_id
  * @property string $purpose
+ * @property string $relevance
+ * @property string $arrangement
  * @property boolean $is_travel
  * @property boolean $is_food
  * @property boolean $is_gift_card
@@ -33,6 +35,8 @@ class Project extends Model
         'title',
         'person_id',
         'purpose',
+        'relevance',
+        'arrangement',
         'is_travel',
         'is_food',
         'is_gift_card',
