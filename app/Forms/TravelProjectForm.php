@@ -38,6 +38,10 @@ class TravelProjectForm extends ProjectForm
             ->class('person-typeahead')
             ->set('data-for', 'js-traveler-person-id');
 
+        
+        $this->add('relevance', 'textarea');
+        $this->add('arrangement', 'textarea');
+
         $this->add('traveler');
         $this->add('traveler_email');
         $this->add('traveler_phone');
@@ -82,6 +86,8 @@ class TravelProjectForm extends ProjectForm
             'nuwt_state_province' => $this->trip->nuwt_state_province,
             'nuwt_zipcode' => $this->trip->nuwt_zipcode,
             'nuwt_country' => $this->trip->nuwt_country,
+            'relevance' => $this->trip->relevance,
+            'arrangement' => $this->trip->arrangement,
         ]);
 
         if (!$this->trip->exists) {
@@ -107,6 +113,9 @@ class TravelProjectForm extends ProjectForm
 
         $this->check('traveler_type')->inList();
         $this->check('destination')->notEmpty();
+
+        $this->check('relevance')->notEmpty();
+        $this->check('arrangement')->notEmpty();
         //$this->check('state')->notEmpty();
 
         if ($this->value('traveler_type') === 'uworg') {

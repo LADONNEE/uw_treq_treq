@@ -15,6 +15,7 @@ $project = $project ?? $order->project;
     <div class="field__value mw-500">{{ $project->purpose }}</div>
 </div>
 
+@if($project->is_travel)
 <div class="field">
     <div class="field__label">Description and Business Relevance</div>
     <div class="field__value mw-500">{{ $project->relevance }}</div>
@@ -24,6 +25,7 @@ $project = $project ?? $order->project;
     <div class="field__label">Description and Business Arrangement</div>
     <div class="field__value mw-500">{{ $project->arrangement }}</div>
 </div>
+@endif
 
 <section class="mb-4">
     <h2 class="mb-2">Items</h2>
