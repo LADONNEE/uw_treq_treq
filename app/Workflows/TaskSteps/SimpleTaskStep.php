@@ -1,5 +1,6 @@
 <?php
 namespace App\Workflows\TaskSteps;
+use App\Models\Person;
 
 /**
  * SimpleTaskSteps are Tasks that must be completed once within a Workflow.
@@ -50,7 +51,7 @@ class SimpleTaskStep extends TaskStep
             'name' => $this->stage,
             'sequence' => 1,
             'is_approval' => false,
-            'assigned_to' => $this->assignTo(),
+            'assigned_to' => Person::where('uwnetid', setting('fiscal-contact-default'))->first()->person_id, //$this->assignTo(),
             'created_by' => $this->order->submitted_by
         ]);
         $this->repo->store($task);
