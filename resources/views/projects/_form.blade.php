@@ -10,6 +10,7 @@
     ])
     @inputBlock('purpose', [
         'label' => 'Description and Business Purpose',
+        'required' => true,
         'rows' => 5
     ])
     @inputBlock('is_food', 'Food')

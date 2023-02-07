@@ -28,7 +28,7 @@ let OrderRefresh = (function($){
         // if(response.data.oncall) {
         //    $('.js-order-refresh--oncall').html(response.data.stage);
         // }
-        console.log(response.data.stage);
+        
         if(response.data.stage != 'Complete'){
 
             var onCallVue = new Vue({

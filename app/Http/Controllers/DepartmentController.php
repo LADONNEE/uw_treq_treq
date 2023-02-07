@@ -28,7 +28,7 @@ class DepartmentController extends Controller
             $project_codes = $this->getOrderProjectCodes($order->id);
         
             foreach($project_codes as $project_code){
-                $this->makeTask($order->id, $project_code, $this->getProjectCodeAuthorizers($project_code->id)->authorizer_person_id);
+                $this->makeTask($order->id, $project_code, $this->getProjectCodeAuthorizers($project_code->id)?->authorizer_person_id);
             }
         }
         

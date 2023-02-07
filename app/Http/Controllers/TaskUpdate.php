@@ -82,7 +82,7 @@ class TaskUpdate extends Controller
                     $task->name = "Department Approval | " . $newBudget["pca_code"] ; //updated-budget-pcacode
 
                     //Update task assignee
-                    $assigned_to = $this->getProjectCode($newBudget["project_code_id"])->authorizer_person_id;
+                    $assigned_to = $this->getProjectCode($newBudget["project_code_id"])?->authorizer_person_id;
                     $task->assigned_to = $assigned_to;
                     $task->notified_at = null;
                     $task->response = null;

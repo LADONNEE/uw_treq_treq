@@ -12,7 +12,7 @@
                 All Pending <span class="badge badge-secondary">{{ count($orders) }}</span>
             </a>
             <a href="{{ route('pending-orders', 'department') }}" class="mr-3">
-                Pending Department <span class="badge badge-secondary">{{ $countDepartment }}</span>
+                Pending Spend Authorizer <span class="badge badge-secondary">{{ $countDepartment }}</span>
             </a>
             <a href="{{ route('pending-orders', 'budget') }}" class="mr-3">
                 Pending Budget <span class="badge badge-secondary">{{ $countBudget }}</span>

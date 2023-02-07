@@ -69,7 +69,7 @@ class BudgetStore {
 
                 this.budgets[i].budgetno = budget.budgetno || '';
                 this.budgets[i].pca_code = budget.pca_code || '';
-                this.budgets[i].project_code_id = budget.project_code_id || '';
+                this.budgets[i].project_code_id = budget.project_code_id || null;
                 this.budgets[i].opt_code = budget.opt_code || '';
                 this.budgets[i].name = budget.name || 'New Item';
                 this.budgets[i].split_type = budget.split_type || 'R';

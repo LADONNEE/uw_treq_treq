@@ -13,11 +13,10 @@ class TripNotesCollection
         'personal_time' => [
             'question' => 'Did any part of this request include personal time?',
             'label' => 'Personal Time',
-            'precision' => 'Please include dates, location & times. Please do not include personal time in Per Diem & Lodging 
-            reimbursement.'
+            'precision' => 'Please pro-rate Per Diem, Lodging, car rental & Long term Parking reimbursement (as applicable).'
         ],
         'airfare_needed' => [
-            'question' => 'Is Comparision airfare needed for this reimbursment?',
+            'question' => 'Is Comparision airfare needed for this reimbursment (If personal time is included with business travel)?',
             'label' => 'Airfare',
             'precision' => 'Please upload a copy of comparison airfare if required.'
         ],

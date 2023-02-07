@@ -8270,7 +8270,7 @@ var BudgetStore = /*#__PURE__*/function () {
 
           this.budgets[i].budgetno = budget.budgetno || '';
           this.budgets[i].pca_code = budget.pca_code || '';
-          this.budgets[i].project_code_id = budget.project_code_id || '';
+          this.budgets[i].project_code_id = budget.project_code_id || null;
           this.budgets[i].opt_code = budget.opt_code || '';
           this.budgets[i].name = budget.name || 'New Item';
           this.budgets[i].split_type = budget.split_type || 'R';
@@ -8834,8 +8834,6 @@ var OrderRefresh = function ($) {
     // if(response.data.oncall) {
     //    $('.js-order-refresh--oncall').html(response.data.stage);
     // }
-
-    console.log(response.data.stage);
 
     if (response.data.stage != 'Complete') {
       var onCallVue = new Vue(_objectSpread(_objectSpread({}, _on_call_OnCall_vue__WEBPACK_IMPORTED_MODULE_1__.default), {}, {
