@@ -49,7 +49,7 @@ class TasksApiItem
         $this->budgetno = $task->budgetno;
         $this->description = $task->description;
         $this->assigned_to = $task->assigned_to;
-        $this->assignee = "{$task->assignee->firstname} {$task->assignee->lastname}";
+        $this->assignee = $task->assignee ? "{$task->assignee->firstname} {$task->assignee->lastname}" : "";
         $this->response = $task->response;
         $this->message = $task->message;
         $this->isComplete = $task->isComplete();
