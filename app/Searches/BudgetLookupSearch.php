@@ -24,7 +24,7 @@ class BudgetLookupSearch extends BudgetSearch
 
     public function search()
     {
-        $query = BudgetLookup::select($this->db_budgets . '.*')->where($this->db_budgets . '.biennium', $this->biennium);
+        $query = BudgetLookup::select('budgets.*')->where('budgets.biennium', $this->biennium);
         $this->addFilters($query);
         $results = $query->get();
 
@@ -45,11 +45,11 @@ class BudgetLookupSearch extends BudgetSearch
                     $word = substr($word, 0, 2) . '-' . substr($word, 2);
                 }
                 if (preg_match('/^[0-9][0-9]\-[0-9]{4}$/', $word)) {
-                    $query->orWhere($this->db_budgets . '.budgetno', '=', $word);
+                    $query->orWhere('budgets.budgetno', '=', $word);
                 } elseif (preg_match('/^[0-9]{4}$/', $word)) {
-                    $query->orWhere($this->db_budgets . '.budgetno', 'like', '%-' . $word);
+                    $query->orWhere('budgets.budgetno', 'like', '%-' . $word);
                 } else {
-                    $query->orWhere($this->db_budgets . '.name', 'like', "%{$word}%");
+                    $query->orWhere('budgets.name', 'like', "%{$word}%");
                 }
             });
         }
