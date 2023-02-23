@@ -59,7 +59,11 @@ $project = $project ?? $order->project;
                 </div>
 
                 @input('person_id')
-                @inputBlock('approver', 'Authorizer')
+                @inputBlock('approver', [
+                    'label' => 'Authorizer',
+                    'required' => true,
+                    'help' => 'If no authorizer is suggested and you don\'t know who should authorize this spend, please ask itreq@uw.edu',
+                ])
                 @inputBlock('description', [
                     'label' => 'Note to Spend Authorizer',
                     'rows' => 3,

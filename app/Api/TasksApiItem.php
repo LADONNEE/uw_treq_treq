@@ -68,7 +68,7 @@ class TasksApiItem
             $this->responseType = 'unknown';
         }
 
-        if ($this->isComplete && $task->completed_by !== $task->assigned_to) {
+        if ($this->isComplete && $task->completed_by !== $task->assigned_to && $task->assignee) {
             $this->behalf = ", on behalf of {$task->assignee->firstname} {$task->assignee->lastname}";
         } else {
             $this->behalf = null;
