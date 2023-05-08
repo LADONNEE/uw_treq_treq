@@ -15,9 +15,11 @@ class UpdateLodgingMealsIntegersToDecimalsInPerdiemsTable extends Migration
     {
         Schema::table('perdiems', function (Blueprint $table) {
             //
-            $table->decimal('meals', 13, 2)->nullable()->change(); 
-            $table->decimal('meals_pd', 13, 2)->nullable()->change();
-            $table->decimal('lodging_pd', 13, 2)->nullable()->change();
+            DB::statement('ALTER TABLE `perdiems` MODIFY `lodging_pd` DECIMAL(13, 2);');
+            DB::statement('ALTER TABLE `perdiems` MODIFY `lodging` DECIMAL(13, 2);');
+            DB::statement('ALTER TABLE `perdiems` MODIFY `meals_pd` DECIMAL(13, 2);');
+            DB::statement('ALTER TABLE `perdiems` MODIFY `meals` DECIMAL(13, 2);');
+            
 
         });
     }
