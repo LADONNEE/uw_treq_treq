@@ -15,8 +15,8 @@ class CreateSharedBudgets extends Migration
     public function up()
     {
         DB::statement(sqlInclude(__DIR__ . '/../views/shared_view_budgets.sql', [
-            '__DBSHARED__' => Config::get('app.database_shared'),
-            '__DBBUDGETS__' => Config::get('app.database_budgets'),
+            '__DBSHARED__' => env('DB_DATABASE_SHARED', 'shared'),
+            '__DBBUDGETS__' => env('DB_DATABASE_BUDGETS', 'budgets')
         ]));
     }
 
