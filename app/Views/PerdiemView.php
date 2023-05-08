@@ -17,7 +17,7 @@ class PerdiemView
         if ($order->perdiem) {
             $this->lodging = $order->perdiem->lodging;
             $this->lodgingDetail = $this->makeLodgingDetail($order->perdiem);
-            $this->meals = (int) $order->perdiem->meals . '.00';
+            $this->meals = $order->perdiem->meals;
             $this->mealsDetail = $this->makeMealDetail($order->perdiem);
         } else {
             $this->lodging = '0.00';
