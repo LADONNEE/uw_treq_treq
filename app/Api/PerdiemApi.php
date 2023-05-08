@@ -11,11 +11,11 @@ class PerdiemApi
     private $order;
     private $properties = [
         'nights' => 'int',
-        'lodging_pd' => 'int',
+        'lodging_pd' => 'decimal',
         'lodging' => 'decimal',
         'days' => 'int',
-        'meals_pd' => 'int',
-        'meals' => 'int',
+        'meals_pd' => 'decimal',
+        'meals' => 'decimal',
     ];
 
     public $perdiem;

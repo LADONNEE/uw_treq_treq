@@ -30,7 +30,7 @@ class PerdiemView
     private function makeLodgingDetail(Perdiem $perdiem)
     {
         $numNights = (int) $perdiem->nights;
-        $lodging_pd = (int) $perdiem->lodging_pd;
+        $lodging_pd = $perdiem->lodging_pd;
         $lodgingLimit = $numNights * $lodging_pd;
         $nights = ($numNights === 1) ? '1 night' : "{$numNights} nights";
         return "limit \${$lodgingLimit} = {$nights} &times; \${$lodging_pd}";
@@ -39,8 +39,8 @@ class PerdiemView
     private function makeMealDetail(Perdiem $perdiem)
     {
         $numDays = (int) $perdiem->days;
-        $meals_pd = (int) $perdiem->meals_pd;
-        $meals_estimated_total = $numDays * $meals_pd ?? 0;
+        $meals_pd = $perdiem->meals_pd;
+        $meals_estimated_total = $numDays * $meals_pd ?? 0.0;
         $days = ($numDays === 1) ? '1 night' : "{$numDays} days";
         return "\${$meals_estimated_total} = {$days} &times; \${$meals_pd}";
     }
