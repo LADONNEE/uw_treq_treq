@@ -9,6 +9,7 @@ use App\Models\State;
 use App\Reports\PersonOpenTripsReport;
 use App\Workflows\OrderTypes;
 
+
 class ProjectController extends Controller
 {
     public function show(Project $project, $adding = false)
@@ -80,7 +81,13 @@ class ProjectController extends Controller
             return false;
         }
 
-        $report = new PersonOpenTripsReport(user()->person_id);
+        if(hasRole('treq:fiscal')){
+            $report = new PersonOpenTripsReport('%');
+        }
+        else {
+            $report = new PersonOpenTripsReport(user()->person_id);
+        }
+        
         return $report->projects;
     }
 }

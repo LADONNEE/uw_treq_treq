@@ -23,7 +23,7 @@ class PersonOpenTripsReport
             ->join('projects_with_preauth_view', 'projects.id', '=', 'projects_with_preauth_view.project_id')
             ->join('trips', 'projects.id', '=', 'trips.project_id')
             ->join('person_trips_view', 'projects.id', '=', 'person_trips_view.project_id')
-            ->where('person_trips_view.person_id', $this->person_id)
+            ->where('person_trips_view.person_id', 'LIKE', $this->person_id)
             ->where('projects.is_travel', 1)
             ->where('trips.return_at', '<', now())
             ->whereNull('projects.closed_at')
