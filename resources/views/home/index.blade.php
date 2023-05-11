@@ -72,6 +72,11 @@
                 'countTask' => $reports->pending->countTask,
             ])
 
+            @include('home._complete', [
+                'orders' => $reports->complete->orders,
+                'count' => $reports->complete->count,
+            ])
+
         </div>
 
     @endif

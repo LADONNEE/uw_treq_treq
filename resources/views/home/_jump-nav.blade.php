@@ -37,5 +37,10 @@
                 Pending <span class="badge">{{ $reports->pending->count }}</span>
             </a>
         </li>
+        <li>
+            <a href="#nav-complete">
+                Complete <span class="badge">{{ $reports->complete->count }}</span>
+            </a>
+        </li>
     @endif
 </ul>

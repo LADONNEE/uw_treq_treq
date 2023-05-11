@@ -15,6 +15,7 @@ class HomeCollection
         'myTrips' => MyTripsReport::class,
         'onCall' => OnCallOrders::class,
         'pending' => PendingOrders::class,
+        'complete' => CompleteOrders::class,
     ];
     private $reportInstances = [];
 
