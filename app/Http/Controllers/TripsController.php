@@ -34,7 +34,7 @@ class TripsController extends Controller
     {
         $this->canIEdit($order, 'project');
         $states = State::orderBy('id')->get();
-        $selectedstate = $order->project->trip->state;
+        $selectedstate = $order->project->trip?->state;
 
         $form = new TravelProjectForm($order);
         return view('trips.edit', compact('order', 'form', 'states', 'selectedstate'));
