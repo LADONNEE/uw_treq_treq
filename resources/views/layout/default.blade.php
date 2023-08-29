@@ -86,7 +86,7 @@
 </div>
 
 @if(config('app.env') !== 'production')
-    <div id="env-warning-trigger" data-include="/env-warning.html"></div>
+    <div id="env-warning-trigger" data-include="/treq/env-warning.html"></div>
 @endif
 
 @yield('state')
