@@ -9,7 +9,7 @@ use App\Models\Task;
 use App\Models\Budget;
 use App\Trackers\LoggedSubmit;
 use Illuminate\Support\Facades\DB;
-use Config;
+
 
 
 class DepartmentController extends Controller
@@ -92,7 +92,7 @@ class DepartmentController extends Controller
 
     private function getProjectCodeAuthorizers($project_code_id)
     {
-        return DB::table(Config::get('app.database_shared') . '.project_codes AS pc')
+        return DB::table(config('app.database_shared') . '.project_codes AS pc')
             ->select(['pc.authorizer_person_id', 'pc.fiscal_person_id'])
             ->where('pc.id', $project_code_id)
             ->first();

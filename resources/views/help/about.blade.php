@@ -6,7 +6,7 @@
 
     <p>
         TREQ (Travel & Requisitions) is a request tracking system for soliciting review, approval, and
-        action from the UWORG's fiscal staff. It is used by all UWORG staff.
+        action from the UW Information School's fiscal staff. It is used by all Information School staff.
     </p>
 
     <p>

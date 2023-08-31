@@ -13,6 +13,13 @@ use Carbon\Carbon;
  * @property string $name
  * @property string $split_type
  * @property float $split
+ * @property string $wd_costcenter
+ * @property string $wd_program
+ * @property string $wd_standalonegrant
+ * @property string $wd_grant
+ * @property string $wd_assignee
+ * @property string $wd_gift
+ * @property string $wd_fund
  * @property Carbon $created_at
  * @property Carbon $updated_at
  *
@@ -37,6 +44,13 @@ class Budget extends Model
         'name',
         'split_type',
         'split',
+        'wd_costcenter',
+        'wd_program',
+        'wd_standalonegrant',
+        'wd_grant',
+        'wd_assignee',
+        'wd_gift',
+        'wd_fund',
     ];
     protected $dates = [
         'created_at',

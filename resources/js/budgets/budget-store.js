@@ -25,6 +25,13 @@ class BudgetStore {
             project_code_id: null,
             opt_code: '',
             name: '',
+            wd_costcenter: '',
+            wd_program: '',
+            wd_standalonegrant: '',
+            wd_grant: '',
+            wd_assignee: '',
+            wd_gift: '',
+            wd_fund: '',
             split_type: 'R',
             split: '',
             action: null
@@ -44,6 +51,13 @@ class BudgetStore {
             id: null,
             budgetno: budget.budgetno || '00-0000',
             name: budget.name || 'New Item',
+            wd_costcenter: budget.wd_costcenter || '',
+            wd_program: budget.wd_program || '',
+            wd_standalonegrant: budget.wd_standalonegrant || '',
+            wd_grant: budget.wd_grant || '',
+            wd_assignee: budget.wd_assignee || '',
+            wd_gift: budget.wd_gift || '',
+            wd_fund: budget.wd_fund || '',
             pca_code: budget.pca_code || '',
             project_code_id: budget.project_code_id || null,
             opt_code: budget.opt_code || '',
@@ -68,6 +82,13 @@ class BudgetStore {
                 }
 
                 this.budgets[i].budgetno = budget.budgetno || '';
+                this.budgets[i].wd_costcenter = budget.wd_costcenter || '';
+                this.budgets[i].wd_program = budget.wd_program || '';
+                this.budgets[i].wd_standalonegrant = budget.wd_standalonegrant || '';
+                this.budgets[i].wd_grant = budget.wd_grant || '';
+                this.budgets[i].wd_assignee = budget.wd_assignee || '';
+                this.budgets[i].wd_gift = budget.wd_gift || '';
+                this.budgets[i].wd_fund = budget.wd_fund || '';
                 this.budgets[i].pca_code = budget.pca_code || '';
                 this.budgets[i].project_code_id = budget.project_code_id || null;
                 this.budgets[i].opt_code = budget.opt_code || '';

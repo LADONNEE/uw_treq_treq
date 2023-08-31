@@ -1,9 +1,12 @@
 <template>
     <div>
-        <input type="text" class="form-control" style="width:8rem;" placeholder="00-0000"
+        <input type="text" class="form-control"
                ref="theInput"
                v-model="inputValue"
+               :placeholder="placeholderName"
+               :width="widthField"
                @keyup="handleKeypress($event)"
+               @keydown.tab="handleKeypressTab($event)"
                @focus="gotFocus()"
                @blur="lostFocus()" />
         <div v-show="isSuggesting" class="suggest-list" @mouseenter="gotCursor()" @mouseleave="lostCursor()">
@@ -11,8 +14,7 @@
                  :class="classCurrent(index)"
                  :key="index"
                  @click="select(index)"
-                 @mouseenter="setCursor(index)"
-            >{{ option.budgetno }} {{ option.name }}</div>
+                >{{ option.budgetno }} {{ option.name }}</div>
         </div>
     </div>
 </template>
@@ -22,10 +24,13 @@
     import suggestMixin from '../components/suggest-mixin';
     export default {
         mixins: [ suggestMixin ],
-        props: ['focused'],
+        props: ['focused','placeholderName','widthField'],
+
         data() {
             return {
-                source: suggestions('budgets')
+                source: suggestions('budgets'),
+                
+
             };
         },
         methods: {
@@ -41,6 +46,7 @@
                 });
             }
         }
+
     }
 </script>
 
@@ -48,4 +54,6 @@
     .suggest-list {
         width: 20rem;
     }
+
+     
 </style>

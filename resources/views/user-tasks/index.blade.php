@@ -4,6 +4,10 @@
     <div class="panel panel-ribbon mw-1000">
         <h1>User Tasks</h1>
 
+        <div class="download_link">
+            <a href="{{ downloadHref() }}">Download CSV spreadsheet</a>
+        </div>
+
         <p>Users that have pending tasks assigned.</p>
 
         <table class="table-tight">

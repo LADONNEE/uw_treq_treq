@@ -8,6 +8,10 @@ use App\Reports\MyOrdersMoreReport;
 use App\Reports\OpenTripsReport;
 use App\Reports\RecentOrdersReport;
 use App\Reports\RspOrdersReport;
+use App\Models\Project;
+use App\Models\Order;
+
+use Illuminate\Support\Facades\Log;
 
 class ShowReport
 {
@@ -24,7 +28,16 @@ class ShowReport
     {
         $report = $this->load($slug);
 
-        return view("reports.{$slug}", compact('report'));
+        if (wantsCsv()) {
+            $reportdata = $report->load();
+            Log::debug('Report DATA');
+            Log::debug($slug);
+            Log::debug($reportdata);
+
+            return response()->view("reports.{$slug}.csv", compact('reportdata'));                
+        }
+
+        return view("reports.{$slug}.index", compact('report'));
     }
 
     private function load($slug)
@@ -36,4 +49,6 @@ class ShowReport
         $classname = $this->reports[$slug];
         return new $classname();
     }
+
+    
 }

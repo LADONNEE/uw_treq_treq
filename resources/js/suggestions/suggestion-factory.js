@@ -1,11 +1,13 @@
 let suggestionsInstances = {};
 
 import makeBudgets from './budget-suggestions';
+import makeWorktags from './worktag-suggestions';
 import makePerson from './person-suggestions';
 import makeProjectCodes from './project-code-suggestions';
 
 let suggestionsFactories = {
     budgets: makeBudgets,
+    worktags: makeWorktags,
     person: makePerson,
     project_codes: makeProjectCodes,
 };

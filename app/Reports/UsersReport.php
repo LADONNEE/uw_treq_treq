@@ -3,21 +3,21 @@ namespace App\Reports;
 
 use App\Auth\User;
 use Illuminate\Support\Facades\DB;
-use Config;
+
 
 class UsersReport
 {
 
-    private $table;
+    private $database_shared;
 
     public function __construct() {
-            $this->table = Config::get('app.database_shared'); 
+            $this->database_shared = config('app.database_shared'); 
     } 
 
     public function getReport()
     {
         $results = DB::table('auth AS a')
-            ->join($this->table . '.uw_persons AS p', 'a.uwnetid', '=', 'p.uwnetid')
+            ->join($this->database_shared . '.uw_persons AS p', 'a.uwnetid', '=', 'p.uwnetid')
             ->leftJoin('user_folders AS f', 'p.person_id', '=', 'f.person_id')
             ->select([
                 'a.uwnetid',

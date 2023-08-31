@@ -12,7 +12,6 @@
         <div class="field__value">{{ $project->trip->destination }} <br />
         {{ $project->trip->state }} 
     </div>
-    
     </div>
     <div class="field">
         <div class="field__label">Dates</div>
@@ -33,9 +32,11 @@
             {{ $project->trip->nuwt_address_line2 }} <br />
             {{ $project->trip->nuwt_city }}, {{ $project->trip->nuwt_state_province }}, {{ $project->trip->nuwt_zipcode }} <br />
             {{ $project->trip->nuwt_country }}
+
        </div>
+
     @endif
-    @if($project->trip->non_uw)
+    @if($project->trip->personal_time)
         <span>@icon('island-tropical') Using Personal Time</span>
     @endif
     @if($project->trip->honorarium)

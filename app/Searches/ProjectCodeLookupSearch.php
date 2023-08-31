@@ -3,7 +3,7 @@
 namespace App\Searches;
 
 use App\Models\ProjectCodeLookup;
-use Config;
+
 
 /**
  * Return search results from BudgetLookup table
@@ -18,7 +18,7 @@ class ProjectCodeLookupSearch //extends BudgetSearch
     public function __construct($biennium, $searchInput)
     {
         $this->biennium = $biennium;
-        $this->table_budgets_project_codes =  Config::get('app.database_shared') . '.project_codes';
+        $this->table_budgets_project_codes =  config('app.database_shared') . '.project_codes';
         $this->words = explode(' ', $searchInput);
     }
 

@@ -19,11 +19,8 @@ class UserController extends Controller
         $personId = request('person_id');
 
         if ($personId) {
-
             $person = Person::where('person_id', $personId)->first();
-
             if ($person instanceof Person && $person->uwnetid) {
-
                 return redirect()->action('UserController@edit', $person->uwnetid);
             }
         }

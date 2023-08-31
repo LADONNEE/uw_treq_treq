@@ -1,7 +1,7 @@
 <?php
 namespace App\Workflows\Templates;
 
-use App\Workflows\TaskSteps\BudgetApproval;
+use App\Workflows\TaskSteps\CostcenterApproval;
 use App\Workflows\TaskSteps\DepartmentApproval;
 use App\Workflows\TaskSteps\EnterInAriba;
 use App\Workflows\TaskSteps\FiscalContact;
@@ -24,7 +24,7 @@ class Reimbursement extends Template
         return [
             DepartmentApproval::class,
             FiscalContact::class,
-            BudgetApproval::class,
+            CostcenterApproval::class,
             EnterInAriba::class,
         ];
     }

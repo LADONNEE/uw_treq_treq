@@ -3,7 +3,7 @@
 
     <div id="js-traveler-uworg">
         @input('person_id')
-        @inputBlock('traveler_search', 'Traveler (UWORG)')
+        @inputBlock('traveler_search', 'Traveler (UW iSchool)')
     </div>
 
     <div id="js-traveler-other" class="panel-full-width p-panel bg-indigo-100 mb-3">
@@ -37,6 +37,7 @@
             @inputBlock('nuwt_country', 'Country')
        </div>
 
+
         <div id="js-honorarium">
             <div class="form-group--boolean">
                 @input('has_honorarium', 'Honorarium')
@@ -62,9 +63,9 @@
                                         <option value="{{$state->name}}" {{ $state->name == $selectedstate ? 'selected' : ''  }} >{{$state->name}}</option>
                                     @endforeach
                 </select>
-
             </div>
     </div>
+
 
     <div id="disclaimer" class="form-row-stretch" style="visibility:hidden">
        <div class="form-check">
@@ -72,6 +73,7 @@
             <label class="form-check-label" for="overseas_disclaimer">
                 I confirm I have registered my overseas travel per <a target="_blank" href="https://www.washington.edu/globalaffairs/global-travelers/travelregistry/facstaff/">UW Guidance</a>
             </label>
+
        </div> 
     </div>
 
@@ -81,8 +83,6 @@
     'id' => 'depart_at',
         'label' => 'Departure Date',
         'placeholder' => 'MM/DD/YYYY',
-        'minlength' => 10,
-        'maxlength' => 10,
         'required' => true
     ])
     
@@ -90,10 +90,9 @@
             'id' => 'return_at',
             'label' => 'Return Date',
             'placeholder' => 'MM/DD/YYYY',
-            'minlength' => 10,
-            'maxlength' => 10,
             'required' => true
     ])
+    
     </div>
     
 

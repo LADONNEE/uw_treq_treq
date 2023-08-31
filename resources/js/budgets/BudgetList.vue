@@ -3,11 +3,10 @@
         <table class="budget-list table-tight mt-3">
             <thead>
             <tr>
-                <th style="width:20%;">Budget Number</th>
-                <th>Name</th>
-                <th>PCA/Workday code/Fund type</th>
-                <th>OPT Code</th>
-                <th style="width:20%;" class="text-right pr-3">Split</th>
+                <th style="width:20%;">Budget Number (FAS)</th>
+                <th>Worktags</th>
+                <th style="width:15%;">PCA Code</th>
+                <th style="width:15%;" class="text-right pr-3">Split</th>
             </tr>
             </thead>
 
@@ -21,20 +20,24 @@
                 </td>
 
                 <td class="editable">
-                    <button-block @click="editMe(budget, 'name')">{{ budget.name }}</button-block>
+                    <button-block class="worktag" @click="editMe(budget, 'worktags')">
+                        <span v-if="budget.wd_costcenter">{{ budget.wd_costcenter }}</span>
+                        <span v-if="budget.wd_program">{{ budget.wd_program }}</span>
+                        <span v-if="budget.wd_standalonegrant">{{ budget.wd_standalonegrant }}</span>
+                        <span v-if="budget.wd_grant">{{ budget.wd_grant }}</span>
+                        <span v-if="budget.wd_gift">{{ budget.wd_gift }}</span>
+                        <span v-if="budget.wd_fund">{{ budget.wd_fund }}</span>
+                        </button-block>
                 </td>
                 <td class="editable">
                     <button-block @click="editMe(budget, 'pca_code')">{{ budget.pca_code }}</button-block>
-                </td>
-                <td class="editable">
-                    <button-block @click="editMe(budget, 'opt_code')">{{ budget.opt_code }}</button-block>
                 </td>
                 <td class="editable text-right pr-3">
                     <button-block @click="editMe(budget, 'split')">{{ formatSplit(budget.split, budget.split_type) }}</button-block>
                 </td>
             </tr>
             <tr>
-                <td colspan="5" class="contains-button">
+                <td colspan="4" class="contains-button">
                     <button class="btn btn-text" @click.prevent="addBudget">&plus; Budget</button>
                 </td>
             </tr>
@@ -43,7 +46,14 @@
             <tbody v-else>
             <tr v-for="budget in store.budgets" :key="budget.id">
                 <td>{{ budget.budgetno }}</td>
-                <td>{{ budget.name }}</td>
+                <td class="worktag">
+                    <span v-if="budget.wd_costcenter">{{ budget.wd_costcenter }}</span>
+                    <span v-if="budget.wd_program">{{ budget.wd_program }}</span>
+                    <span v-if="budget.wd_standalonegrant">{{ budget.wd_standalonegrant }}</span>
+                    <span v-if="budget.wd_grant">{{ budget.wd_grant }}</span>
+                    <span v-if="budget.wd_gift">{{ budget.wd_gift }}</span>
+                    <span v-if="budget.wd_fund">{{ budget.wd_fund }}</span>
+                </td>
                 <td>{{ budget.pca_code }}</td>
                 <td>{{ formatSplit(budget.split, budget.split_type) }}%</td>
             </tr>
@@ -77,7 +87,7 @@
             return {
                 showEditing: false,
                 editing: null,
-                focus: 'pca_code'
+                focus: 'budgetno'
             };
         },
         computed: {
@@ -105,7 +115,7 @@
         },
         methods: {
             addBudget() {
-                this.focus = 'pca_code';
+                this.focus = 'budgetno';
                 this.editing = this.store.new();
                 this.showEditing = true;
             },
@@ -154,5 +164,12 @@
     }
     .contains-button button.btn-text {
         padding: .5rem;
+    }
+
+    .worktag span{
+        border: 1px solid;
+        border-radius: 3px;
+        padding: 4px;
+        background: rgba(180, 167, 200, 0.5);
     }
 </style>

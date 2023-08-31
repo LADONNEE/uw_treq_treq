@@ -3,7 +3,7 @@
 namespace App\Searches;
 
 use App\Models\BudgetLookup;
-use Config;
+
 
 /**
  * Return search results from BudgetLookup table
@@ -18,7 +18,7 @@ class BudgetLookupSearch extends BudgetSearch
     public function __construct($biennium, $searchInput)
     {
         $this->biennium = $biennium;
-        $this->db_budgets =  Config::get('app.database_budgets'); 
+        $this->db_budgets =  config('app.database_budgets'); 
         parent::__construct(explode(' ', $searchInput));
     }
 

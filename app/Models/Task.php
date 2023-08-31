@@ -96,6 +96,7 @@ class Task extends Model
         }
         return hasRole('reassign-tasks', $user);
     }
+    
 
     public function isBudgetApproval()
     {

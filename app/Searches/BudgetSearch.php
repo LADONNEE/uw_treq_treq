@@ -10,18 +10,16 @@ use App\Models\Budget;
 class BudgetSearch
 {
     protected $words;
-    protected $budgets_table;
 
     public function __construct(array $words)
     {
         $this->words = $words;
-        $this->budgets_table = 'budgets'; 
     }
 
     public function search()
     {
-        $query = Budget::select($this->budgets_table . '.*')
-            ->join('orders', $this->budgets_table . '.order_id', '=', 'orders.id')
+        $query = Budget::select('budgets.*')
+            ->join('orders', 'budgets.order_id', '=', 'orders.id')
             ->orderBy('orders.created_at', 'desc')
             ->with('order')
             ->with('order.project')
@@ -38,11 +36,12 @@ class BudgetSearch
                     $word = substr($word, 0, 2) . '-' . substr($word, 2);
                 }
                 if (preg_match('/^[0-9][0-9]\-[0-9]{4}$/', $word)) {
-                    $query->orWhere($this->budgets_table . '.budgetno', '=', $word);
+                    $query->orWhere('budgets.budgetno', '=', $word);
                 } elseif (preg_match('/^[0-9]{4}$/', $word)) {
-                    $query->orWhere($this->budgets_table . '.budgetno', 'like', '%-' . $word);
+                    $query->orWhere('budgets.budgetno', 'like', '%-' . $word);
                 } else {
-                    $query->orWhere($this->budgets_table . '.name', 'like', "%{$word}%");
+                    $query->orWhere('budgets.name', 'like', "%{$word}%");
+                    $query->orWhere('budgets.pca_code', 'like', "%{$word}%");
                 }
             });
         }

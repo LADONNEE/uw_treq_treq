@@ -10,7 +10,7 @@ class Mail extends Controller
     public function __invoke(MailSender $sender)
     {
         $m = new TestMessage();
-        $sender->send(1, 'nbedani@uw.edu', $m);
+        $sender->send(1, 'ifinance@uw.edu', $m);
 
         return ($m->wasSent) ? 'Mail sent.' : 'Send mail failed.';
     }

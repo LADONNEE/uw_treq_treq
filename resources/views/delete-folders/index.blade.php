@@ -6,6 +6,10 @@
 
             <h1>Delete Folders</h1>
 
+            <div class="download_link">
+                <a href="{{ downloadHref() }}">Download CSV spreadsheet</a>
+            </div>
+
             <p>
                 List of Projects and Trips that have been closed for 90 days. Old OneDrive folders must
                 be deleted by the fiscal team. After you have deleted an old folder in OneDrive, mark

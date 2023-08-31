@@ -114,9 +114,9 @@ Route::group(array('prefix' => 'treq'), function($route) {
     $route->get('api/budgets.json', 'BudgetApiController@prefetch');
     $route->get('api/budgets/{order}', 'BudgetsApiState')->name('budgets-api-state');
 
+    $route->get('api/worktags', 'WorktagApiController@search');
     $route->get('api/project-codes', 'ProjectCodeApiController@search');
     $route->get('api/project-codes.json', 'ProjectCodeApiController@prefetch');
-    
 
     $route->get('api/items/{order}/{trip?}', 'ItemsApiState')->name('items-api-state');
 

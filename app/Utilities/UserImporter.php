@@ -5,18 +5,18 @@ use App\Auth\User;
 use App\Models\AuthLog;
 use App\Models\UserAuth;
 use Illuminate\Support\Facades\DB;
-use Config;
+
 
 class UserImporter
 {
     const MIN_AUTH_ROLE = 'treq:user';
     protected $uwnetid;
-    private $table_shared;
+    private $database_shared;
 
     public function __construct($uwnetid)
     {
         $this->uwnetid = $uwnetid;
-        $this->table_shared = Config::get('app.database_shared'); 
+        $this->database_shared = config('app.database_shared'); 
     }
 
     public function authorize()
@@ -41,7 +41,7 @@ class UserImporter
 
     public function canAuthorize()
     {
-        return (boolean) DB::table($this->table_shared . '.uworg_authorized')
+        return (boolean) DB::table($this->database_shared . '.uworg_authorized')
             ->where('uwnetid', $this->uwnetid)
             ->count();
     }

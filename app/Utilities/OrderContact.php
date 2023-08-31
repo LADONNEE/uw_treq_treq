@@ -3,19 +3,19 @@
 namespace App\Utilities;
 
 use Illuminate\Support\Facades\DB;
-use Config;
+
 
 class OrderContact
 {
     public $fiscal_person_id;
     public $business_person_id;
-    private $table;
+    private $database_shared;
 
     public function __construct($fiscal_person_id, $business_person_id)
     {
         $this->fiscal_person_id = $fiscal_person_id;
         $this->business_person_id = $business_person_id;
-        $this->table = Config::get('app.database_shared'); 
+        $this->database_shared = config('app.database_shared'); 
     }
 
     /**
@@ -29,7 +29,7 @@ class OrderContact
 
         $resultsProjectCodes = DB::table('budgets AS b')
             ->select(['pc.authorizer_person_id', 'pc.fiscal_person_id'])
-            ->join( Config::get('app.database_shared') . '.project_codes AS pc', 'b.project_code_id', '=', 'pc.id')
+            ->join( $this->database_shared . '.project_codes AS pc', 'b.project_code_id', '=', 'pc.id')
             ->where('b.order_id', $order_id)
             ->orderBy('b.split_type', 'desc') // R => Remainder, P => Percentage, A => Dollar Amount
             ->orderBy('b.split', 'desc')
@@ -38,7 +38,7 @@ class OrderContact
 
         $results = DB::table('budgets AS b')
             ->select(['bc.fiscal_person_id', 'bc.business_person_id'])
-            ->join( Config::get('app.database_shared') . '.budgets AS bc', function($join) use($biennium) {
+            ->join( $this->database_shared . '.budgets AS bc', function($join) use($biennium) {
                 $join->on('b.budgetno', '=', 'bc.budgetno')
                     ->where('bc.biennium', $biennium);
             })

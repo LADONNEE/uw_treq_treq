@@ -6,8 +6,8 @@ let treqTripForm = function(context) {
         travelerOther: function() {
             return $('#js-traveler-other');
         },
-        travelerUWORG: function() {
-            return $('#js-traveler-uworg');
+        travelerCOENV: function() {
+            return $('#js-traveler-coenv');
         },
         personalTimeChecked: function() {
             return $('#js-trip-form input[name="personal_time"]:checked').length > 0;
@@ -17,6 +17,30 @@ let treqTripForm = function(context) {
         },
         personalTimeDatesInput: function() {
             return $('input[name="personal_time_dates"]');
+        },
+        EmailInput: function(){
+            return $('input[name="traveler_email"]');
+        },
+        NameInput: function(){
+            return $('input[name="traveler"]');
+        },
+        PhoneInput: function(){
+            return $('input[name="traveler_phone"]');
+        }, 
+        AddressInput: function(){
+            return $('input[name="nuwt_address_line1"]');
+        }, 
+        CityInput: function(){
+            return $('input[name="nuwt_city"]');
+        }, 
+        StateInput: function(){
+            return $('input[name="nuwt_state_province"]');
+        }, 
+        CodeInput: function(){
+            return $('input[name="nuwt_zipcode"]');
+        },
+        CountryInput: function(){
+            return $('input[name="nuwt_country"]');
         },
         honorarium: function() {
             return $('#js-honorarium');
@@ -49,11 +73,27 @@ let treqTripForm = function(context) {
 
     let travelerTypeChanged = function() {
         let type = jq.travelerType();
-        if (type === 'uworg') {
+        if (type === 'coenv') {
             jq.travelerOther().hide();
-            jq.travelerUWORG().show();
+            jq.EmailInput().prop('required',false);
+            jq.PhoneInput().prop('required',false);
+            jq.CityInput().prop('required',false);
+            jq.CountryInput().prop('required',false);
+            jq.AddressInput().prop('required',false);
+            jq.CodeInput().prop('required',false);
+            jq.StateInput().prop('required',false);
+            jq.NameInput().prop('required',false); 
+            jq.travelerCOENV().show();
         } else {
-            jq.travelerUWORG().hide();
+            jq.EmailInput().prop('required',true);  
+            jq.PhoneInput().prop('required',true);
+            jq.CityInput().prop('required',true);
+            jq.CountryInput().prop('required',true);
+            jq.AddressInput().prop('required',true);
+            jq.CodeInput().prop('required',true);
+            jq.StateInput().prop('required',true);
+            jq.NameInput().prop('required',true); 
+            jq.travelerCOENV().hide();
             jq.travelerOther().show();
         }
         if (type === 'non_uw') {

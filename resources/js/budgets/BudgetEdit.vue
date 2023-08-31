@@ -1,46 +1,145 @@
 <template>
     <spotlight-box>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-auto">
                 <div class="form-group">
-                    <label>PCA/Workday Description</label>
-                    <!-- <input type="text" class="form-control" style="width:12rem;"
-                           v-model="pca_code"
-                           @keydown="keyHandler($event)"
-                           ref="pca_code"> -->
-                    <project-code-suggest :focused="focus === 'pca_code'"
-                                    v-model="pca_code"
-                                    ref="pca_code"
-                                    @selected="(option) => projectCodeSelected(option)"
-                    ></project-code-suggest>
-                </div>
-            </div>
-            <div class="col-md-auto">
-                <div class="form-group">
-                    <label>OPT</label>
-                        <input type="text" class="form-control" style="width:5rem;"
-                            maxlength="5"
-                           v-model="opt_code"
-                           @keydown="keyHandler($event)"
-                           ref="opt_code">
-                </div>
-            </div>
-            <div class="col-md-auto">
-                <div class="form-group">
-                    <label>Budget Number</label>
+                    <label>Search Worktag (or Budget Nr)</label>
                     <budget-suggest :focused="focus === 'budgetno'"
                                     v-model="budgetno"
+                                    :placeholderName="'CC000123 (or 00-0000)'"
+                                    :widthField="'8rem'"
                                     @selected="(option) => budgetSelected(option)"
+                                    @keydown="keyHandler($event)"
+                    ></budget-suggest>
+                </div>
+            </div>
+            <!-- <div class="col-md-auto">
+                <div class="form-group">
+                    <label>Name</label>
+                    <budget-suggest :focused="false"
+                                    v-model="name"
+                                    :placeholderName="'Name of Budget'"
+                                    :widthField="'20rem'"
+                                    @selected="(option) => budgetSelected(option)"
+                                    @keydown="keyHandler($event)"
                     ></budget-suggest>
                 </div>
             </div>
             <div class="col-md-auto">
                 <div class="form-group">
-                    <label>Budget Name</label>
-                    <input type="text" class="form-control" style="width:14rem;" placeholder="Name of Budget"
-                           v-model="name"
+                    <label>PCA Code</label>
+                    <input type="text" class="form-control" style="width:12rem;"
+                           v-model="pca_code"
                            @keydown="keyHandler($event)"
-                           ref="name">
+                           ref="pca_code">
+                </div>
+            </div>
+            
+        </div> -->
+        <div class="row">
+            <div class="col-md-auto">
+                <div class="form-group">
+                    <label>Budget Number (legacy)</label>
+                    <budget-suggest 
+                                    v-model="budgetno"
+                                    :placeholderName="'00-0000'"
+                                    :widthField="'8rem'"
+                                    @selected="(option) => budgetSelected(option)"
+                                    @keydown="keyHandler($event)"
+                    ></budget-suggest>
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <div class="form-group">
+                    <label>Cost Center</label>
+                    <worktag-suggest :focused="false"
+                                    v-model="wd_costcenter"
+                                    :ref="wd_costcenter"
+                                    :placeholderName="'CC000123'"
+                                    @selected="(option) => worktagSelected(option)"
+                                    @keydown="keyHandler($event)"
+                    ></worktag-suggest>
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <div class="form-group">
+                    <label>Program</label>
+                    <worktag-suggest :focused="false"
+                                    v-model="wd_program"
+                                    :placeholderName="'PG000123'"
+                                    @selected="(option) => worktagSelected(option)"
+                                    @keydown="keyHandler($event)"
+                    ></worktag-suggest>
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <div class="form-group">
+                    <label>Standalone Grant</label>
+                    <input type="text" class="form-control"
+                        :focused="false"
+                        v-model="wd_standalonegrant"
+                        :placeholder="'( free text )'"
+                        @keydown="keyHandler($event)"
+                     />
+                    
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <div class="form-group">
+                    <label>Grant</label>
+                    <worktag-suggest :focused="false"
+                                    v-model="wd_grant"
+                                    :placeholderName="'GR000123'"
+                                    @selected="(option) => worktagSelected(option)"
+                                    @keydown="keyHandler($event)"
+                    ></worktag-suggest>
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <div class="form-group">
+                    <label>Gift</label>
+                    <worktag-suggest :focused="false"
+                                    v-model="wd_gift"
+                                    :placeholderName="'GF000123'"
+                                    @selected="(option) => worktagSelected(option)"
+                                    @keydown="keyHandler($event)"
+                    ></worktag-suggest>
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <div class="form-group">
+                    <label>Fund</label>
+                    <input type="text" class="form-control"
+                        :focused="false"
+                        v-model="wd_fund"
+                        :placeholder="'( free text )'"
+                        @keydown="keyHandler($event)"
+                     />
+                    
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <div class="form-group">
+                    <label>Assignee</label>
+                    <input type="text" class="form-control"
+                        :focused="false"
+                        v-model="wd_assignee"
+                        :placeholder="'( free text )'"
+                        @keydown="keyHandler($event)"
+                     />
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-auto">
+                <div class="form-group">
+                    <label>Split</label>
+                    <input type="text" class="form-control" style="width:8rem;"
+                           v-model="split"
+                           @keydown="keyHandler($event)"
+                           ref="split">
                 </div>
             </div>
             <div class="col-md-auto">
@@ -53,16 +152,8 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-auto">
-                <div class="form-group">
-                    <label>Split</label>
-                    <input type="text" class="form-control" style="width:8rem;"
-                           v-model="split"
-                           @keydown="keyHandler($event)"
-                           ref="split">
-                </div>
-            </div>
         </div>
+
         <div  v-if="isInvalid" class="row">
             <div class="col text-danger mb-3 px-3">
                 {{ validMessage }}
@@ -84,7 +175,7 @@
 <script>
     import BudgetHelp from './BudgetHelp';
     import BudgetSuggest from '../budgets/BudgetSuggest';
-    import ProjectCodeSuggest from '../budgets/ProjectCodeSuggest';
+    import WorktagSuggest from '../budgets/WorktagSuggest';
     import SpotlightBox from '../components/SpotlightBox';
     export default {
         props: ['budget', 'focus'],
@@ -93,8 +184,15 @@
                 budgetno: '',
                 name: '',
                 pca_code: '',
-                opt_code: '',
-                project_code_id: null,
+
+                wd_costcenter: '',
+                wd_program: '',
+                wd_standalonegrant: '',
+                wd_grant: '',
+                wd_assignee: '',
+                wd_gift: '',
+                wd_fund: '',
+
                 split_type: '',
                 split: '',
                 isDeletable: false,
@@ -106,8 +204,17 @@
             this.budgetno = this.budget.budgetno;
             this.name = this.budget.name;
             this.pca_code = this.budget.pca_code;
-            this.opt_code = this.budget.opt_code;
-            this.project_code_id = this.budget.project_code_id;
+
+            this.wd_costcenter = this.budget.wd_costcenter;
+            this.wd_program = this.budget.wd_program;
+            this.wd_standalonegrant = this.budget.wd_standalonegrant;
+            this.wd_grant = this.budget.wd_grant;
+            this.wd_assignee = this.budget.wd_assignee;
+            this.wd_gift = this.budget.wd_gift;
+            this.wd_fund = this.budget.wd_fund;
+
+
+
             this.split_type= this.budget.split_type;
             this.split = this.budget.split;
             this.isDeletable = !! this.budget.id;
@@ -126,24 +233,26 @@
                 }
                 this.budgetno = option.budgetno;
                 this.name = option.name;
-                this.$refs.split.focus();
-                this.$refs.split.select();
+                /*this.$refs.split.focus();
+                this.$refs.split.select();*/
                 this.validate();
             },
-            projectCodeSelected(option) {
+            worktagSelected(option) {
                 if (!option) {
                     return;
                 }
-                this.pca_code = 'PCA code: ['.concat((option.code === '' ? 'no code' : option.code),'] ', option.description,' ___ WORKDAY: [',option.workday_code,'] ', option.workday_description) ; //pca_code
-                this.project_code_id = option.id;
-                //this.name = option.name;
-                this.$refs.opt_code.focus();
-                this.$refs.opt_code.select();
+                //this.wd_costcenter = option.workday_code;
+                console.log("WORKTAG SUGGESTION");
+                /*console.log(event.target);
+                console.log(option.workday_code);*/
+                //this.$refs.theInput.value = option.workday_code;
+                /*this.$refs.split.focus();
+                this.$refs.split.select();*/
                 this.validate();
             },
             keyHandler(event) {
                 if (event.key === 'Enter' || event.keyCode === 13) {
-                    //this.saveBudget();
+                    this.saveBudget();
                 }
                 if (event.key === 'Escape' || event.keyCode === 27) {
                     this.cancel();
@@ -166,9 +275,14 @@
                     id: this.budget.id,
                     budgetno: this.budgetno,
                     name: this.name,
+                    wd_costcenter: this.wd_costcenter,
+                    wd_program: this.wd_program,
+                    wd_standalonegrant: this.wd_standalonegrant,
+                    wd_grant: this.wd_grant,
+                    wd_assignee: this.wd_assignee,
+                    wd_gift: this.wd_gift,
+                    wd_fund: this.wd_fund,
                     pca_code: this.pca_code,
-                    opt_code: this.opt_code,
-                    project_code_id: this.project_code_id,
                     split_type: this.split_type,
                     split: this.split,
                     key: this.budget.key
@@ -185,17 +299,9 @@
             validate() {
                 this.isInvalid = false;
                 this.validMessage = '';
-                // if (!this.budgetno || !this.budgetno.match(/^[0-9][0-9]\-?[0-9]{4}$/)) {
-                //     this.isInvalid = true;
-                //     this.validMessage = 'Budget number (00-0000) is required.';
-                // }
-                if (!this.pca_code) {
+                if ( !this.wd_costcenter &&  (!this.budgetno || !this.budgetno.match(/^[0-9][0-9]\-?[0-9]{4}$/ ))   ) {
                     this.isInvalid = true;
-                    this.validMessage = 'PCA/Workday code or description is required.';
-                }
-                if (this.opt_code.length > 5) {
-                    this.isInvalid = true;
-                    this.validMessage = 'OPT code should be 5 characters or less';
+                    this.validMessage = 'At least a Cost center or a Budget number is required.';
                 }
             }
         },
@@ -204,11 +310,11 @@
                 this.validate();
             },
             split() {
-                if (this.split_type && this.split.indexOf('$') > -1) {
+                if (this.split_type && String(this.split).indexOf('$') > -1) {
                     this.split_type = 'A';
-                } else if (this.split_type && this.split.indexOf('%') > -1) {
+                } else if (this.split_type && String(this.split).indexOf('%') > -1) {
                     this.split_type = 'P';
-                } else if (!this.split_type || this.split.indexOf('*') > -1) {
+                } else if (!this.split_type || String(this.split).indexOf('*') > -1) {
                     this.split_type = 'R';
                 }
             }
@@ -216,7 +322,7 @@
         components: {
             BudgetHelp,
             BudgetSuggest,
-            ProjectCodeSuggest,
+            WorktagSuggest,
             SpotlightBox
         }
     }

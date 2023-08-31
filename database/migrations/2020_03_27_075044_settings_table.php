@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Schema;
 class SettingsTable extends Migration
 {
     protected $initialSettings = [
-        'current-biennium' => '2019',
-        'fiscal-contact-default' => 'seribock',
+        'current-biennium' => '2021',
+        'fiscal-contact-default' => 'nbedani',
     ];
 
     public function up()

@@ -27,7 +27,7 @@ class TravelProjectForm extends ProjectForm
 
         $this->add('traveler_type', 'radio')
             ->options([
-                'uworg' => 'UWORG Traveler (Staff, Student, Faculty)',
+                'uworg' => 'UW iSchool Traveler (Staff, Student, Faculty)',
                 'uw' => 'UW Traveler (Other Unit)',
                 'non_uw' => 'Non UW Traveler',
             ]);
