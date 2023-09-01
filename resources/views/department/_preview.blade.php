@@ -57,9 +57,9 @@ $project = $project ?? $order->project;
         <table class="table-tight">
             <thead>
             <tr>
-                <th>Budget</th>
-                <th>Name</th>
-                <th>PCA/Workday code/Fund type</th>
+                <th>Cost Center</th>
+                <th>(Budget)</th>
+                <th>Worktags</th>
                 <th>OPT Code</th>
                 <th class="text-right">Split</th>
             </tr>
@@ -68,10 +68,33 @@ $project = $project ?? $order->project;
 
             @foreach($order->budgets as $budget)
 
-                <tr>
-                    <td>{{ $budget->budgetno }}</td>
-                    <td>{{ $budget->name }}</td>
-                    <td>{{ $budget->pca_code }}</td>
+                
+                <tr >
+                    <td class="worktag-tag">
+                        <span>{{ $budget->wd_costcenter }}</span>
+                    </td>
+                    <td>
+                        @if( $budget->budgetno != '00-0000')
+                            <span>{{ $budget->budgetno }}</span>
+                        @endif
+                    </td>
+                    <td class="worktag-tag">
+                        @if( $budget->wd_program)
+                        <span>{{ $budget->wd_program }}</span>
+                        @endif
+                        @if( $budget->wd_standalonegrant)
+                            <span>{{ $budget->wd_standalonegrant }}</span>
+                        @endif
+                        @if( $budget->wd_grant)
+                            <span>{{ $budget->wd_grant }}</span>
+                        @endif
+                        @if( $budget->wd_gift)
+                            <span>{{ $budget->wd_gift }}</span>
+                        @endif
+                        @if( $budget->wd_fund)
+                            <span>{{ $budget->wd_fund }}</span>
+                        @endif
+                    </td>
                     <td>{{ $budget->opt_code }}</td>
                     <td class="text-right">{{ $budget->splitDescription() }}</td>
                 </tr>

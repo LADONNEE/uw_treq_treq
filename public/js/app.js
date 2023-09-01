@@ -4963,8 +4963,99 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _BudgetHelp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BudgetHelp */ "./resources/js/budgets/BudgetHelp.vue");
 /* harmony import */ var _budgets_BudgetSuggest__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../budgets/BudgetSuggest */ "./resources/js/budgets/BudgetSuggest.vue");
-/* harmony import */ var _budgets_ProjectCodeSuggest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../budgets/ProjectCodeSuggest */ "./resources/js/budgets/ProjectCodeSuggest.vue");
+/* harmony import */ var _budgets_WorktagSuggest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../budgets/WorktagSuggest */ "./resources/js/budgets/WorktagSuggest.vue");
 /* harmony import */ var _components_SpotlightBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/SpotlightBox */ "./resources/js/components/SpotlightBox.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5059,8 +5150,13 @@ __webpack_require__.r(__webpack_exports__);
       budgetno: '',
       name: '',
       pca_code: '',
-      opt_code: '',
-      project_code_id: null,
+      wd_costcenter: '',
+      wd_program: '',
+      wd_standalonegrant: '',
+      wd_grant: '',
+      wd_assignee: '',
+      wd_gift: '',
+      wd_fund: '',
       split_type: '',
       split: '',
       isDeletable: false,
@@ -5072,8 +5168,13 @@ __webpack_require__.r(__webpack_exports__);
     this.budgetno = this.budget.budgetno;
     this.name = this.budget.name;
     this.pca_code = this.budget.pca_code;
-    this.opt_code = this.budget.opt_code;
-    this.project_code_id = this.budget.project_code_id;
+    this.wd_costcenter = this.budget.wd_costcenter;
+    this.wd_program = this.budget.wd_program;
+    this.wd_standalonegrant = this.budget.wd_standalonegrant;
+    this.wd_grant = this.budget.wd_grant;
+    this.wd_assignee = this.budget.wd_assignee;
+    this.wd_gift = this.budget.wd_gift;
+    this.wd_fund = this.budget.wd_fund;
     this.split_type = this.budget.split_type;
     this.split = this.budget.split;
     this.isDeletable = !!this.budget.id;
@@ -5094,25 +5195,30 @@ __webpack_require__.r(__webpack_exports__);
 
       this.budgetno = option.budgetno;
       this.name = option.name;
-      this.$refs.split.focus();
-      this.$refs.split.select();
+      /*this.$refs.split.focus();
+      this.$refs.split.select();*/
+
       this.validate();
     },
-    projectCodeSelected: function projectCodeSelected(option) {
+    worktagSelected: function worktagSelected(option) {
       if (!option) {
         return;
-      }
+      } //this.wd_costcenter = option.workday_code;
 
-      this.pca_code = 'PCA code: ['.concat(option.code === '' ? 'no code' : option.code, '] ', option.description, ' ___ WORKDAY: [', option.workday_code, '] ', option.workday_description); //pca_code
 
-      this.project_code_id = option.id; //this.name = option.name;
+      console.log("WORKTAG SUGGESTION");
+      /*console.log(event.target);
+      console.log(option.workday_code);*/
+      //this.$refs.theInput.value = option.workday_code;
 
-      this.$refs.opt_code.focus();
-      this.$refs.opt_code.select();
+      /*this.$refs.split.focus();
+      this.$refs.split.select();*/
+
       this.validate();
     },
     keyHandler: function keyHandler(event) {
-      if (event.key === 'Enter' || event.keyCode === 13) {//this.saveBudget();
+      if (event.key === 'Enter' || event.keyCode === 13) {
+        this.saveBudget();
       }
 
       if (event.key === 'Escape' || event.keyCode === 27) {
@@ -5138,9 +5244,14 @@ __webpack_require__.r(__webpack_exports__);
         id: this.budget.id,
         budgetno: this.budgetno,
         name: this.name,
+        wd_costcenter: this.wd_costcenter,
+        wd_program: this.wd_program,
+        wd_standalonegrant: this.wd_standalonegrant,
+        wd_grant: this.wd_grant,
+        wd_assignee: this.wd_assignee,
+        wd_gift: this.wd_gift,
+        wd_fund: this.wd_fund,
         pca_code: this.pca_code,
-        opt_code: this.opt_code,
-        project_code_id: this.project_code_id,
         split_type: this.split_type,
         split: this.split,
         key: this.budget.key
@@ -5156,19 +5267,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     validate: function validate() {
       this.isInvalid = false;
-      this.validMessage = ''; // if (!this.budgetno || !this.budgetno.match(/^[0-9][0-9]\-?[0-9]{4}$/)) {
-      //     this.isInvalid = true;
-      //     this.validMessage = 'Budget number (00-0000) is required.';
-      // }
+      this.validMessage = '';
 
-      if (!this.pca_code) {
+      if (!this.wd_costcenter && (!this.budgetno || !this.budgetno.match(/^[0-9][0-9]\-?[0-9]{4}$/))) {
         this.isInvalid = true;
-        this.validMessage = 'PCA/Workday code or description is required.';
-      }
-
-      if (this.opt_code.length > 5) {
-        this.isInvalid = true;
-        this.validMessage = 'OPT code should be 5 characters or less';
+        this.validMessage = 'At least a Cost center or a Budget number is required.';
       }
     }
   },
@@ -5177,11 +5280,11 @@ __webpack_require__.r(__webpack_exports__);
       this.validate();
     },
     split: function split() {
-      if (this.split_type && this.split.indexOf('$') > -1) {
+      if (this.split_type && String(this.split).indexOf('$') > -1) {
         this.split_type = 'A';
-      } else if (this.split_type && this.split.indexOf('%') > -1) {
+      } else if (this.split_type && String(this.split).indexOf('%') > -1) {
         this.split_type = 'P';
-      } else if (!this.split_type || this.split.indexOf('*') > -1) {
+      } else if (!this.split_type || String(this.split).indexOf('*') > -1) {
         this.split_type = 'R';
       }
     }
@@ -5189,7 +5292,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     BudgetHelp: _BudgetHelp__WEBPACK_IMPORTED_MODULE_0__.default,
     BudgetSuggest: _budgets_BudgetSuggest__WEBPACK_IMPORTED_MODULE_1__.default,
-    ProjectCodeSuggest: _budgets_ProjectCodeSuggest__WEBPACK_IMPORTED_MODULE_2__.default,
+    WorktagSuggest: _budgets_WorktagSuggest__WEBPACK_IMPORTED_MODULE_2__.default,
     SpotlightBox: _components_SpotlightBox__WEBPACK_IMPORTED_MODULE_3__.default
   }
 });
@@ -5279,6 +5382,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -5289,7 +5402,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       showEditing: false,
       editing: null,
-      focus: 'pca_code'
+      focus: 'budgetno'
     };
   },
   computed: {
@@ -5317,7 +5430,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addBudget: function addBudget() {
-      this.focus = 'pca_code';
+      this.focus = 'budgetno';
       this.editing = this.store["new"]();
       this.showEditing = true;
     },
@@ -5397,11 +5510,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_components_suggest_mixin__WEBPACK_IMPORTED_MODULE_1__.default],
-  props: ['focused'],
+  props: ['focused', 'placeholderName', 'widthField'],
   data: function data() {
     return {
       source: (0,_suggestions_suggestion_factory__WEBPACK_IMPORTED_MODULE_0__.suggestions)('budgets')
@@ -5498,10 +5613,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/WorktagSuggest.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/WorktagSuggest.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5530,19 +5645,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mixins: [_components_suggest_mixin__WEBPACK_IMPORTED_MODULE_1__.default],
-  props: ['focused'],
+  props: ['focused', 'placeholderName', 'widthField', 'wdPrefix'],
   data: function data() {
     return {
-      source: (0,_suggestions_suggestion_factory__WEBPACK_IMPORTED_MODULE_0__.suggestions)('project_codes')
+      source: (0,_suggestions_suggestion_factory__WEBPACK_IMPORTED_MODULE_0__.suggestions)('worktags'),
+      isInvalid: false,
+      validMessage: ''
     };
   },
   methods: {
     setInputValue: function setInputValue(option, index) {
-      this.inputValue = option.id;
+      this.inputValue = option.workday_code;
+    },
+    gotFocus: function gotFocus() {
+      if (this.inputValue == "") {
+        this.inputValue = this.placeholderName.substring(0, 2);
+      }
+    },
+    lostFocus: function lostFocus() {
+      this.isInvalid = false;
+
+      if (this.inputValue != "" && this.inputValue.substring(0, 2) != this.placeholderName.substring(0, 2)) {
+        this.isInvalid = true;
+        this.validMessage = 'This worktag must start with ' + this.placeholderName.substring(0, 2);
+        this.inputValue = this.placeholderName.substring(0, 2);
+      }
     }
   },
   mounted: function mounted() {
@@ -8222,6 +8360,13 @@ var BudgetStore = /*#__PURE__*/function () {
         project_code_id: null,
         opt_code: '',
         name: '',
+        wd_costcenter: '',
+        wd_program: '',
+        wd_standalonegrant: '',
+        wd_grant: '',
+        wd_assignee: '',
+        wd_gift: '',
+        wd_fund: '',
         split_type: 'R',
         split: '',
         action: null
@@ -8243,6 +8388,13 @@ var BudgetStore = /*#__PURE__*/function () {
         id: null,
         budgetno: budget.budgetno || '00-0000',
         name: budget.name || 'New Item',
+        wd_costcenter: budget.wd_costcenter || '',
+        wd_program: budget.wd_program || '',
+        wd_standalonegrant: budget.wd_standalonegrant || '',
+        wd_grant: budget.wd_grant || '',
+        wd_assignee: budget.wd_assignee || '',
+        wd_gift: budget.wd_gift || '',
+        wd_fund: budget.wd_fund || '',
         pca_code: budget.pca_code || '',
         project_code_id: budget.project_code_id || null,
         opt_code: budget.opt_code || '',
@@ -8269,6 +8421,13 @@ var BudgetStore = /*#__PURE__*/function () {
           }
 
           this.budgets[i].budgetno = budget.budgetno || '';
+          this.budgets[i].wd_costcenter = budget.wd_costcenter || '';
+          this.budgets[i].wd_program = budget.wd_program || '';
+          this.budgets[i].wd_standalonegrant = budget.wd_standalonegrant || '';
+          this.budgets[i].wd_grant = budget.wd_grant || '';
+          this.budgets[i].wd_assignee = budget.wd_assignee || '';
+          this.budgets[i].wd_gift = budget.wd_gift || '';
+          this.budgets[i].wd_fund = budget.wd_fund || '';
           this.budgets[i].pca_code = budget.pca_code || '';
           this.budgets[i].project_code_id = budget.project_code_id || null;
           this.budgets[i].opt_code = budget.opt_code || '';
@@ -9353,8 +9512,8 @@ var treqTripForm = function treqTripForm(context) {
     travelerOther: function travelerOther() {
       return $('#js-traveler-other');
     },
-    travelerUWORG: function travelerUWORG() {
-      return $('#js-traveler-uworg');
+    travelerCOENV: function travelerCOENV() {
+      return $('#js-traveler-coenv');
     },
     personalTimeChecked: function personalTimeChecked() {
       return $('#js-trip-form input[name="personal_time"]:checked').length > 0;
@@ -9364,6 +9523,30 @@ var treqTripForm = function treqTripForm(context) {
     },
     personalTimeDatesInput: function personalTimeDatesInput() {
       return $('input[name="personal_time_dates"]');
+    },
+    EmailInput: function EmailInput() {
+      return $('input[name="traveler_email"]');
+    },
+    NameInput: function NameInput() {
+      return $('input[name="traveler"]');
+    },
+    PhoneInput: function PhoneInput() {
+      return $('input[name="traveler_phone"]');
+    },
+    AddressInput: function AddressInput() {
+      return $('input[name="nuwt_address_line1"]');
+    },
+    CityInput: function CityInput() {
+      return $('input[name="nuwt_city"]');
+    },
+    StateInput: function StateInput() {
+      return $('input[name="nuwt_state_province"]');
+    },
+    CodeInput: function CodeInput() {
+      return $('input[name="nuwt_zipcode"]');
+    },
+    CountryInput: function CountryInput() {
+      return $('input[name="nuwt_country"]');
     },
     honorarium: function honorarium() {
       return $('#js-honorarium');
@@ -9397,11 +9580,27 @@ var treqTripForm = function treqTripForm(context) {
   var travelerTypeChanged = function travelerTypeChanged() {
     var type = jq.travelerType();
 
-    if (type === 'uworg') {
+    if (type === 'coenv') {
       jq.travelerOther().hide();
-      jq.travelerUWORG().show();
+      jq.EmailInput().prop('required', false);
+      jq.PhoneInput().prop('required', false);
+      jq.CityInput().prop('required', false);
+      jq.CountryInput().prop('required', false);
+      jq.AddressInput().prop('required', false);
+      jq.CodeInput().prop('required', false);
+      jq.StateInput().prop('required', false);
+      jq.NameInput().prop('required', false);
+      jq.travelerCOENV().show();
     } else {
-      jq.travelerUWORG().hide();
+      jq.EmailInput().prop('required', true);
+      jq.PhoneInput().prop('required', true);
+      jq.CityInput().prop('required', true);
+      jq.CountryInput().prop('required', true);
+      jq.AddressInput().prop('required', true);
+      jq.CodeInput().prop('required', true);
+      jq.StateInput().prop('required', true);
+      jq.NameInput().prop('required', true);
+      jq.travelerCOENV().hide();
       jq.travelerOther().show();
     }
 
@@ -10196,16 +10395,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "suggestions": () => /* binding */ suggestions
 /* harmony export */ });
 /* harmony import */ var _budget_suggestions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./budget-suggestions */ "./resources/js/suggestions/budget-suggestions.js");
-/* harmony import */ var _person_suggestions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./person-suggestions */ "./resources/js/suggestions/person-suggestions.js");
-/* harmony import */ var _project_code_suggestions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project-code-suggestions */ "./resources/js/suggestions/project-code-suggestions.js");
+/* harmony import */ var _worktag_suggestions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./worktag-suggestions */ "./resources/js/suggestions/worktag-suggestions.js");
+/* harmony import */ var _person_suggestions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./person-suggestions */ "./resources/js/suggestions/person-suggestions.js");
+/* harmony import */ var _project_code_suggestions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./project-code-suggestions */ "./resources/js/suggestions/project-code-suggestions.js");
 var suggestionsInstances = {};
+
 
 
 
 var suggestionsFactories = {
   budgets: _budget_suggestions__WEBPACK_IMPORTED_MODULE_0__.default,
-  person: _person_suggestions__WEBPACK_IMPORTED_MODULE_1__.default,
-  project_codes: _project_code_suggestions__WEBPACK_IMPORTED_MODULE_2__.default
+  worktags: _worktag_suggestions__WEBPACK_IMPORTED_MODULE_1__.default,
+  person: _person_suggestions__WEBPACK_IMPORTED_MODULE_2__.default,
+  project_codes: _project_code_suggestions__WEBPACK_IMPORTED_MODULE_3__.default
 };
 
 var suggestionsCreate = function suggestionsCreate(name) {
@@ -10225,6 +10427,48 @@ var suggestions = function suggestions(name) {
 };
 
 
+
+/***/ }),
+
+/***/ "./resources/js/suggestions/worktag-suggestions.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/suggestions/worktag-suggestions.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+var Bloodhound = __webpack_require__(/*! typeahead.js/dist/bloodhound.min.js */ "./node_modules/typeahead.js/dist/bloodhound.min.js");
+
+var make = function make() {
+  var engine = new Bloodhound({
+    prefetch: {
+      url: '/treq/api/budgets.json' //, cache: false
+
+    },
+    remote: {
+      url: '/treq/api/worktags?q={{SEARCHTERM}}',
+      wildcard: '{{SEARCHTERM}}'
+    },
+    identify: function identify(datum) {
+      return datum.id;
+    },
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    datumTokenizer: function datumTokenizer(datum) {
+      return Bloodhound.tokenizers.nonword(datum.workday_code + ' ' + datum.name);
+    }
+  });
+  return function (q, sync, async) {
+    engine.search(q, sync, async);
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  make: make
+});
 
 /***/ }),
 
@@ -10569,7 +10813,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.contains-button[data-v-6c444182] {\n    padding: 0;\n}\n.contains-button button.btn-text[data-v-6c444182] {\n    padding: .5rem;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.contains-button[data-v-6c444182] {\n    padding: 0;\n}\n.contains-button button.btn-text[data-v-6c444182] {\n    padding: .5rem;\n}\n.worktag span[data-v-6c444182]{\n    border: 1px solid;\n    border-radius: 3px;\n    padding: 4px;\n    background: rgba(180, 167, 200, 0.5);\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10593,17 +10837,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.suggest-list[data-v-81786160] {\n    width: 20rem;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.suggest-list[data-v-81786160] {\n    width: 20rem;\n}\n\n \n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=style&index=0&id=2c89f37d&scoped=true&lang=css&":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=style&index=0&id=2c89f37d&scoped=true&lang=css& ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/WorktagSuggest.vue?vue&type=style&index=0&id=70d6264c&scoped=true&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/WorktagSuggest.vue?vue&type=style&index=0&id=70d6264c&scoped=true&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -10617,7 +10861,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.suggest-list[data-v-2c89f37d] {\n    width: 50rem;\n}\n.suggest-item[data-v-2c89f37d] {\n    border-bottom: 2px solid;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.suggest-list[data-v-70d6264c] {\n    width: 40rem;\n    background-color:rgb(196, 157, 251);\n}\n.suggest-list > div[data-v-70d6264c]:nth-child(2n) {\n    background-color:rgb(238, 207, 245);\n}\n\n\n\n \n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -46561,10 +46805,10 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=style&index=0&id=2c89f37d&scoped=true&lang=css&":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=style&index=0&id=2c89f37d&scoped=true&lang=css& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/WorktagSuggest.vue?vue&type=style&index=0&id=70d6264c&scoped=true&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/WorktagSuggest.vue?vue&type=style&index=0&id=70d6264c&scoped=true&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -46574,7 +46818,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectCodeSuggest_vue_vue_type_style_index_0_id_2c89f37d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ProjectCodeSuggest.vue?vue&type=style&index=0&id=2c89f37d&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=style&index=0&id=2c89f37d&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_WorktagSuggest_vue_vue_type_style_index_0_id_70d6264c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./WorktagSuggest.vue?vue&type=style&index=0&id=70d6264c&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/WorktagSuggest.vue?vue&type=style&index=0&id=70d6264c&scoped=true&lang=css&");
 
             
 
@@ -46583,11 +46827,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectCodeSuggest_vue_vue_type_style_index_0_id_2c89f37d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_WorktagSuggest_vue_vue_type_style_index_0_id_70d6264c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectCodeSuggest_vue_vue_type_style_index_0_id_2c89f37d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_WorktagSuggest_vue_vue_type_style_index_0_id_70d6264c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -47200,10 +47444,10 @@ component.options.__file = "resources/js/budgets/BudgetTool.vue"
 
 /***/ }),
 
-/***/ "./resources/js/budgets/ProjectCodeSuggest.vue":
-/*!*****************************************************!*\
-  !*** ./resources/js/budgets/ProjectCodeSuggest.vue ***!
-  \*****************************************************/
+/***/ "./resources/js/budgets/WorktagSuggest.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/budgets/WorktagSuggest.vue ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -47211,9 +47455,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _ProjectCodeSuggest_vue_vue_type_template_id_2c89f37d_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProjectCodeSuggest.vue?vue&type=template&id=2c89f37d&scoped=true& */ "./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=template&id=2c89f37d&scoped=true&");
-/* harmony import */ var _ProjectCodeSuggest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProjectCodeSuggest.vue?vue&type=script&lang=js& */ "./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=script&lang=js&");
-/* harmony import */ var _ProjectCodeSuggest_vue_vue_type_style_index_0_id_2c89f37d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProjectCodeSuggest.vue?vue&type=style&index=0&id=2c89f37d&scoped=true&lang=css& */ "./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=style&index=0&id=2c89f37d&scoped=true&lang=css&");
+/* harmony import */ var _WorktagSuggest_vue_vue_type_template_id_70d6264c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WorktagSuggest.vue?vue&type=template&id=70d6264c&scoped=true& */ "./resources/js/budgets/WorktagSuggest.vue?vue&type=template&id=70d6264c&scoped=true&");
+/* harmony import */ var _WorktagSuggest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WorktagSuggest.vue?vue&type=script&lang=js& */ "./resources/js/budgets/WorktagSuggest.vue?vue&type=script&lang=js&");
+/* harmony import */ var _WorktagSuggest_vue_vue_type_style_index_0_id_70d6264c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WorktagSuggest.vue?vue&type=style&index=0&id=70d6264c&scoped=true&lang=css& */ "./resources/js/budgets/WorktagSuggest.vue?vue&type=style&index=0&id=70d6264c&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -47224,19 +47468,19 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
-  _ProjectCodeSuggest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _ProjectCodeSuggest_vue_vue_type_template_id_2c89f37d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _ProjectCodeSuggest_vue_vue_type_template_id_2c89f37d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _WorktagSuggest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _WorktagSuggest_vue_vue_type_template_id_70d6264c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _WorktagSuggest_vue_vue_type_template_id_70d6264c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  "2c89f37d",
+  "70d6264c",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/budgets/ProjectCodeSuggest.vue"
+component.options.__file = "resources/js/budgets/WorktagSuggest.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -48532,10 +48776,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=script&lang=js&":
-/*!******************************************************************************!*\
-  !*** ./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************/
+/***/ "./resources/js/budgets/WorktagSuggest.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/budgets/WorktagSuggest.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -48543,8 +48787,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectCodeSuggest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ProjectCodeSuggest.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectCodeSuggest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WorktagSuggest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./WorktagSuggest.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/WorktagSuggest.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WorktagSuggest_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -49054,15 +49298,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=style&index=0&id=2c89f37d&scoped=true&lang=css&":
-/*!**************************************************************************************************************!*\
-  !*** ./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=style&index=0&id=2c89f37d&scoped=true&lang=css& ***!
-  \**************************************************************************************************************/
+/***/ "./resources/js/budgets/WorktagSuggest.vue?vue&type=style&index=0&id=70d6264c&scoped=true&lang=css&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/budgets/WorktagSuggest.vue?vue&type=style&index=0&id=70d6264c&scoped=true&lang=css& ***!
+  \**********************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectCodeSuggest_vue_vue_type_style_index_0_id_2c89f37d_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ProjectCodeSuggest.vue?vue&type=style&index=0&id=2c89f37d&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=style&index=0&id=2c89f37d&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_WorktagSuggest_vue_vue_type_style_index_0_id_70d6264c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./WorktagSuggest.vue?vue&type=style&index=0&id=70d6264c&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/WorktagSuggest.vue?vue&type=style&index=0&id=70d6264c&scoped=true&lang=css&");
 
 
 /***/ }),
@@ -49195,19 +49439,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=template&id=2c89f37d&scoped=true&":
-/*!************************************************************************************************!*\
-  !*** ./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=template&id=2c89f37d&scoped=true& ***!
-  \************************************************************************************************/
+/***/ "./resources/js/budgets/WorktagSuggest.vue?vue&type=template&id=70d6264c&scoped=true&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/budgets/WorktagSuggest.vue?vue&type=template&id=70d6264c&scoped=true& ***!
+  \********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectCodeSuggest_vue_vue_type_template_id_2c89f37d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectCodeSuggest_vue_vue_type_template_id_2c89f37d_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
+/* harmony export */   "render": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WorktagSuggest_vue_vue_type_template_id_70d6264c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+/* harmony export */   "staticRenderFns": () => /* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WorktagSuggest_vue_vue_type_template_id_70d6264c_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectCodeSuggest_vue_vue_type_template_id_2c89f37d_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ProjectCodeSuggest.vue?vue&type=template&id=2c89f37d&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=template&id=2c89f37d&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WorktagSuggest_vue_vue_type_template_id_70d6264c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./WorktagSuggest.vue?vue&type=template&id=70d6264c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/WorktagSuggest.vue?vue&type=template&id=70d6264c&scoped=true&");
 
 
 /***/ }),
@@ -50031,74 +50275,16 @@ var render = function() {
           "div",
           { staticClass: "form-group" },
           [
-            _c("label", [_vm._v("PCA/Workday Description")]),
-            _vm._v(" "),
-            _c("project-code-suggest", {
-              ref: "pca_code",
-              attrs: { focused: _vm.focus === "pca_code" },
-              on: {
-                selected: function(option) {
-                  return _vm.projectCodeSelected(option)
-                }
-              },
-              model: {
-                value: _vm.pca_code,
-                callback: function($$v) {
-                  _vm.pca_code = $$v
-                },
-                expression: "pca_code"
-              }
-            })
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-auto" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v("OPT")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.opt_code,
-                expression: "opt_code"
-              }
-            ],
-            ref: "opt_code",
-            staticClass: "form-control",
-            staticStyle: { width: "5rem" },
-            attrs: { type: "text", maxlength: "5" },
-            domProps: { value: _vm.opt_code },
-            on: {
-              keydown: function($event) {
-                return _vm.keyHandler($event)
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.opt_code = $event.target.value
-              }
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-auto" }, [
-        _c(
-          "div",
-          { staticClass: "form-group" },
-          [
-            _c("label", [_vm._v("Budget Number")]),
+            _c("label", [_vm._v("Budget Number (legacy)")]),
             _vm._v(" "),
             _c("budget-suggest", {
-              attrs: { focused: _vm.focus === "budgetno" },
+              attrs: { placeholderName: "00-0000", widthField: "8rem" },
               on: {
                 selected: function(option) {
                   return _vm.budgetSelected(option)
+                },
+                keydown: function($event) {
+                  return _vm.keyHandler($event)
                 }
               },
               model: {
@@ -50115,23 +50301,86 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-auto" }, [
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", [_vm._v("Cost Center")]),
+            _vm._v(" "),
+            _c("worktag-suggest", {
+              ref: _vm.wd_costcenter,
+              attrs: { focused: false, placeholderName: "CC000123" },
+              on: {
+                selected: function(option) {
+                  return _vm.worktagSelected(option)
+                },
+                keydown: function($event) {
+                  return _vm.keyHandler($event)
+                }
+              },
+              model: {
+                value: _vm.wd_costcenter,
+                callback: function($$v) {
+                  _vm.wd_costcenter = $$v
+                },
+                expression: "wd_costcenter"
+              }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-auto" }, [
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", [_vm._v("Program")]),
+            _vm._v(" "),
+            _c("worktag-suggest", {
+              attrs: { focused: false, placeholderName: "PG000123" },
+              on: {
+                selected: function(option) {
+                  return _vm.worktagSelected(option)
+                },
+                keydown: function($event) {
+                  return _vm.keyHandler($event)
+                }
+              },
+              model: {
+                value: _vm.wd_program,
+                callback: function($$v) {
+                  _vm.wd_program = $$v
+                },
+                expression: "wd_program"
+              }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-auto" }, [
         _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v("Budget Name")]),
+          _c("label", [_vm._v("Standalone Grant")]),
           _vm._v(" "),
           _c("input", {
             directives: [
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.name,
-                expression: "name"
+                value: _vm.wd_standalonegrant,
+                expression: "wd_standalonegrant"
               }
             ],
-            ref: "name",
             staticClass: "form-control",
-            staticStyle: { width: "14rem" },
-            attrs: { type: "text", placeholder: "Name of Budget" },
-            domProps: { value: _vm.name },
+            attrs: {
+              type: "text",
+              focused: false,
+              placeholder: "( free text )"
+            },
+            domProps: { value: _vm.wd_standalonegrant },
             on: {
               keydown: function($event) {
                 return _vm.keyHandler($event)
@@ -50140,7 +50389,172 @@ var render = function() {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.name = $event.target.value
+                _vm.wd_standalonegrant = $event.target.value
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-auto" }, [
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", [_vm._v("Grant")]),
+            _vm._v(" "),
+            _c("worktag-suggest", {
+              attrs: { focused: false, placeholderName: "GR000123" },
+              on: {
+                selected: function(option) {
+                  return _vm.worktagSelected(option)
+                },
+                keydown: function($event) {
+                  return _vm.keyHandler($event)
+                }
+              },
+              model: {
+                value: _vm.wd_grant,
+                callback: function($$v) {
+                  _vm.wd_grant = $$v
+                },
+                expression: "wd_grant"
+              }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-auto" }, [
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", [_vm._v("Gift")]),
+            _vm._v(" "),
+            _c("worktag-suggest", {
+              attrs: { focused: false, placeholderName: "GF000123" },
+              on: {
+                selected: function(option) {
+                  return _vm.worktagSelected(option)
+                },
+                keydown: function($event) {
+                  return _vm.keyHandler($event)
+                }
+              },
+              model: {
+                value: _vm.wd_gift,
+                callback: function($$v) {
+                  _vm.wd_gift = $$v
+                },
+                expression: "wd_gift"
+              }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-auto" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [_vm._v("Fund")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.wd_fund,
+                expression: "wd_fund"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              focused: false,
+              placeholder: "( free text )"
+            },
+            domProps: { value: _vm.wd_fund },
+            on: {
+              keydown: function($event) {
+                return _vm.keyHandler($event)
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.wd_fund = $event.target.value
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-auto" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [_vm._v("Assignee")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.wd_assignee,
+                expression: "wd_assignee"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              focused: false,
+              placeholder: "( free text )"
+            },
+            domProps: { value: _vm.wd_assignee },
+            on: {
+              keydown: function($event) {
+                return _vm.keyHandler($event)
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.wd_assignee = $event.target.value
+              }
+            }
+          })
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-auto" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [_vm._v("Split")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.split,
+                expression: "split"
+              }
+            ],
+            ref: "split",
+            staticClass: "form-control",
+            staticStyle: { width: "8rem" },
+            attrs: { type: "text" },
+            domProps: { value: _vm.split },
+            on: {
+              keydown: function($event) {
+                return _vm.keyHandler($event)
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.split = $event.target.value
               }
             }
           })
@@ -50189,39 +50603,6 @@ var render = function() {
               _c("option", { attrs: { value: "R" } }, [_vm._v("* Remainder")])
             ]
           )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-auto" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v("Split")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.split,
-                expression: "split"
-              }
-            ],
-            ref: "split",
-            staticClass: "form-control",
-            staticStyle: { width: "8rem" },
-            attrs: { type: "text" },
-            domProps: { value: _vm.split },
-            on: {
-              keydown: function($event) {
-                return _vm.keyHandler($event)
-              },
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.split = $event.target.value
-              }
-            }
-          })
         ])
       ])
     ]),
@@ -50428,13 +50809,44 @@ var render = function() {
                           _c(
                             "button-block",
                             {
+                              staticClass: "worktag",
                               on: {
                                 click: function($event) {
-                                  return _vm.editMe(budget, "name")
+                                  return _vm.editMe(budget, "worktags")
                                 }
                               }
                             },
-                            [_vm._v(_vm._s(budget.name))]
+                            [
+                              budget.wd_costcenter
+                                ? _c("span", [
+                                    _vm._v(_vm._s(budget.wd_costcenter))
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              budget.wd_program
+                                ? _c("span", [
+                                    _vm._v(_vm._s(budget.wd_program))
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              budget.wd_standalonegrant
+                                ? _c("span", [
+                                    _vm._v(_vm._s(budget.wd_standalonegrant))
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              budget.wd_grant
+                                ? _c("span", [_vm._v(_vm._s(budget.wd_grant))])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              budget.wd_gift
+                                ? _c("span", [_vm._v(_vm._s(budget.wd_gift))])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              budget.wd_fund
+                                ? _c("span", [_vm._v(_vm._s(budget.wd_fund))])
+                                : _vm._e()
+                            ]
                           )
                         ],
                         1
@@ -50454,25 +50866,6 @@ var render = function() {
                               }
                             },
                             [_vm._v(_vm._s(budget.pca_code))]
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        { staticClass: "editable" },
-                        [
-                          _c(
-                            "button-block",
-                            {
-                              on: {
-                                click: function($event) {
-                                  return _vm.editMe(budget, "opt_code")
-                                }
-                              }
-                            },
-                            [_vm._v(_vm._s(budget.opt_code))]
                           )
                         ],
                         1
@@ -50512,7 +50905,7 @@ var render = function() {
                 _c("tr", [
                   _c(
                     "td",
-                    { staticClass: "contains-button", attrs: { colspan: "5" } },
+                    { staticClass: "contains-button", attrs: { colspan: "4" } },
                     [
                       _c(
                         "button",
@@ -50540,7 +50933,33 @@ var render = function() {
                   return _c("tr", { key: budget.id }, [
                     _c("td", [_vm._v(_vm._s(budget.budgetno))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(budget.name))]),
+                    _c("td", { staticClass: "worktag" }, [
+                      budget.wd_costcenter
+                        ? _c("span", [_vm._v(_vm._s(budget.wd_costcenter))])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      budget.wd_program
+                        ? _c("span", [_vm._v(_vm._s(budget.wd_program))])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      budget.wd_standalonegrant
+                        ? _c("span", [
+                            _vm._v(_vm._s(budget.wd_standalonegrant))
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      budget.wd_grant
+                        ? _c("span", [_vm._v(_vm._s(budget.wd_grant))])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      budget.wd_gift
+                        ? _c("span", [_vm._v(_vm._s(budget.wd_gift))])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      budget.wd_fund
+                        ? _c("span", [_vm._v(_vm._s(budget.wd_fund))])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(budget.pca_code))]),
                     _vm._v(" "),
@@ -50587,17 +51006,17 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { staticStyle: { width: "20%" } }, [_vm._v("Budget Number")]),
+        _c("th", { staticStyle: { width: "20%" } }, [
+          _vm._v("Budget Number (FAS)")
+        ]),
         _vm._v(" "),
-        _c("th", [_vm._v("Name")]),
+        _c("th", [_vm._v("Worktags")]),
         _vm._v(" "),
-        _c("th", [_vm._v("PCA/Workday code/Fund type")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("OPT Code")]),
+        _c("th", { staticStyle: { width: "15%" } }, [_vm._v("PCA Code")]),
         _vm._v(" "),
         _c(
           "th",
-          { staticClass: "text-right pr-3", staticStyle: { width: "20%" } },
+          { staticClass: "text-right pr-3", staticStyle: { width: "15%" } },
           [_vm._v("Split")]
         )
       ])
@@ -50650,12 +51069,24 @@ var render = function() {
       ],
       ref: "theInput",
       staticClass: "form-control",
-      staticStyle: { width: "8rem" },
-      attrs: { type: "text", placeholder: "00-0000" },
+      attrs: {
+        type: "text",
+        placeholder: _vm.placeholderName,
+        width: _vm.widthField
+      },
       domProps: { value: _vm.inputValue },
       on: {
         keyup: function($event) {
           return _vm.handleKeypress($event)
+        },
+        keydown: function($event) {
+          if (
+            !$event.type.indexOf("key") &&
+            _vm._k($event.keyCode, "tab", 9, $event.key, "Tab")
+          ) {
+            return null
+          }
+          return _vm.handleKeypressTab($event)
         },
         focus: function($event) {
           return _vm.gotFocus()
@@ -50703,9 +51134,6 @@ var render = function() {
             on: {
               click: function($event) {
                 return _vm.select(index)
-              },
-              mouseenter: function($event) {
-                return _vm.setCursor(index)
               }
             }
           },
@@ -50795,10 +51223,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=template&id=2c89f37d&scoped=true&":
-/*!***************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/ProjectCodeSuggest.vue?vue&type=template&id=2c89f37d&scoped=true& ***!
-  \***************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/WorktagSuggest.vue?vue&type=template&id=70d6264c&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/budgets/WorktagSuggest.vue?vue&type=template&id=70d6264c&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -50823,12 +51251,24 @@ var render = function() {
       ],
       ref: "theInput",
       staticClass: "form-control",
-      staticStyle: { width: "20rem" },
-      attrs: { type: "text", placeholder: "PCA/Workday Code or Description" },
+      attrs: {
+        type: "text",
+        placeholder: _vm.placeholderName,
+        width: _vm.widthField
+      },
       domProps: { value: _vm.inputValue },
       on: {
         keyup: function($event) {
           return _vm.handleKeypress($event)
+        },
+        keydown: function($event) {
+          if (
+            !$event.type.indexOf("key") &&
+            _vm._k($event.keyCode, "tab", 9, $event.key, "Tab")
+          ) {
+            return null
+          }
+          return _vm.handleKeypressTab($event)
         },
         focus: function($event) {
           return _vm.gotFocus()
@@ -50844,6 +51284,14 @@ var render = function() {
         }
       }
     }),
+    _vm._v(" "),
+    _vm.isInvalid
+      ? _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col text-danger mb-3 px-3" }, [
+            _vm._v("\n            " + _vm._s(_vm.validMessage) + "\n        ")
+          ])
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _c(
       "div",
@@ -50876,24 +51324,10 @@ var render = function() {
             on: {
               click: function($event) {
                 return _vm.select(index)
-              },
-              mouseenter: function($event) {
-                return _vm.setCursor(index)
               }
             }
           },
-          [
-            _vm._v(
-              "PROJECT CODE: [" +
-                _vm._s(option.code === "" ? "no code" : option.code) +
-                "] " +
-                _vm._s(option.description) +
-                " ___ WORKDAY: [" +
-                _vm._s(option.workday_code) +
-                "] " +
-                _vm._s(option.workday_description)
-            )
-          ]
+          [_vm._v(_vm._s(option.workday_code) + " - " + _vm._s(option.name))]
         )
       }),
       0

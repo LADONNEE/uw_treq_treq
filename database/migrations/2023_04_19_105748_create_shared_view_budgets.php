@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSharedBudgets extends Migration
+class CreateSharedViewBudgets extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,10 @@ class CreateSharedBudgets extends Migration
      */
     public function up()
     {
-        DB::statement(sqlInclude(__DIR__ . '/../views/shared_view_budgets.sql'));
+        DB::statement(sqlInclude(__DIR__ . '/../views/shared_view_budgets.sql', [
+            '__DBSHARED__' => env('DB_DATABASE_SHARED', 'shared'),
+            '__DBBUDGETS__' => env('DB_DATABASE_BUDGETS', 'budgets')
+        ]));
     }
 
     public function down()

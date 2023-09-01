@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSharedBudgetsBienniumSetting extends Migration
+class CreateSharedViewBudgetsBienniumSetting extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,10 @@ class CreateSharedBudgetsBienniumSetting extends Migration
      */
     public function up()
     {
-        DB::statement(sqlInclude(__DIR__ . '/../views/shared_view_budgets_biennium_setting.sql'));
+        DB::statement(sqlInclude(__DIR__ . '/../views/shared_view_budgets_biennium_setting.sql', [
+            '__DBSHARED__' => env('DB_DATABASE_SHARED', 'shared'),
+            '__DBBUDGETS__' => env('DB_DATABASE_BUDGETS', 'budgets')
+        ]));
     }
 
     public function down()

@@ -1772,7 +1772,7 @@ td.numeric {
 .budget-block {
   display: grid;
   grid-template-columns: 2fr 3fr 1fr;
-  grid-template-areas: "budget name name" "pca pca split" "opt opt opt";
+  grid-template-areas: "budget pca split" "name name name" "tag tag tag";
   padding: 1rem;
   border-top: 1px solid #ddd;
 }
@@ -1802,9 +1802,24 @@ td.numeric {
   text-align: right;
 }
 
-.budget-block__opt {
-  grid-area: opt;
-  color: #575757;
+.budget-block__worktags {
+  grid-area: tag;
+}
+
+.budget-block span {
+  border: 1px solid;
+  border-radius: 2px;
+  padding: 2px;
+  margin: 4px;
+  background: rgba(180, 167, 200, 0.5);
+}
+
+.worktag-tag span {
+  border: 1px solid;
+  border-radius: 2px;
+  padding: 2px;
+  margin: 4px;
+  background: rgba(180, 167, 200, 0.5);
 }
 
 .budget-list .deleting {
