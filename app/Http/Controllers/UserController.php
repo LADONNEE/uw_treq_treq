@@ -11,6 +11,10 @@ use App\Reports\UserOrdersReport;
 use App\Reports\UsersReport;
 use App\Trackers\LoggedAuth;
 use Carbon\Carbon;
+use GuzzleHttp\Client as GuzzleClient;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+
 
 class UserController extends Controller
 {
@@ -23,8 +27,52 @@ class UserController extends Controller
             if ($person instanceof Person && $person->uwnetid) {
                 return redirect()->action('UserController@edit', $person->uwnetid);
             }
+            // else {
+            //     $this->createUserInUwpersonsTable($personId);
+            //     $person = Person::where('person_id', $personId)->first();
+
+            //     if ($person instanceof Person && $person->uwnetid) {
+            //         return redirect()->action('UserController@edit', $person->uwnetid);
+            //     }
+            //     else {
+            //         //not a uw person
+                    
+            //     }
+                
+            // }
+
+
         }
         abort(404);
+    }
+
+    public function createUserInUwpersonsTable($personId)
+    {
+        //$client = new GuzzleClient();
+        /*$res = $client->request('POST', config('app.url') . '/searchpersons/saveuwperson', [
+            'form_params' => [
+                'person_id' => "'" . $personId . "'"
+            ]
+        ]);*/
+
+        // $response = $client->request('POST', config('app.url') . '/searchpersons/saveuwperson', [
+        //     'form_params' => [
+        //         'person_id' => $personId
+        //     ]
+        // ]);
+
+        // $result= $response->getBody();
+
+
+        $response = Http::get(config('app.url') . '/searchpersons/saveuwperson', [
+            "person_id" => $personId
+            // "title" => "Laravelia",
+            // "body" => "Laravelia"
+        ]);
+
+        dd($response);
+
+        
     }
 
     public function index()
