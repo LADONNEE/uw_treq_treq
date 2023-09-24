@@ -19,7 +19,7 @@ class Stage extends Model
         'name',
         'task_type',
     ];
-    protected $dates = [
+    protected $casts = [
         'created_at',
         'updated_at',
     ];

@@ -26,7 +26,7 @@ class Item extends Model
         'qty',
         'amount',
     ];
-    protected $dates = [
+    protected $casts = [
         'created_at',
         'updated_at',
     ];

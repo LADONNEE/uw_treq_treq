@@ -20,7 +20,7 @@ class AuthLog extends Model
         'actor_id',
         'message',
     ];
-    protected $dates = [
+    protected $casts = [
         'created_at',
         'updated_at',
     ];

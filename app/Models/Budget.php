@@ -52,7 +52,7 @@ class Budget extends Model
         'wd_gift',
         'wd_fund',
     ];
-    protected $dates = [
+    protected $casts = [
         'created_at',
         'updated_at',
     ];

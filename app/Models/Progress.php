@@ -24,7 +24,7 @@ class Progress extends Model
         'step',
         'completed_by',
     ];
-    protected $dates = [
+    protected $casts = [
         'created_at',
         'updated_at',
     ];

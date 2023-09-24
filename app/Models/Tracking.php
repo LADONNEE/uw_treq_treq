@@ -33,7 +33,7 @@ class Tracking extends Model
         'next_action',
         'next_actors',
     ];
-    protected $dates = [
+    protected $casts = [
         'last_at',
         'created_at',
         'updated_at',

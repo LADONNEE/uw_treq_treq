@@ -36,7 +36,7 @@ class ProjectCode extends AbstractModel
         'authorizer_person_id',
         'fiscal_person_id',
     ];
-    protected $dates = [
+    protected $casts = [
         'created_at',
         'updated_at',
     ];

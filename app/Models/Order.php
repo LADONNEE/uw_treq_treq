@@ -68,7 +68,7 @@ class Order extends Model
         'assigned_to',
         'on_call',
     ];
-    protected $dates = [
+    protected $casts = [
         'submitted_at',
         'active_at',
         'notified_at',

@@ -26,7 +26,7 @@ class OrderLog extends Model
         'task_id',
         'message',
     ];
-    protected $dates = [
+    protected $casts = [
         'created_at',
         'updated_at',
     ];

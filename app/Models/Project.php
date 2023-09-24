@@ -47,7 +47,7 @@ class Project extends Model
         'closed_at',
         'closed_by',
     ];
-    protected $dates = [
+    protected $casts = [
         'closed_at',
         'created_at',
         'updated_at',

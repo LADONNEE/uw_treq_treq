@@ -30,7 +30,7 @@ class Perdiem extends Model
         'meals_pd',
         'meals',
     ];
-    protected $dates = [
+    protected $casts = [
         'created_at',
         'updated_at',
     ];

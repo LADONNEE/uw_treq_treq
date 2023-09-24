@@ -50,7 +50,7 @@ class Trip extends Model
         'nuwt_zipcode',
         'nuwt_country',
     ];
-    protected $dates = [
+    protected $casts = [
         'depart_at',
         'return_at',
         'created_at',

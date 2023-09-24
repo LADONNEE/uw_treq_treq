@@ -60,7 +60,7 @@ class Task extends Model
         'completed_by',
         'completed_at',
     ];
-    protected $dates = [
+    protected $casts = [
         'notified_at',
         'completed_at',
         'created_at',

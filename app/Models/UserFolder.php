@@ -24,7 +24,7 @@ class UserFolder extends Model
         'name',
         'created_by',
     ];
-    protected $dates = [
+    protected $casts = [
         'created_at',
         'updated_at',
     ];
