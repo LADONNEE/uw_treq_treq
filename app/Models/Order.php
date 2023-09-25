@@ -69,11 +69,11 @@ class Order extends Model
         'on_call',
     ];
     protected $casts = [
-        'submitted_at',
-        'active_at',
-        'notified_at',
-        'created_at',
-        'updated_at',
+        'submitted_at' => 'datetime',
+        'active_at' => 'datetime',
+        'notified_at' => 'datetime',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
 
     private $_perDiemView;

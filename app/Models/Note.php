@@ -31,8 +31,8 @@ class Note extends Model
         'updated_by',
     ];
     protected $casts = [
-        'created_at',
-        'updated_at',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
 
     public $sections = [

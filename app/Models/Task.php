@@ -61,10 +61,10 @@ class Task extends Model
         'completed_at',
     ];
     protected $casts = [
-        'notified_at',
-        'completed_at',
-        'created_at',
-        'updated_at',
+        'notified_at' => 'datetime',
+        'completed_at' => 'datetime',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
 
     public function canComplete(User $user)

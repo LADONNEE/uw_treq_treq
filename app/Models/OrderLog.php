@@ -27,8 +27,8 @@ class OrderLog extends Model
         'message',
     ];
     protected $casts = [
-        'created_at',
-        'updated_at',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
 
     public function actor()

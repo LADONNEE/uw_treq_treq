@@ -51,10 +51,10 @@ class Trip extends Model
         'nuwt_country',
     ];
     protected $casts = [
-        'depart_at',
-        'return_at',
-        'created_at',
-        'updated_at',
+        'depart_at' => 'datetime',
+        'return_at' => 'datetime',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
 
     public function travelerLastName()

@@ -27,8 +27,8 @@ class Item extends Model
         'amount',
     ];
     protected $casts = [
-        'created_at',
-        'updated_at',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
 
     public function nameQtyAmount()

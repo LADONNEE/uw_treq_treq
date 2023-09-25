@@ -48,9 +48,9 @@ class Project extends Model
         'closed_by',
     ];
     protected $casts = [
-        'closed_at',
-        'created_at',
-        'updated_at',
+        'closed_at' => 'datetime',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
 
     public function canClose()

@@ -34,9 +34,9 @@ class Tracking extends Model
         'next_actors',
     ];
     protected $casts = [
-        'last_at',
-        'created_at',
-        'updated_at',
+        'last_at' => 'datetime',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
 
     public function track(Order $order)
