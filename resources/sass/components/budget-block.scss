@@ -1,16 +1,25 @@
 .budget-block {
   display: grid;
-  grid-template-columns: 2fr 3fr 1fr;
+  grid-template-columns: 3fr 3fr 1fr;
+  grid-template-rows: min-content auto;
   grid-template-areas:
-    "budget pca split"
-    "name name name"
-    "tag tag tag";
+    "wdcc wdcc split"
+    "tagpg tagpg tagpg"
+    "taggr taggr taggr"
+    "taggf taggf taggf"
+    "tagfd tagfd tagfd";
+    
   padding: 1rem;
   border-top: 1px solid #ddd;
 }
 
 .budget-block:first-child {
   border-top: 0 none;
+}
+
+.budget-block__wd_costcenter {
+  grid-area: wdcc;
+  font-weight: 600;
 }
 
 .budget-block__budgetno {
@@ -35,9 +44,28 @@
 }
 
 .budget-block__worktags {
-  grid-area: tag;
-  
+  /*grid-area: tag;*/
+  width: 100%;
+  overflow-x: auto;
 }
+
+.budget-block__worktags.wdpg {
+  grid-area: tagpg;
+}
+
+.budget-block__worktags, wdgr {
+  grid-area: taggr;
+}
+
+.budget-block__worktags, wdgf {
+  grid-area: taggf;
+}
+  
+.budget-block__worktags, wdfd {
+  grid-area: tagfd;
+}
+
+
 
 
 .budget-block span{
@@ -49,6 +77,14 @@
 }
 
 .worktag-tag span{
+  border: 1px solid;
+  border-radius: 2px;
+  padding: 2px;
+  margin: 4px;
+  background: rgba(180, 167, 200, 0.5);
+}
+
+.worktag-tag div{
   border: 1px solid;
   border-radius: 2px;
   padding: 2px;

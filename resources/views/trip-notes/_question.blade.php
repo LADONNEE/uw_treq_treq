@@ -1,6 +1,5 @@
 <?php
-
-/** @var $question Uworgws\Formkit\Input */
+/** @var $question Utilws\Formkit\Input */
 $questionName = $question->getName();
 $value = $question->getFormValue();
 $questionError = $question->getError();
@@ -10,7 +9,7 @@ $label = $qiv->get('label');
 $yesId = "{$id}_y";
 $noId = "{$id}_n";
 
-/** @var $note Uworgws\Formkit\Input */
+/** @var $note Utilws\Formkit\Input */
 $noteError = $note->getError();
 $niv = $note->getInputView();
 $noteId = $niv->get('id');
@@ -18,6 +17,7 @@ $noteBoxId = "{$noteId}_box";
 $noteLabel = $niv->get('label');
 
 ?>
+
 <div class="trip-note">
     <div class="trip-note__question">
         <h3 class="trip-note__legend">{{ $label }}</h3>

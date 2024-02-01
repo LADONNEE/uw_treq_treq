@@ -35,10 +35,9 @@ class UwGroups
     public static function setMembers($group = 'u_hanisko_treq_child')
     {
         $group = new UwGroup($group);
-        $group->members->addMember(new UwnetidMember('ymichea'));
-        $group->members->addMember(new UwnetidMember('cadavis1'));
-        $group->members->addMember(new UwnetidMember('pkeyes'));
-        $group->members->addMember(new UwnetidMember('bossim1'));
+        $group->members->addMember(new UwnetidMember('aaaaaa1'));
+        $group->members->addMember(new UwnetidMember('aaaaaa2'));
+        
 
         $ws = new UwGroupsService();
         $res = $ws->setMembers($group);
@@ -48,8 +47,8 @@ class UwGroups
 
     public static function create()
     {
-        $group = new UwGroup('u_hanisko_treq_child2', 'TREQ Child Second Group Test', 'hanisko');
-        $group->admins->addMember(new UwnetidMember('hanisko'));
+        $group = new UwGroup('u_hanisko_treq_child2', 'TREQ Child Second Group Test', 'nbedani');
+        $group->admins->addMember(new UwnetidMember('nbedani'));
         $group->admins->addMember(new DnsMember('groups-client.educ.uw.edu'));
 
         $ws = new UwGroupsService();

@@ -75,7 +75,7 @@ abstract class BaseOrderMailable extends Mailable implements ProvidesMetadata, R
 
         $cc = $this->ccPerson();
         if ($cc && $cc->uwnetid) {
-            $mailable->cc($cc->uwnetid . '@uw.edu', eFirstLast($cc));
+            $mailable->cc($cc->uwnetid . '@' . config('custom.scl_email_domain'), eFirstLast($cc));
         }
 
         return $mailable;

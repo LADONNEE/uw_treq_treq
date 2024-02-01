@@ -101,17 +101,25 @@ class TripNotesCollection
     public function __construct($order_id)
     {
         $this->order_id = $order_id;
-        foreach ($this->config as $item => $c) {
-            $this->notes[$item] = new TripNotesResponse(
+        $questions = Question::where('status','active')->get();
+
+        foreach ($questions as  $question) {
+            $unserializedArray = null;
+            if ($question->options){
+                $unserializedArray = unserialize($question->options);
+            }
+            $this->notes[$question->item] = new TripNotesResponse(
                 $order_id,
-                $item,
-                $c['label'],
-                $c['question'],
-                $c['options'] ?? null,
-                $c['precision'] ?? null
+                $question->item,
+                $question->label,
+                $question->question,
+                $unserializedArray ?? null,
+                $question->notes ?? null
             );
+
         }
         $notes = TripNote::where('order_id', $this->order_id)->get();
+
         foreach ($notes as $tn) {
             if (isset($this->notes[$tn->item])) {
                 $this->notes[$tn->item]->load($tn);

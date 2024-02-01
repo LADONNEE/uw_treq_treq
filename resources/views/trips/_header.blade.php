@@ -51,7 +51,7 @@
            
         </div>
         @endif
-        @if($trip->non_uw)
+        @if($trip->personal_time)
             <div>@icon('island-tropical') Using Personal Time</div>
         @endif
         @if($trip->honorarium)

@@ -15,6 +15,7 @@
         {!! $form->open(route('trip-notes-update', $order->id)) !!}
 
         @foreach($form->itemNames as $item)
+
             @include('trip-notes._question', [
                 'question' => $form->input($item),
                 'note' => $form->input("{$item}_note"),

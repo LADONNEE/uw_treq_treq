@@ -122,7 +122,4 @@ class DepartmentApprovalForm extends Form
             $this->set('approver', eFirstLast($dept_person_id));
         }
     }
-
-    
-
 }

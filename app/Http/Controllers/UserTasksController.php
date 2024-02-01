@@ -31,6 +31,16 @@ class UserTasksController extends Controller
             ->orderBy('num_pending', 'desc')
             ->get();
 
+        if (wantsCsv()) {
+            $reportdata = Task::select('tasks.*')
+                                ->join('tasks_pending_view', 'tasks.id', '=', 'tasks_pending_view.task_id')
+                                ->orderBy('created_at')
+                                ->with('order', 'order.project')
+                                ->get();
+
+            return response()->view('user-tasks.csv', compact('reportdata'));
+        }
+
         return view('user-tasks.index', compact('usersWithTasks'));
     }
 

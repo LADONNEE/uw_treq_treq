@@ -60,14 +60,12 @@ $project = $project ?? $order->project;
                 <th>Cost Center</th>
                 <th>(Budget)</th>
                 <th>Worktags</th>
-                <th>OPT Code</th>
                 <th class="text-right">Split</th>
             </tr>
             </thead>
             <tbody>
 
             @foreach($order->budgets as $budget)
-
                 
                 <tr >
                     <td class="worktag-tag">
@@ -95,7 +93,7 @@ $project = $project ?? $order->project;
                             <span>{{ $budget->wd_fund }}</span>
                         @endif
                     </td>
-                    <td>{{ $budget->opt_code }}</td>
+                    
                     <td class="text-right">{{ $budget->splitDescription() }}</td>
                 </tr>
 

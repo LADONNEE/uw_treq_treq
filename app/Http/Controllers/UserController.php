@@ -11,10 +11,9 @@ use App\Reports\UserOrdersReport;
 use App\Reports\UsersReport;
 use App\Trackers\LoggedAuth;
 use Carbon\Carbon;
-use GuzzleHttp\Client as GuzzleClient;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-
+use Illuminate\Support\Facades\Log;
+use GuzzleHttp\Client as GuzzleClient;
 
 class UserController extends Controller
 {
@@ -27,52 +26,8 @@ class UserController extends Controller
             if ($person instanceof Person && $person->uwnetid) {
                 return redirect()->action('UserController@edit', $person->uwnetid);
             }
-            // else {
-            //     $this->createUserInUwpersonsTable($personId);
-            //     $person = Person::where('person_id', $personId)->first();
-
-            //     if ($person instanceof Person && $person->uwnetid) {
-            //         return redirect()->action('UserController@edit', $person->uwnetid);
-            //     }
-            //     else {
-            //         //not a uw person
-                    
-            //     }
-                
-            // }
-
-
         }
         abort(404);
-    }
-
-    public function createUserInUwpersonsTable($personId)
-    {
-        //$client = new GuzzleClient();
-        /*$res = $client->request('POST', config('app.url') . '/searchpersons/saveuwperson', [
-            'form_params' => [
-                'person_id' => "'" . $personId . "'"
-            ]
-        ]);*/
-
-        // $response = $client->request('POST', config('app.url') . '/searchpersons/saveuwperson', [
-        //     'form_params' => [
-        //         'person_id' => $personId
-        //     ]
-        // ]);
-
-        // $result= $response->getBody();
-
-
-        $response = Http::get(config('app.url') . '/searchpersons/saveuwperson', [
-            "person_id" => $personId
-            // "title" => "Laravelia",
-            // "body" => "Laravelia"
-        ]);
-
-        dd($response);
-
-        
     }
 
     public function index()
@@ -83,6 +38,39 @@ class UserController extends Controller
             ->with('actor')
             ->get();
         return view('user/index', compact('users', 'logs'));
+    }
+
+    public function userHasRole($personid, $role)
+    {
+        $data = 'no permission';
+        if ($personid) {
+            $person = Person::where('person_id', $personid)->first();
+            if ($person instanceof Person && $person->uwnetid) {
+                if(hasRole($role, user($person->uwnetid))) {
+                    $data = 'permitted';
+                }
+            }
+        }
+        return $data;
+        
+        
+    }
+
+    public function userCanApprove($personid)
+    {
+        $data = 'no permission';
+        if ($personid) {
+            $person = Person::where('person_id', $personid)->first();
+
+            if ($person instanceof Person && $person->uwnetid) {
+                if(  $personid != user()->person_id ||  ( $personid == user()->person_id && hasRole('treq:fiscal', user($person->uwnetid) )  )   ) {
+                    $data = 'permitted';
+                }
+            }
+        }
+        return $data;
+        
+        
     }
 
     public function show($uwnetid)
@@ -137,4 +125,62 @@ class UserController extends Controller
             UserFolder::where('person_id', $user->person_id)->delete();
         }
     }
+
+    // Call searchpersons to import User in uw_persons database
+    public function import()
+    {
+        //$user_data = request('uwperson_data');
+        //$personId = $user_data->uwperson_id;
+        $personId = request('uwperson_id');
+        
+        Log::debug('Treq Import');
+
+        if ($personId) {
+            
+            Log::debug('got personid');
+            Log::debug($personId);
+
+            
+            $apiPersonImportUrl = config('app.url') . '/searchpersons/import-uw';
+            
+            $verifySsl = true;
+            //For development only, disable ssl-verify
+            if(config('app.env') != 'production' ) {
+                $verifySsl = false;
+            }
+
+            $response = Http::withOptions(["verify"=>$verifySsl])
+                        ->get( $apiPersonImportUrl, [
+                            'a' => $personId,
+                        ]);
+            
+            // $response = Http::get( $postUrl, [
+            //     'person_id' => $personId,
+            // ]);
+
+            Log::debug('RESPONSE');
+            Log::debug($response);
+            Log::debug($response->status());
+
+            // Log::debug($response);
+
+            if ($response->status() == 200) { 
+                
+                $person = Person::where('person_id', $personId)->first();
+                if ($person instanceof Person && $person->uwnetid) {
+                    return redirect()->action('UserController@edit', $person->uwnetid);
+                }
+            
+            }
+
+
+        }
+
+        Log::debug("we there");
+
+        // abort(404);
+    }
+
+
+
 }

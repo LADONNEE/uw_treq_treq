@@ -183,6 +183,15 @@ function optionId($id, $value)
     return \Illuminate\Support\Str::snake("{$id}_{$value}");
 }
 
+function helpContent( $value)
+{
+    $help = \App\Models\WorkflowManagement::where('title', $value)->first();
+    if (!$help) {
+        return '';
+    }
+    return $help->content;
+}
+
 function setting($name)
 {
     return app('App\Utilities\SettingsCache')->get($name);

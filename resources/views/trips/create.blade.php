@@ -13,9 +13,8 @@
                 {!! $form->close() !!}
             </div>
             <div class="page-with-help__help">
-                <h2>Help: Create a Trip Project</h2>
 
-                @include('trips._help')
+                @include('trips._help', ['typeName' => $order->typeName()])
             </div>
         </div>
     </div>

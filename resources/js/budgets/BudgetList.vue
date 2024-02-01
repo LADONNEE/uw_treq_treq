@@ -5,7 +5,6 @@
             <tr>
                 <th style="width:20%;">Budget Number (FAS)</th>
                 <th>Worktags</th>
-                <th style="width:15%;">PCA Code</th>
                 <th style="width:15%;" class="text-right pr-3">Split</th>
             </tr>
             </thead>
@@ -28,9 +27,6 @@
                         <span v-if="budget.wd_gift">{{ budget.wd_gift }}</span>
                         <span v-if="budget.wd_fund">{{ budget.wd_fund }}</span>
                         </button-block>
-                </td>
-                <td class="editable">
-                    <button-block @click="editMe(budget, 'pca_code')">{{ budget.pca_code }}</button-block>
                 </td>
                 <td class="editable text-right pr-3">
                     <button-block @click="editMe(budget, 'split')">{{ formatSplit(budget.split, budget.split_type) }}</button-block>

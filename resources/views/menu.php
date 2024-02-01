@@ -18,7 +18,12 @@ return [
     'Admin' => [
         [ 'Pending Email', route('pending-email') ],
         [ 'Settings', action('SettingsController@index'), 'settings' ],
-        [ 'Workflows', action('Workflows') ],
+        [ 'Manage questions', action('QuestionController@index') ],
+        [ 'List Workflows', action('Workflows') ],
+        [ 'Edit Workflows', action('WorkflowManagementController@index') ],
         [ 'Users', action('UserController@index'), 'user-mgmt' ],
+        
+
+
     ],
 ];

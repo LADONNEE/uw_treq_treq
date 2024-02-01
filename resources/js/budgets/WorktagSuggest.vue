@@ -51,6 +51,10 @@
             },
             lostFocus(){
                 this.isInvalid = false;
+                if (this.inputValue == this.placeholderName.substring(0,2)){
+                    this.inputValue = "";
+                }
+
                 if(this.inputValue != "" && this.inputValue.substring(0,2) != this.placeholderName.substring(0,2)){
                     this.isInvalid = true;
                     this.validMessage = 'This worktag must start with ' + this.placeholderName.substring(0,2);

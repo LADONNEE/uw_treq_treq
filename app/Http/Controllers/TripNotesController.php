@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Forms\TripNotesForm;
 use App\Models\Order;
+use App\Models\Question;
 
 class TripNotesController extends Controller
 {
@@ -12,7 +13,8 @@ class TripNotesController extends Controller
 
         $form = new TripNotesForm($order);
 
-        return view('trip-notes.edit', compact('order', 'form'));
+        $questions = Question::all();
+        return view('trip-notes.edit', compact('order', 'form', 'questions'));
     }
 
     public function update(Order $order)

@@ -26,4 +26,19 @@ class WorktagApiController extends Controller
 
         return response()->json($matches);
     }
+
+    public function searchtree()
+    {
+        $query = request('q');
+        if (!$query) {
+            return response()->json([]);
+        }
+
+        $matches = (new WorktagLookupSearch($query))->searchtree();
+
+        return response()->json($matches);
+    }
+
+
+
 }

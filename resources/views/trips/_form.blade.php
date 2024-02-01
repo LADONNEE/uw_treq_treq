@@ -3,7 +3,7 @@
 
     <div id="js-traveler-uworg">
         @input('person_id')
-        @inputBlock('traveler_search', 'Traveler (UW iSchool)')
+        @inputBlock('traveler_search', 'Traveler (' . config('custom.scl_long') . ')')
     </div>
 
     <div id="js-traveler-other" class="panel-full-width p-panel bg-indigo-100 mb-3">
@@ -19,17 +19,19 @@
         <p>As a non UW Traveler, please enter the mailing address to which you should receive your reimbursement check.</p>
             @inputBlock('nuwt_address_line1', 'Address Line 1')
             @inputBlock('nuwt_address_line2', 'Address line 2')
+
             <div class="form-row-stretch">
             @inputBlock('nuwt_city', 'City')
-            @inputBlock('nuwt_state_province', [
-                
-                    'label' => 'State/Province (2 characters code)',
-                    'placeholder' => 'XX',
-                    'minlength' => 2,
-                    'maxlength' => 2,
-                    'pattern' => '.{,2}'
-                ])
-
+            <div class="form-group">      
+                <label class="form-group__label">Select International or State</label>
+                    <select class="form-control" id="nuwt_state_province" name="nuwt_state_province">
+                                        <option value="">- Please select -</option>
+                                        @foreach($states as $state)
+                                            <option value="{{$state->name}}">{{$state->name}}</option>
+                                        @endforeach
+                    </select>
+                <div class="form-group__error" style="display: none;"></div>
+            </div>
             </div>
 
             <div class="form-row-stretch">
@@ -98,6 +100,7 @@
 
     @if($order->type != 'travel-pre-auth')
         <div class="form-row-stretch">
+        
         @inputBlock('depart_at_time', [
             'id' => 'depart_at_time',
             'label' => 'Departure Time',
@@ -120,6 +123,7 @@
             'required' => true
         ])
 
+        
         </div>
    
     @else

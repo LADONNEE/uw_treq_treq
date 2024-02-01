@@ -5,7 +5,7 @@
     <meta http-equiv="Cache-Control" content="no-cache" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title') - TREQ - iSchool - UW</title>
+    <title>@yield('title') - TREQ - {{config('custom.scl_short_camelcase')}} - UW</title>
     <link rel="icon" type="image/x-icon" href="/treq/images/favicon.ico"/>
     @yield('style')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -65,14 +65,14 @@
     </div> <!-- /.layout__wrapper -->
     <div class="layout__footer footer js-scroll-lock-padding">
         <div>
-            <a href="mailto:uworgtreq@uw.edu?subject=UWORG%20Website%20Question">@icon('envelope') Contact</a> &bull;
-            <a href="https://uworg.uw.edu/intranet/technology-resources/">Help</a> &bull;
-            <a href="http://www.washington.edu/online/privacy">Privacy</a> &bull;
-            <a href="http://www.washington.edu/online/terms">Terms</a>
+            <a href="mailto:{{config('custom.scl_email_helpdesk')}}?subject={{config('custom.scl_short_camelcase')}}%20Treq%20Question">@icon('envelope') Contact</a> &bull;
+            <a href="{{config('custom.scl_url_help')}}">Help</a> &bull;
+            <a href="{{config('custom.scl_url_privacy')}}">Privacy</a> &bull;
+            <a href="{{config('custom.scl_url_terms')}}">Terms</a>
         </div>
         <div class="copyright">
-            <a href="http://uworg.uw.edu/">&#169;{{ date('Y') }} UW Information School</a>,
-            <a href="http://www.seattle.gov/">Seattle, Washington</a>
+            <a href="{{config('custom.scl_url_portal')}}">&#169;{{ date('Y') }} {{config('custom.scl_long')}}</a>,
+            <a href="{{config('custom.scl_url_gov')}}">{{config('custom.scl_city_state')}}</a>
         </div>
     </div>
     <div class="modal right fade" id="_modal" tabindex="-1" role="dialog" style="display:none;">

@@ -93,9 +93,12 @@ Route::group(array('prefix' => 'treq'), function($route) {
 
     $route->get('/user', 'UserController@index')->name('users');
     $route->get('/user/add', 'UserController@add')->name('user-create');
+    // import user in uw_persons table
+    $route->get('/user/import', 'UserController@import')->name('user-import');
     $route->get('/user/{user}', 'UserController@show')->name('user-orders');
     $route->get('/user/{user}/edit', 'UserController@edit')->name('user-edit');
     $route->post('/user/{user}/edit', 'UserController@update')->name('user-update');
+
 
     $route->get('user-tasks', 'UserTasksController@index')->name('user-tasks-index');
     $route->get('user-tasks/{uwnetid}', 'UserTasksController@show')->name('user-tasks');
@@ -115,6 +118,7 @@ Route::group(array('prefix' => 'treq'), function($route) {
     $route->get('api/budgets/{order}', 'BudgetsApiState')->name('budgets-api-state');
 
     $route->get('api/worktags', 'WorktagApiController@search');
+    $route->get('api/worktagtree', 'WorktagApiController@searchtree');
     $route->get('api/project-codes', 'ProjectCodeApiController@search');
     $route->get('api/project-codes.json', 'ProjectCodeApiController@prefetch');
 
@@ -138,5 +142,18 @@ Route::group(array('prefix' => 'treq'), function($route) {
     $route->get('coming-soon', 'ComingSoon')->name('coming-soon');
 
     $route->get('mail', 'Mail');
+
+    //manage questions
+    $route->get('question', 'QuestionController@index')->name('question-index');
+    $route->get('question/create', 'QuestionController@create')->name('question-create');
+    $route->post('question/store', 'QuestionController@store')->name('question-store');
+    $route->get('question/{id}/edit', 'QuestionController@edit')->name('question-edit');
+    $route->get('question/{id}/delete', 'QuestionController@destroy')->name('question-delete');
+    $route->post('question/{id}/update', 'QuestionController@update')->name('question-update');
+
+
+    $route->get('workflow-settings', 'WorkflowManagementController@index')->name('workflowmanagement-index');
+    $route->get('workflow-setting/{id}/edit', 'WorkflowManagementController@edit')->name('workflowmanagement-edit');
+    $route->post('workflow-settings/{id}/update', 'WorkflowManagementController@update')->name('workflowmanagement-update');
 
 });

@@ -1,43 +1,7 @@
 <template>
     <spotlight-box>
-        <!-- <div class="row">
-            <div class="col-md-auto">
-                <div class="form-group">
-                    <label>Search Worktag (or Budget Nr)</label>
-                    <budget-suggest :focused="focus === 'budgetno'"
-                                    v-model="budgetno"
-                                    :placeholderName="'CC000123 (or 00-0000)'"
-                                    :widthField="'8rem'"
-                                    @selected="(option) => budgetSelected(option)"
-                                    @keydown="keyHandler($event)"
-                    ></budget-suggest>
-                </div>
-            </div>
-            <!-- <div class="col-md-auto">
-                <div class="form-group">
-                    <label>Name</label>
-                    <budget-suggest :focused="false"
-                                    v-model="name"
-                                    :placeholderName="'Name of Budget'"
-                                    :widthField="'20rem'"
-                                    @selected="(option) => budgetSelected(option)"
-                                    @keydown="keyHandler($event)"
-                    ></budget-suggest>
-                </div>
-            </div>
-            <div class="col-md-auto">
-                <div class="form-group">
-                    <label>PCA Code</label>
-                    <input type="text" class="form-control" style="width:12rem;"
-                           v-model="pca_code"
-                           @keydown="keyHandler($event)"
-                           ref="pca_code">
-                </div>
-            </div>
-            
-        </div> -->
         <div class="row">
-            <div class="col-md-auto">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label>Budget Number (legacy)</label>
                     <budget-suggest 
@@ -49,21 +13,51 @@
                     ></budget-suggest>
                 </div>
             </div>
-            <div class="col-md-auto">
+            <div class="col-md-5">
                 <div class="form-group">
+                    <label>Worktag easy search</label>
+                    <worktagtree-suggest :focused="false"
+                                    v-model="worktag_easysearch"
+                                    :widthField="'16rem'"
+                                    :placeholderName="'type here'"
+                                    @selected="(option) => worktagtreeSelected(option)"
+                                    @keydown="keyHandler($event)"
+                    ></worktagtree-suggest>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group worktag-field">
+                    
+                    <div class="row">
+                        <div class="col-md-4">
                     <label>Cost Center</label>
+                        </div>
+                        <div class="col-md-8">
+
                     <worktag-suggest :focused="false"
                                     v-model="wd_costcenter"
-                                    :ref="wd_costcenter"
                                     :placeholderName="'CC000123'"
                                     @selected="(option) => worktagSelected(option)"
                                     @keydown="keyHandler($event)"
                     ></worktag-suggest>
                 </div>
             </div>
-            <div class="col-md-auto">
-                <div class="form-group">
+                    
+                </div>
+                <div class="form-group worktag-field">
+                    
+                    <div class="row">
+                        <div class="col-md-4">
                     <label>Program</label>
+                        </div>
+                        <div class="col-md-8">
+
                     <worktag-suggest :focused="false"
                                     v-model="wd_program"
                                     :placeholderName="'PG000123'"
@@ -72,21 +66,16 @@
                     ></worktag-suggest>
                 </div>
             </div>
-            <div class="col-md-auto">
-                <div class="form-group">
-                    <label>Standalone Grant</label>
-                    <input type="text" class="form-control"
-                        :focused="false"
-                        v-model="wd_standalonegrant"
-                        :placeholder="'( free text )'"
-                        @keydown="keyHandler($event)"
-                     />
                     
                 </div>
-            </div>
-            <div class="col-md-auto">
-                <div class="form-group">
+                <div class="form-group worktag-field">
+                    
+                    <div class="row">
+                        <div class="col-md-4">
                     <label>Grant</label>
+                        </div>
+                        <div class="col-md-8">
+
                     <worktag-suggest :focused="false"
                                     v-model="wd_grant"
                                     :placeholderName="'GR000123'"
@@ -95,9 +84,16 @@
                     ></worktag-suggest>
                 </div>
             </div>
-            <div class="col-md-auto">
-                <div class="form-group">
+                    
+                </div>
+                <div class="form-group worktag-field">
+                    
+                    <div class="row">
+                        <div class="col-md-4">
                     <label>Gift</label>
+                        </div>
+                        <div class="col-md-8">
+
                     <worktag-suggest :focused="false"
                                     v-model="wd_gift"
                                     :placeholderName="'GF000123'"
@@ -105,33 +101,42 @@
                                     @keydown="keyHandler($event)"
                     ></worktag-suggest>
                 </div>
+                        
             </div>
-            <div class="col-md-auto">
-                <div class="form-group">
-                    <label>Fund</label>
-                    <input type="text" class="form-control"
-                        :focused="false"
-                        v-model="wd_fund"
-                        :placeholder="'( free text )'"
-                        @keydown="keyHandler($event)"
-                     />
                     
                 </div>
+                <div class="form-group worktag-field">
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Fund</label>
             </div>
-            <div class="col-md-auto">
-                <div class="form-group">
-                    <label>Assignee</label>
-                    <input type="text" class="form-control"
-                        :focused="false"
-                        v-model="wd_assignee"
-                        :placeholder="'( free text )'"
+                        <div class="col-md-8">
+
+                            <worktag-suggest :focused="false"
+                                            v-model="wd_fund"
+                                            :placeholderName="'FD000123'"
+                                            @selected="(option) => worktagSelected(option)"
                         @keydown="keyHandler($event)"
-                     />
+                            ></worktag-suggest>
+                        </div>
+                    </div>
                     
                 </div>
+                
+
+
+
             </div>
+
+            
+
             
         </div>
+
+
+        <hr />
+
         <div class="row">
             <div class="col-md-auto">
                 <div class="form-group">
@@ -176,6 +181,7 @@
     import BudgetHelp from './BudgetHelp';
     import BudgetSuggest from '../budgets/BudgetSuggest';
     import WorktagSuggest from '../budgets/WorktagSuggest';
+    import WorktagtreeSuggest from '../budgets/WorktagtreeSuggest';
     import SpotlightBox from '../components/SpotlightBox';
     export default {
         props: ['budget', 'focus'],
@@ -184,6 +190,8 @@
                 budgetno: '',
                 name: '',
                 pca_code: '',
+                
+                worktag_easysearch: '',
 
                 wd_costcenter: '',
                 wd_program: '',
@@ -250,6 +258,66 @@
                 this.$refs.split.select();*/
                 this.validate();
             },
+            worktagtreeSelected(option) {
+                if (!option) {
+                    return;
+                }
+                //this.wd_costcenter = option.workday_code;
+                console.log("WORKTAG SUGGESTION");
+                //Parse option into array
+                //Delete existing choices:
+
+                this.wd_costcenter = "";
+                this.wd_program = "";
+                this.wd_grant = "";
+                this.wd_gift = "";
+                this.wd_fund = "";
+
+                var optionsArray = option.name.replace("a!/^/!a", "").split("b!/^/!b");
+
+                console.log(optionsArray);
+                optionsArray.forEach((worktagCombi) => {
+                    console.log(worktagCombi);
+
+                    var worktag = worktagCombi.split("c!/^/!c");
+                    console.log("worktag after split");
+                    console.log(worktag);
+
+                    switch (worktag[0].substring(0, 2).toUpperCase()) {
+                    case 'CC':
+                        this.wd_costcenter = worktag[0];
+                        break;
+                    case 'PG':
+                        this.wd_program = worktag[0];
+                        break;
+                    case 'GR':
+                        this.wd_grant = worktag[0];
+                        break;
+                    case 'GF':
+                        this.wd_gift = worktag[0];
+                        break;
+                    case 'FD':
+                        this.wd_fund = worktag[0];
+                        break;                    
+                    default:
+                        console.log(`Couldn't map ${worktag[0]}.`);
+                    }
+
+                    this.worktag_easysearch = '';
+
+                });
+                
+
+
+                /*this.wd_costcenter = option.workday_code;
+                this.wd_program = option.workday_code;*/
+                /*console.log(event.target);
+                console.log(option.workday_code);*/
+                //this.$refs.theInput.value = option.workday_code;
+                /*this.$refs.split.focus();
+                this.$refs.split.select();*/
+                //this.validate();
+            },
             keyHandler(event) {
                 if (event.key === 'Enter' || event.keyCode === 13) {
                     this.saveBudget();
@@ -299,7 +367,7 @@
             validate() {
                 this.isInvalid = false;
                 this.validMessage = '';
-                if ( !this.wd_costcenter &&  (!this.budgetno || !this.budgetno.match(/^[0-9][0-9]\-?[0-9]{4}$/ ))   ) {
+                if ( (!this.wd_costcenter || this.wd_costcenter.length < 6 ) &&  (!this.budgetno || !this.budgetno.match(/^[0-9][0-9]\-?[0-9]{4}$/ ))   ) {
                     this.isInvalid = true;
                     this.validMessage = 'At least a Cost center or a Budget number is required.';
                 }
@@ -323,6 +391,7 @@
             BudgetHelp,
             BudgetSuggest,
             WorktagSuggest,
+            WorktagtreeSuggest,
             SpotlightBox
         }
     }

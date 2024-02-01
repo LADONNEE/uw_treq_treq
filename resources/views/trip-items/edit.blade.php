@@ -16,7 +16,7 @@
 
         <p class="mb-3">
             <a href="{{ $usgsaUrl }}" target="_perdiem" class="font-weight-bold">Per Diem Rates</a> @bar
-            <a href="https://finance.uw.edu/travel/perdiem" target="uw_travel" class="font-weight-light">UW Travel Policy</a>
+            <a href="{{config('custom.scl_url_perdiem_exceptions')}}" target="uw_travel" class="font-weight-light">UW Travel Policy</a>
         </p>
 
         <p>
@@ -40,7 +40,7 @@
                             <li>You must provide receipts for lodging reimbursement</li>
                             <li>
                                 Your Actual Lodging reimbursement MAY NOT exceed the Lodging Limit except
-                                <a href="https://finance.uw.edu/travel/perdiem#exceptionstoperdiem" target="uw_travel">special cases</a>
+                                <a href="{{config('custom.scl_url_perdiem_exceptions')}}" target="uw_travel">special cases</a>
                             </li>
                             <li>Exceptions to Lodging Limit must have a pre-authorizations</li>
                         </ul>

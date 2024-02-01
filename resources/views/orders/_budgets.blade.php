@@ -7,33 +7,29 @@
     @foreach($order->budgets as $budget)
 
         <div class="budget-block">
-            <div class="budget-block__wd_costcenter">{{ $budget->wd_costcenter }}</div>
+            <div class="budget-block__wd_costcenter">{{ \App\Models\WorktagLookup::where('workday_code', $budget->wd_costcenter)->first()->name}}</div>
         
             @if( $budget->budgetno != '00-0000')
             <div class="budget-block__budgetno">{{ $budget->budgetno }}</div>
             <div class="budget-block__name">{{ $budget->name }}</div>
             @endif
 
-            <div class="budget-block__worktags">
+            <div class="budget-block__worktags worktag-tag">
                 @if( $budget->wd_program)
-                    <span>{{ $budget->wd_program }}</span>
-                @endif
-                @if( $budget->wd_standalonegrant)
-                    <span>{{ $budget->wd_standalonegrant }}</span>
+                    <div class="wdpg">{{ \App\Models\WorktagLookup::where('workday_code', $budget->wd_program)->first()->name }}</div>
                 @endif
                 @if( $budget->wd_grant)
-                    <span>{{ $budget->wd_grant }}</span>
+                    <div class="wdgr">{{ \App\Models\WorktagLookup::where('workday_code', $budget->wd_grant)->first()->name }}</div>
                 @endif
                 @if( $budget->wd_gift)
-                    <span>{{ $budget->wd_gift }}</span>
+                    <div class="wdgf">{{ \App\Models\WorktagLookup::where('workday_code', $budget->wd_gift)->first()->name }}</div>
                 @endif
                 @if( $budget->wd_fund)
-                    <span>{{ $budget->wd_fund }}</span>
+                    <div class="wdfd">{{ \App\Models\WorktagLookup::where('workday_code', $budget->wd_fund)->first()->name }}</div>
                 @endif
             </div>
 
             <div class="budget-block__pca">{{ $budget->pca_code }}</div>
-            <div class="budget-block__opt">OPT: {{ $budget->opt_code ?? 'no opt' }}</div>
             <div class="budget-block__split">{{ $budget->splitDescription() }}</div>
         </div>
 
