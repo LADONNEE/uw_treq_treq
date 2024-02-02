@@ -17,7 +17,7 @@ return new class extends Migration
         );
 
         DB::unprepared(
-            'CREATE DEFINER=`root`@`localhost` PROCEDURE `' . env('DB_DATABASE_SHARED', 'shared') . '`.`get_path` (IN cat_id INT, OUT path TEXT)
+            'CREATE PROCEDURE `' . env('DB_DATABASE_SHARED', 'shared') . '`.`get_path` (IN cat_id INT, OUT path TEXT)
             BEGIN
                 DECLARE catcode VARCHAR(255);
                 DECLARE catdescription VARCHAR(255);

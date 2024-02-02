@@ -1771,14 +1771,20 @@ td.numeric {
 
 .budget-block {
   display: grid;
-  grid-template-columns: 2fr 3fr 1fr;
-  grid-template-areas: "budget pca split" "name name name" "tag tag tag";
+  grid-template-columns: 3fr 3fr 1fr;
+  grid-template-rows: min-content auto;
+  grid-template-areas: "wdcc wdcc split" "tagpg tagpg tagpg" "taggr taggr taggr" "taggf taggf taggf" "tagfd tagfd tagfd";
   padding: 1rem;
   border-top: 1px solid #ddd;
 }
 
 .budget-block:first-child {
   border-top: 0 none;
+}
+
+.budget-block__wd_costcenter {
+  grid-area: wdcc;
+  font-weight: 600;
 }
 
 .budget-block__budgetno {
@@ -1803,7 +1809,25 @@ td.numeric {
 }
 
 .budget-block__worktags {
-  grid-area: tag;
+  /*grid-area: tag;*/
+  width: 100%;
+  overflow-x: auto;
+}
+
+.budget-block__worktags.wdpg {
+  grid-area: tagpg;
+}
+
+.budget-block__worktags, wdgr {
+  grid-area: taggr;
+}
+
+.budget-block__worktags, wdgf {
+  grid-area: taggf;
+}
+
+.budget-block__worktags, wdfd {
+  grid-area: tagfd;
 }
 
 .budget-block span {
@@ -1815,6 +1839,14 @@ td.numeric {
 }
 
 .worktag-tag span {
+  border: 1px solid;
+  border-radius: 2px;
+  padding: 2px;
+  margin: 4px;
+  background: rgba(180, 167, 200, 0.5);
+}
+
+.worktag-tag div {
   border: 1px solid;
   border-radius: 2px;
   padding: 2px;
@@ -2310,7 +2342,7 @@ td.numeric {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   background-color: #fae664;
-  box-shadow: 0 4px 8px -2px #cccccc;
+  box-shadow: 0 4px 8px -2px rgb(204, 204, 204);
   font-size: 14px;
 }
 
@@ -2584,7 +2616,6 @@ td.numeric {
     grid-template-columns: 280px 1fr;
     grid-template-areas: "title title" "project orders";
   }
-
   .order-show__project {
     padding-right: 10px;
   }
@@ -2597,7 +2628,6 @@ td.numeric {
     grid-gap: 40px;
     grid-template-areas: "title title" "project orders";
   }
-
   .order-show__project {
     padding-right: 10px;
   }
@@ -3127,17 +3157,14 @@ h1 .project-number {
   .two-boxes {
     display: block;
   }
-
   .two-boxes > div {
     width: auto;
   }
-
   .two-boxes__front {
     position: static;
     left: 0;
     margin: 0 0 1rem 0;
   }
-
   .two-boxes__back {
     margin: 0;
     padding: 1.75rem 1.5rem;
