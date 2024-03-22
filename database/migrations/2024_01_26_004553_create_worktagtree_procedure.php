@@ -25,7 +25,7 @@ return new class extends Migration
                 DECLARE tempparent INT;
                 SET max_sp_recursion_depth = 2048;
             
-                SELECT workday_code, name as worktag_name, cc_worktag_id FROM `' . env('DB_DATABASE_BUDGETS', 'shared') . '`.worktags WHERE id=cat_id INTO catcode, catdescription, tempparent;
+                SELECT workday_code, name as worktag_name, cc_worktag_id FROM `' . env('DB_DATABASE_BUDGETS', 'budgets') . '`.worktags WHERE id=cat_id INTO catcode, catdescription, tempparent;
                 IF tempparent IS NULL
                 THEN
                     SET path = CONCAT( "a!/^/!a", catcode , "c!/^/!c : ", REPLACE(catdescription, catcode, "") );

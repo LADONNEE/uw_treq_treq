@@ -1,6 +1,14 @@
 @if (count($projects) > 0)
 
     <div class="panel-full-width mb-5">
+        <div class="row">
+            <div class="col-md-10">
+            </div>
+            <div class="col-md-2">
+
+                <button id="toggle-filters" class="btn btn-primary mb-2 toggle-filters">Toggle Filters</button>
+            </div>
+        </div>
         <table class="table-tight sortable">
             <thead>
             <tr>

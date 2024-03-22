@@ -11,7 +11,15 @@
         <p>Orders you have started creating, but have not been submitted for approval and action.</p>
 
         <div class="panel-full-width mb-5">
-            <table class="table-tight sortable">
+            <div class="row">
+                <div class="col-md-10">
+                </div>
+                <div class="col-md-2">
+
+                    <button id="toggle-filters" class="btn btn-primary mb-2 toggle-filters">Toggle Filters</button>
+                </div>
+            </div>
+            <table class="table-tight ">
                 <thead>
                 <tr>
                     <th style="width: 8rem;">Project #</th>
@@ -25,7 +33,8 @@
                 @foreach($orders as $order)
 
                     <tr>
-                        <td><a href="{{ route('next', $order->id) }}" class="js-link-row">@projectNumber($order)</a></td>
+                        <td><a href="{{ route('next', $order->id) }}" class="js-link-row">@projectNumber($order)</a>
+                        </td>
                         <td>
                             <div>{{ eDate($order->created_at) }}</div>
                             <div class="text-sm text-muted">{{ eFirstLast($order->submitter) }}</div>

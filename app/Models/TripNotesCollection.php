@@ -101,20 +101,31 @@ class TripNotesCollection
     public function __construct($order_id)
     {
         $this->order_id = $order_id;
-        $questions = Question::where('status','active')->get();
+        $questions = Question::where('status', 'active')
+            ->orderByRaw("CASE WHEN question_required = 'required' THEN 0 ELSE 1 END")
+            ->get();
+
 
         foreach ($questions as  $question) {
             $unserializedArray = null;
             if ($question->options){
                 $unserializedArray = unserialize($question->options);
             }
+            if ($question->question_required == 'required') {
+                // Prepend an asterisk (*) to the question text
+                $modifiedQuestion =  $question->question .' *' ;
+            } else {
+                // Leave the question text as is
+                $modifiedQuestion = $question->question;
+            }
             $this->notes[$question->item] = new TripNotesResponse(
                 $order_id,
                 $question->item,
                 $question->label,
-                $question->question,
+                $modifiedQuestion,
                 $unserializedArray ?? null,
-                $question->notes ?? null
+                $question->notes ?? null,
+                $question->question_required ?? null
             );
 
         }

@@ -18,8 +18,15 @@
                             </textarea>
                     </div>
                     <div class="form-group">
-                        <label for="notes">Question precision</label>
-                        <textarea type="text" name="notes" id="notes" placeholder="Please describe" class="form-control">Please describe</textarea>
+                        <label for="question">Question precision</label>
+                        <textarea  name="notes"  id="notes" placeholder="Please Describe" class="form-control">Please Describe</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="question_required">Question Required or Not</label>
+                        <select name="question_required" id="question_required" class="form-control">
+                            <option value="required">Required</option>
+                            <option value="not_required">Not Required</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="question_type">Answer type</label>

@@ -28,7 +28,7 @@ let UwpersonTypeahead = (function($){
         let selector = '#' + $(typeahead).data('for');
         if (selector === '#undefined') {
             // default name for legacy person select inputs
-            return $('#person_id');
+            return $('#uwperson_id');
         }
         return $(selector);
     };
@@ -42,7 +42,16 @@ let UwpersonTypeahead = (function($){
             typeahead.removeClass(classPersonEmpty);
             typeahead.removeClass(classPersonSelected);
             typeahead.addClass(classPersonChanging);
+            $('#search-spinner').removeClass('d-none');
         }
+
+        
+
+        if( typeahead.val() == ""){
+            $('#search-spinner').addClass('d-none');
+        }
+        
+
     };
 
     let onKeyPress = function(event) {
@@ -90,9 +99,16 @@ let UwpersonTypeahead = (function($){
 
     let setup = function(elem, selectedCallback)
     {
+        // Assume your spinner ID is 'search-spinner' as per the HTML provided
+        let $spinner = $('#search-spinner');
+        
         if (elem.length === 0 || elem.data('typeaheadStarted')) {
+            $spinner.addClass('d-none');
             return;
         }
+
+        
+
         bhSource = suggestions('uwperson');
         elem.typeahead({
                 hint: true,
@@ -108,10 +124,18 @@ let UwpersonTypeahead = (function($){
             .on('keydown', onKeyPress)
             .on('keyup', onChanging)
             .on('typeahead:change', onChanging)
+            .on('typeahead:render', function() {
+                // Hide spinner when suggestions are rendered
+                $spinner.addClass('d-none');
+            })
             .on('typeahead:selected typeahead:autocompleted', onSelected)
             .data('typeaheadSelectedCallback', selectedCallback)
             .data('typeaheadStarted', true);
         storeOriginalValue(elem);
+
+        // Initially hide the spinner
+        $spinner.addClass('d-none');
+
         return elem;
     };
 

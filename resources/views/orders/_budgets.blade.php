@@ -7,7 +7,11 @@
     @foreach($order->budgets as $budget)
 
         <div class="budget-block">
-            <div class="budget-block__wd_costcenter">{{ \App\Models\WorktagLookup::where('workday_code', $budget->wd_costcenter)->first()->name}}</div>
+            <div class="budget-block__wd_costcenter">
+                @if( $budget->wd_program)
+                    {{ \App\Models\WorktagLookup::where('workday_code', $budget->wd_costcenter)->first()->name}}
+                @endif
+            </div>
         
             @if( $budget->budgetno != '00-0000')
             <div class="budget-block__budgetno">{{ $budget->budgetno }}</div>

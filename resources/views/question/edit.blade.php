@@ -10,18 +10,24 @@
                     @csrf <!-- CSRF token for security -->
 
                     <div class="form-group">
-                        <label for="question">Question</label>
+                        <label for="question">Question Label</label>
                         <input type="text" name="question" value="{{$question->question}}" id="question" placeholder="Enter your question here" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="question">Question Notes</label>
+                        <label for="question">Question Content</label>
                         <textarea type="text" name="notes"  id="notes" placeholder="Enter your note" class="form-control">{{$question->notes}}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="question">Question Label</label>
+                        <label for="question">Question Notes</label>
                         <textarea  name="label" id="label" placeholder="Enter your label" class="form-control">{{$question->label}}</textarea>
                     </div>
-
+                    <div class="form-group">
+                        <label for="question_required">Question Required or Not</label>
+                        <select name="question_required" id="question_required" class="form-control">
+                            <option value="required" {{ $question->question_required == 'required' ? 'selected' : '' }}>Required</option>
+                            <option value="not_required" {{ $question->question_required == 'not_required' ? 'selected' : '' }}>Not Required</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="question_type">Question Type</label>
                         <select name="question_type" id="question_type" class="form-control" onchange="showOptions(this.value)">

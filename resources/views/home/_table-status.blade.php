@@ -7,7 +7,15 @@
 @else
 
     <div class="panel-full-width mb-5">
-        <table class="table-tight sortable">
+        <div class="row">
+            <div class="col-md-11">
+            </div>
+            <div class="col-md-1">
+
+                <button id="toggle-filters" class="btn btn-primary mb-2 rsp-orders toggle-filters" style="background-color:#c3dafe; border:none; color:#3c366b">Filter</button>
+            </div>
+        </div>
+        <table class="table-tight sortable" id="rsp_orders">
             <thead>
             <tr>
                 <th style="width: 8rem;">Project #</th>

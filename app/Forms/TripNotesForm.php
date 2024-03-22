@@ -29,7 +29,11 @@ class TripNotesForm extends Form
             $this->add($tn->item, 'radio')
                 ->label($tn->question)
                 ->options(['Y' => 'Yes', 'N' => 'No']);
+            if ($tn->question_required == 'required'){
+                $tn->answer = $tn->answer ?? '';
+            } else {
             $tn->answer = $tn->answer ?? 'N';
+            }
 
             if ($tn->options) {
                 $this->add("{$tn->item}_note", 'radio')

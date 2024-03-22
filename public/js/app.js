@@ -7809,7 +7809,7 @@ var UwpersonTypeahead = function ($) {
     var selector = '#' + $(typeahead).data('for');
     if (selector === '#undefined') {
       // default name for legacy person select inputs
-      return $('#person_id');
+      return $('#uwperson_id');
     }
     return $(selector);
   };
@@ -7821,6 +7821,10 @@ var UwpersonTypeahead = function ($) {
       typeahead.removeClass(classPersonEmpty);
       typeahead.removeClass(classPersonSelected);
       typeahead.addClass(classPersonChanging);
+      $('#search-spinner').removeClass('d-none');
+    }
+    if (typeahead.val() == "") {
+      $('#search-spinner').addClass('d-none');
     }
   };
   var onKeyPress = function onKeyPress(event) {
@@ -7862,7 +7866,10 @@ var UwpersonTypeahead = function ($) {
     }
   };
   var setup = function setup(elem, selectedCallback) {
+    // Assume your spinner ID is 'search-spinner' as per the HTML provided
+    var $spinner = $('#search-spinner');
     if (elem.length === 0 || elem.data('typeaheadStarted')) {
+      $spinner.addClass('d-none');
       return;
     }
     bhSource = (0,_suggestions_suggestion_factory__WEBPACK_IMPORTED_MODULE_0__.suggestions)('uwperson');
@@ -7877,8 +7884,14 @@ var UwpersonTypeahead = function ($) {
       display: function display(option) {
         return option.name;
       }
-    }).on('keydown', onKeyPress).on('keyup', onChanging).on('typeahead:change', onChanging).on('typeahead:selected typeahead:autocompleted', onSelected).data('typeaheadSelectedCallback', selectedCallback).data('typeaheadStarted', true);
+    }).on('keydown', onKeyPress).on('keyup', onChanging).on('typeahead:change', onChanging).on('typeahead:render', function () {
+      // Hide spinner when suggestions are rendered
+      $spinner.addClass('d-none');
+    }).on('typeahead:selected typeahead:autocompleted', onSelected).data('typeaheadSelectedCallback', selectedCallback).data('typeaheadStarted', true);
     storeOriginalValue(elem);
+
+    // Initially hide the spinner
+    $spinner.addClass('d-none');
     return elem;
   };
   return {

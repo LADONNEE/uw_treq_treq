@@ -30,7 +30,11 @@
                                 style="width:300px;"
                                 placeholder="Search by NetID only"
                                 aria-label="Search by NetID only">
-                            <button class="btn btn-secondary ml-2" type="submit">Import User</button>
+                        <button class="btn btn-secondary ml-2" type="submit">Import User</button>
+                        <div class="input-group-append ml-2">
+                            <span class="spinner-border spinner-border-sm text-primary d-none" id="search-spinner"
+                                  style="color: #007bff;"></span>
+                        </div>
                         </form>
 
                 </div>

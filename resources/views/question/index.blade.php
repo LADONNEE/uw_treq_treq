@@ -17,8 +17,8 @@
                         <th>Question Label </th>
                         <th >Question #</th>
                         <th style="width:15%;">Question Type</th>
-
-                        <th style="width:20%;">Status</th>
+                        <th style="width:10%;">Required</th>
+                        <th style="width:10%;">Status</th>
                         <th style="width:20%;">Action</th>
                     </tr>
                     </thead>
@@ -35,7 +35,15 @@
 
 
                             <td>
-                                {{$question->status}}
+                                @if($question->question_required == 'required')
+                                    Required
+                                    @else
+                                    Optional
+                                @endif
+                            </td>
+
+                            <td>
+                                {{ucfirst($question->status)}}
                             </td>
                             <td>
                                 <a href="{{ route('question-edit',$question->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>

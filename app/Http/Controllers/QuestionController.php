@@ -39,18 +39,19 @@ class QuestionController extends Controller
         $processedLabel = preg_replace(array('/[^\w\s]+/', '/[^a-z0-9]+/'), array('', '_'), strtolower(trim($labelInput))) . $randomIdValue->generate(4);
 
         // Ensure the label is unique
-        $baseLabel = $processedLabel;
-        $counter = 1;
-        while (Question::where('item', $processedLabel)->exists()) {
-            $processedLabel = $baseLabel . '_' . $counter;
-            $counter++;
-        }
+        // $baseLabel = $processedLabel;
+        // $counter = 1;
+        // while (Question::where('item', $processedLabel)->exists()) {
+        //     $processedLabel = $baseLabel . '_' . $counter;
+        //     $counter++;
+        // }
 
         // Create the question
         Question::create([
             'question' => $request->input('question'),
             'notes' => $request->input('notes'),
             'label' => $request->input('label'),
+            'question_required' => $request->input('question_required'),
             'question_type' => $request->input('question_type'),
             'options' => isset($request->options) ? serialize($request->options) : null,
             'status' => $request->input('status'),
@@ -85,6 +86,7 @@ class QuestionController extends Controller
         $question->options = serialize($request->options);
         $question->status = $request->input('status');
         $question->label = $request->input('label');
+        $question->question_required = $request->input('question_required');
         $question->save();
         return redirect()->route('question-index');
     }
