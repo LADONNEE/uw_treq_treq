@@ -13,7 +13,7 @@ use App\Trackers\LoggedAuth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use GuzzleHttp\Client as GuzzleClient;
+
 
 class UserController extends Controller
 {
@@ -133,12 +133,12 @@ class UserController extends Controller
         //$personId = $user_data->uwperson_id;
         $personId = request('uwperson_id');
         
-        Log::debug('Treq Import');
+        // Log::debug('Treq Import');
 
         if ($personId) {
             
-            Log::debug('got personid');
-            Log::debug($personId);
+            // Log::debug('got personid');
+            // Log::debug($personId);
 
             
             $apiPersonImportUrl = config('app.url') . '/searchpersons/import-uw';
@@ -158,9 +158,9 @@ class UserController extends Controller
             //     'person_id' => $personId,
             // ]);
 
-            Log::debug('RESPONSE');
-            Log::debug($response);
-            Log::debug($response->status());
+            // Log::debug('RESPONSE');
+            // Log::debug($response);
+            // Log::debug($response->status());
 
             // Log::debug($response);
 
@@ -176,7 +176,7 @@ class UserController extends Controller
 
         }
 
-        Log::debug("we there");
+        //Log::debug("we there");
 
         // abort(404);
     }
