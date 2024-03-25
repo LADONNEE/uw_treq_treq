@@ -6,8 +6,8 @@ let treqTripForm = function(context) {
         travelerOther: function() {
             return $('#js-traveler-other');
         },
-        travelerCOENV: function() {
-            return $('#js-traveler-coenv');
+        travelerSCHOOL: function() {
+            return $('#js-traveler-uworg');
         },
         personalTimeChecked: function() {
             return $('#js-trip-form input[name="personal_time"]:checked').length > 0;
@@ -73,7 +73,7 @@ let treqTripForm = function(context) {
 
     let travelerTypeChanged = function() {
         let type = jq.travelerType();
-        if (type === 'coenv') {
+        if (type === 'uworg') {
             jq.travelerOther().hide();
             jq.EmailInput().prop('required',false);
             jq.PhoneInput().prop('required',false);
@@ -83,7 +83,7 @@ let treqTripForm = function(context) {
             jq.CodeInput().prop('required',false);
             jq.StateInput().prop('required',false);
             jq.NameInput().prop('required',false); 
-            jq.travelerCOENV().show();
+            jq.travelerSCHOOL().show();
         } else {
             jq.EmailInput().prop('required',true);  
             jq.PhoneInput().prop('required',true);
@@ -93,7 +93,7 @@ let treqTripForm = function(context) {
             jq.CodeInput().prop('required',true);
             jq.StateInput().prop('required',true);
             jq.NameInput().prop('required',true); 
-            jq.travelerCOENV().hide();
+            jq.travelerSCHOOL().hide();
             jq.travelerOther().show();
         }
         if (type === 'non_uw') {

@@ -7,10 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class AuthTable extends Migration
 {
     protected $initialUsers = [
-        'nbedani' => 'treq:super',
-        // 'hanisko' => 'treq:super',
-        // 'mollyvin' => 'treq:super',
-        // 'seribock' => 'treq:super',
+        'nbedani' => 'treq:super'
     ];
 
     /**

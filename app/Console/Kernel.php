@@ -28,7 +28,6 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
         $schedule->command('notify --all')->cron('*/15 * * * *');
         $schedule->command('cache:prune-stale-tags')->hourly();
-
     }
 
     /**

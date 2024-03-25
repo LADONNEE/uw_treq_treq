@@ -46,9 +46,10 @@ $trip = $project->trip ?? new \App\Models\Trip();
                {{ $trip->nuwt_address_line2 }} <br />
                {{ $trip->nuwt_city }}, {{ $trip->nuwt_state_province }}, {{ $trip->nuwt_zipcode }} <br />
                {{ $trip->nuwt_country }}           
+            
         </div>
         @endif
-        @if($trip->non_uw)
+        @if($trip->personal_time)
             <div>@icon('island-tropical') Using Personal Time</div>
         @endif
         @if($trip->honorarium)

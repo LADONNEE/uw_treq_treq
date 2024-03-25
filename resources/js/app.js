@@ -24,6 +24,7 @@ require('./components/dismissable');
 require('./components/order-load');
 require('./components/order-refresh');
 require('./components/person-typeahead');
+require('./components/uwperson-typeahead');     
 require('./components/budget-typeahead');
 require('./components/search-bar');
 require('./components/show-when-checked');

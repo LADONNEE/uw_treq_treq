@@ -4,11 +4,13 @@ import makeBudgets from './budget-suggestions';
 import makeWorktags from './worktag-suggestions';
 import makePerson from './person-suggestions';
 import makeProjectCodes from './project-code-suggestions';
+import makeUwperson from './uwperson-suggestions';
 
 let suggestionsFactories = {
     budgets: makeBudgets,
     worktags: makeWorktags,
     person: makePerson,
+    uwperson: makeUwperson,
     project_codes: makeProjectCodes,
 };
 

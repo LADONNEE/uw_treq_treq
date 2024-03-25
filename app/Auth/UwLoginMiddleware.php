@@ -4,7 +4,6 @@ namespace App\Auth;
 use Closure;
 use Illuminate\Contracts\Container\Container;
 
-
 class UwLoginMiddleware
 {
     private $app;

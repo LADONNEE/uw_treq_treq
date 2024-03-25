@@ -11,7 +11,13 @@ class DeleteFoldersController extends Controller
 {
     public function index()
     {
+        
         $report = new DeleteFoldersReport();
+        
+        if (wantsCsv()) {
+            $reportdata = $report->load();
+            return response()->view('delete-folders.csv', compact('reportdata'));
+        }
         return view('delete-folders.index', compact('report'));
     }
 

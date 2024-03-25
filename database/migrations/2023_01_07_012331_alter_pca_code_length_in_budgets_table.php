@@ -15,7 +15,7 @@ class AlterPcaCodeLengthInBudgetsTable extends Migration
     public function up()
     {
             //
-            DB::statement('ALTER TABLE `budgets` MODIFY `pca_code` TEXT;');
+            DB::statement('ALTER TABLE budgets MODIFY `pca_code` TEXT;');
         
     }
 

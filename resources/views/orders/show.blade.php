@@ -33,7 +33,6 @@
             <div class="panel mb-3">
                 @include('orders._order')
             </div>
-
             @foreach($project->orders as $o)
                 @if($o->id != $order->id)
                     @include('orders._order-collapsed', ['order' => $o])

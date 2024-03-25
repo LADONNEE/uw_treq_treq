@@ -4,7 +4,6 @@ namespace App\AuthNotify;
 
 use Illuminate\Support\Facades\DB;
 
-
 /**
  * Decorator that provides multiple users roles as a single standardized string.
  *

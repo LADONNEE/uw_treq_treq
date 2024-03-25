@@ -93,9 +93,12 @@ Route::group(array('prefix' => 'treq'), function($route) {
 
     $route->get('/user', 'UserController@index')->name('users');
     $route->get('/user/add', 'UserController@add')->name('user-create');
+    // import user in uw_persons table
+    $route->get('/user/import', 'UserController@import')->name('user-import');
     $route->get('/user/{user}', 'UserController@show')->name('user-orders');
     $route->get('/user/{user}/edit', 'UserController@edit')->name('user-edit');
     $route->post('/user/{user}/edit', 'UserController@update')->name('user-update');
+
 
     $route->get('user-tasks', 'UserTasksController@index')->name('user-tasks-index');
     $route->get('user-tasks/{uwnetid}', 'UserTasksController@show')->name('user-tasks');
